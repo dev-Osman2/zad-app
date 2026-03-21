@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-amiri: "Amiri", serif;
+  --font-noto: "Noto Sans Arabic", sans-serif;
+}
+
+:root {
+  --background: #fdfbf7;
+  --foreground: #1e293b;
+
+  --header-bg: #fffbeb;
+  --header-border: #fef3c7;
+  --footer-bg: #fffbeb;
+
+  --primary: #d97706;
+  --primary-hover: #b45309;
+  --primary-light: #fff7ed;
+
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+
+  --border-color: #e2e8f0;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+
+  --header-bg: #1e293b;
+  --header-border: #334155;
+  --footer-bg: #1e293b;
+
+  --primary: #fbbf24;
+  --primary-hover: #f59e0b;
+  --primary-light: #1e293b;
+
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+
+  --border-color: #334155;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.container-padded {
+  @apply container mx-auto px-4;
+}
+
+.section-card {
+  @apply rounded-2xl p-6 transition-all duration-300 border;
+  background-color: var(--header-bg);
+  border-color: var(--border-color);
+}
+
+.hadith-text {
+  font-family: var(--font-amiri);
+  line-height: 2.2;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+@keyframes swing {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
