@@ -1,12 +1,19 @@
 name: Build Android APK
 on:
+  push:
+    branches:
+      - main # 👈 سيعمل هذا الملف تلقائياً في كل مرة ترفع فيها كود جديد من التيرمنال
   workflow_dispatch:
+
+permissions:
+  contents: write # 👈 السماح لجيت هاب بمسح وإضافة الملفات في صفحة الإصدارات
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -17,11 +24,15 @@ jobs:
 
       - name: Build Next.js
         run: npm run build
+        env:
+          NEXT_PUBLIC_EMAILJS_SERVICE_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_SERVICE_ID }}
+          NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID }}
+          NEXT_PUBLIC_EMAILJS_PUBLIC_KEY: ${{ secrets.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY }}
 
       - uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: '17'
+          java-version: '21'
 
       - name: Sync Capacitor
         run: npx cap sync android
@@ -32,8 +43,17 @@ jobs:
           chmod +x gradlew
           ./gradlew assembleDebug
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
+      - name: Rename APK
+        run: mv android/app/build/outputs/apk/debug/app-debug.apk android/app/build/outputs/apk/debug/zad-app.apk
+
+      - name: Delete old release
+        run: gh release delete latest --cleanup-tag -y || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload New APK
+        uses: softprops/action-gh-release@v2
         with:
-          name: zad-app-apk
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          tag_name: latest
+          name: "أحدث نسخة من تطبيق زاد"
+          files: android/app/build/outputs/apk/debug/zad-app.apk
