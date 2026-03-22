@@ -1,21 +1,19 @@
-import { allCourses } from "@/lib/data";
-import CourseViewer from "@/components/viewers/CourseViewer"; 
-import { notFound } from "next/navigation";
+"use client"; // أضفنا هذه ليصبح المكون خاصاً بالمتصفح (Client Component)
 
+import CourseViewer from "@/components/viewers/CourseViewer";
 
-export default async function CoursePage({
-  params,
+// نستقبل البيانات المفلترة من السيرفر كـ Prop
+export default function ClientPage({
+  courseData,
 }: {
-  params: Promise<{ slug: string }>;
+  courseData: any; // يمكنك تغيير any إلى نوع البيانات الصحيح الخاص بك (Interface)
 }) {
   
-  const { slug } = await params;
-
-  const courseData = allCourses[slug];
-
-  if (!courseData) {
-    return notFound();
-  }
-
-  return <CourseViewer info={courseData.info} content={courseData.content}  variant="books"/>;
+  return (
+    <CourseViewer 
+      info={courseData.info} 
+      content={courseData.content}  
+      variant="books" 
+    />
+  );
 }

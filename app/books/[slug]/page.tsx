@@ -1,4 +1,6 @@
 import ClientPage from "./ClientPage";
+import { allCourses } from "@/lib/data";
+import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
   return [
@@ -8,6 +10,18 @@ export function generateStaticParams() {
   ];
 }
 
-export default function Page({ params }: any) {
-  return <ClientPage params={params} />;
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  // 1. ننتظر حتى نحصل على المسار (slug)
+  const { slug } = await params;
+
+  // 2. نستدعي البيانات هنا في السيرفر
+  const courseData = allCourses[slug];
+
+  // 3. إذا لم يجد البيانات يعرض صفحة 404
+  if (!courseData) {
+    return notFound();
+  }
+
+  // 4. نمرر البيانات الخاصة بهذا الكتاب فقط (وليس كل الملفات) إلى صفحة العميل
+  return <ClientPage courseData={courseData} />;
 }

@@ -211,7 +211,7 @@ export default function HadithViewer({
                     )}
                   </div>
                   <div
-                    className={`flex  items-center justify-center gap-2 border-t ${darkMode ? "border-slate-600" : "border-[#FEF3C6]"} py-2 `}
+                    className={`flex  items-center justify-center gap-2  py-2 `}
                   >
                     <button
                       onClick={() => toggleRead(item.id)}

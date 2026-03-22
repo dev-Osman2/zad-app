@@ -1,5 +1,4 @@
 import HeroSection from "@/components/home/HeroSection";
-import FeaturesSection from "@/components/home/FeaturesSection";
 import BooksSection from "@/components/home/BooksSection";
 
 export default function Home() {
@@ -10,7 +9,6 @@ export default function Home() {
         dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:text-slate-100"
     >
       <HeroSection />
-      <FeaturesSection />
       <BooksSection />
     </div>
   );

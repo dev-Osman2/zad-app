@@ -74,7 +74,7 @@ export default function BooksSection() {
   };
 
   return (
-    <section className="px-6 lg:px-20 py-12 relative z-10 space-y-8">
+    <section className={`px-6 lg:px-20 py-12 relative z-10 space-y-8 ${darkMode ? "bg-[#131C30]!" : ""}`}  >
       <div className="flex items-center gap-3 mb-8 justify-center lg:justify-start">
         <Library className="text-amber-500" size={28} />
         <h2 className="text-3xl font-bold font-amiri">المتون المشروحة</h2>

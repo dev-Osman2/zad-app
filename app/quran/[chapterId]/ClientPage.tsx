@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link"; // تمت إضافة استيراد Link
 import { getSurah, SurahDetail } from "@/lib/services/quranApi";
 import { useTheme } from "@/providers/ThemeProvider";
-import { BookOpen, Loader2 } from "lucide-react";
+import { BookOpen, Loader2, ChevronRight, ChevronLeft } from "lucide-react"; // تمت إضافة أيقونات الأسهم
 import { useParams } from "next/navigation";
 
 export default function ClientPage() {
@@ -47,8 +48,11 @@ export default function ClientPage() {
 
   const startPage = surah.verses[0]?.page_number;
   const startJuz = surah.verses[0]?.juz_number;
-
   const showBismillahHeader = surah.meta.id !== 1 && surah.meta.id !== 9;
+
+  // حساب أرقام السور السابقة والتالية
+  const prevChapterId = chapterId && chapterId > 1 ? chapterId - 1 : null;
+  const nextChapterId = chapterId && chapterId < 114 ? chapterId + 1 : null;
 
   return (
     <div
@@ -126,8 +130,9 @@ export default function ClientPage() {
                 className="inline relative text-xl md:text-2xl"
               >
                 {text}
+                {/* تم تكبير الدائرة هنا w-10 h-10 بدلاً من w-6 h-6 */}
                 <span
-                  className={`inline-flex items-center justify-center w-6 h-6 mx-2 align-middle text-[0.6em] border-2 rounded-full font-bold select-none
+                  className={`inline-flex items-center justify-center w-8 h-8  mx-2 md:mx-3 align-middle text-[0.6em] border-[2px] rounded-full font-bold select-none
                   ${darkMode ? "border-amber-600 text-amber-400 bg-slate-800" : "border-amber-600 text-amber-800 bg-[#fbf9f5]"}`}
                 >
                   {ayah.verse_key.split(":")[1]}
@@ -136,6 +141,44 @@ export default function ClientPage() {
             );
           })}
         </div>
+
+        {/* أزرار التنقل (السابق والتالي) */}
+        <div className="flex items-center justify-between mt-10 gap-4" dir="rtl">
+          {prevChapterId ? (
+            <Link
+              href={`/quran/${prevChapterId}`}
+              className={`flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl font-bold font-amiri text-lg transition-colors border shadow-sm
+              ${
+                darkMode
+                  ? "bg-slate-800/50 text-slate-300 border-slate-700 hover:bg-slate-700 hover:text-amber-400"
+                  : "bg-white text-slate-700 border-[#f0eadd] hover:bg-amber-50 hover:text-amber-700"
+              }`}
+            >
+              <ChevronRight size={24} />
+              <span>السورة السابقة</span>
+            </Link>
+          ) : (
+            <div className="flex-1" />
+          )}
+
+          {nextChapterId ? (
+            <Link
+              href={`/quran/${nextChapterId}`}
+              className={`flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl font-bold font-amiri text-lg transition-colors border shadow-sm
+              ${
+                darkMode
+                  ? "bg-slate-800/50 text-slate-300 border-slate-700 hover:bg-slate-700 hover:text-amber-400"
+                  : "bg-white text-slate-700 border-[#f0eadd] hover:bg-amber-50 hover:text-amber-700"
+              }`}
+            >
+              <span>السورة التالية</span>
+              <ChevronLeft size={24} />
+            </Link>
+          ) : (
+            <div className="flex-1" />
+          )}
+        </div>
+        
       </div>
     </div>
   );

@@ -17,29 +17,14 @@ export default function Header() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isQuickAccessOpen, setIsQuickAccessOpen] = useState(false);
 
-  const [isVisible, setIsVisible] = useState(true);
-
   const isQuickAccessPage = pathname === "/" || pathname === "/feedback";
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
-
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
-      const totalHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const progress =
-        totalHeight > 0 ? (currentScrollY / totalHeight) * 100 : 0;
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = totalHeight > 0 ? (currentScrollY / totalHeight) * 100 : 0;
       setScrollProgress(Math.min(100, Math.max(0, progress)));
-
-      if (currentScrollY > lastScrollY && currentScrollY > 80) {
-        setIsVisible(false);
-      } else if (currentScrollY < lastScrollY) {
-        setIsVisible(true);
-      }
-
-      lastScrollY = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -56,37 +41,18 @@ export default function Header() {
     }
   };
 
-  const isMenuCurrentlyOpen = isQuickAccessPage
-    ? isQuickAccessOpen
-    : isSidebarOpen;
+  const isMenuCurrentlyOpen = isQuickAccessPage ? isQuickAccessOpen : isSidebarOpen;
 
   return (
     <>
       <header
-        className={`sticky top-0 z-40 w-full shadow-sm transition-all duration-300 ease-in-out md:px-10 ${
-          isVisible ? "translate-y-0" : "-translate-y-[calc(100%-4px)]"
-        } ${
+        className={`fixed top-0 z-40 w-full shadow-sm md:px-10 border-b transition-colors duration-300 ${
           darkMode
-            ? "bg-slate-900 border-b border-slate-700"
-            : "bg-white border-b border-amber-200"
+            ? "bg-slate-900 border-slate-700"
+            : "bg-white border-amber-200"
         }`}
       >
-        <div className="absolute inset-0 z-0 md:hidden overflow-hidden">
-          <Image
-            src="/bgHeader.png"
-            alt="Header Background"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-        </div>
-
-        <div
-          className={`absolute inset-0 z-10 transition-colors ${
-            darkMode ? "bg-slate-900/95" : "bg-white/95"
-          }`}
-        />
+        {/* تم حذف حاوية الصورة الخلفية والـ Overlay هنا */}
 
         <div className="container mx-auto px-4 h-20 flex items-center justify-between relative z-20">
           <Link href="/" className="flex items-center gap-3">
@@ -130,6 +96,7 @@ export default function Header() {
           </div>
         </div>
 
+        {/* شريط التقدم (Scroll Progress) */}
         <div className="absolute bottom-0 left-0 w-full h-1 bg-transparent z-30">
           <div
             className="h-full transition-all duration-150 ease-out"
@@ -140,6 +107,9 @@ export default function Header() {
           />
         </div>
       </header>
+
+      {/* مباعد (Spacer) لمنع المحتوى من الاختفاء خلف الهيدر الثابت */}
+      <div className="h-20" />
 
       <QuickAccessSidebar
         isOpen={isQuickAccessOpen}
