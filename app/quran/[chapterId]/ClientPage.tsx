@@ -103,7 +103,7 @@ export default function ClientPage() {
         )}
 
         <div
-          className={`text-justify leading-[2.5] md:leading-[3] font-amiri text-2xl md:text-4xl px-6 py-10 rounded-[2rem] border-2 shadow-sm
+          className={`  text-justify leading-[2.5] md:leading-[3] font-amiri text-2xl md:text-4xl px-3 py-10 rounded-[2rem] border-2 shadow-sm
           ${
             darkMode
               ? "bg-slate-800/20 text-slate-200 border-slate-800"
@@ -132,7 +132,7 @@ export default function ClientPage() {
                 {text}
                 {/* تم تكبير الدائرة هنا w-10 h-10 بدلاً من w-6 h-6 */}
                 <span
-                  className={`inline-flex items-center justify-center w-8 h-8  mx-2 md:mx-3 align-middle text-[0.6em] border-[2px] rounded-full font-bold select-none
+                  className={`inline-flex items-center justify-center w-6 h-6  mx-2 md:mx-3 align-middle text-[0.6em] border-[2px] rounded-full font-bold select-none
                   ${darkMode ? "border-amber-600 text-amber-400 bg-slate-800" : "border-amber-600 text-amber-800 bg-[#fbf9f5]"}`}
                 >
                   {ayah.verse_key.split(":")[1]}

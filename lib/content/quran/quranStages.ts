@@ -5,7 +5,6 @@ export const infoQuranStages: CourseInfo = {
   desc: "رسالة منهجية للدكتور عصام العويد، ترسم خارطة طريق عملية لطالب تدبر القرآن عبر ثماني مراحل متدرجة، تبدأ من جمع الآثار وفهم المفردات، وتمر بدلالات الحروف والجمل والسياق، وصولاً لفهم مقاصد السور والعمل بالقرآن.",
   bookLink:
     "https://drive.google.com/file/d/1bSvNxojQBL8IKTxfhBkhG2-MEwI8YrZ1/view?usp=sharing",
-  videoLink: "https://youtu.be/Vp-GHha5OQg?si=-_Q9LTJ8OyD1LRic",
 };
 
 export const QuranStages: Section[] = [

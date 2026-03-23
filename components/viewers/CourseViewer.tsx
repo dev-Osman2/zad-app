@@ -7,12 +7,16 @@ import {
   ChevronUp,
   PlayCircle,
   Podcast,
+  Search,
+  X,
 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import IntroSection from "@/components/sections/IntroSection";
 import { useTheme } from "@/providers/ThemeProvider";
 import { useSidebar } from "@/providers/SidebarProvider";
 import { CourseInfo, Section } from "@/lib/types/types";
+// تأكد من وجود دالة الجلب التي أنشأناها في الخطوة السابقة
+import { getMeditateSection } from "@/lib/actions/meditateActions";
 
 interface CourseViewerProps {
   info: CourseInfo;
@@ -33,12 +37,44 @@ export default function CourseViewer({
     variant === "podcast" ? info.videoLink : undefined,
   );
 
+  // حالات خاصة بشريط البحث والتحميل الديناميكي
+  const [searchQuery, setSearchQuery] = useState("");
+  const [fetchedContent, setFetchedContent] = useState<Record<string, string>>({});
+  const [loadingSections, setLoadingSections] = useState<Record<string, boolean>>({});
+
   const isPodcast = variant === "podcast";
 
-  const toggleCard = (id: string) => {
+  // تصفية المحتوى بناءً على شريط البحث
+  const filteredContent = content.filter((section) =>
+    section.title.includes(searchQuery) || section.id.includes(searchQuery)
+  );
+
+  // دالة جلب المحتوى من السيرفر إذا لم يكن موجوداً
+  const fetchSectionContent = async (id: string) => {
+    const existingContent = content.find((s) => s.id === id)?.content;
+    if (existingContent || fetchedContent[id] || loadingSections[id]) return;
+
+    setLoadingSections((prev) => ({ ...prev, [id]: true }));
+    try {
+      const data = await getMeditateSection(id);
+      if (data && data.content) {
+        setFetchedContent((prev) => ({ ...prev, [id]: data.content }));
+      }
+    } catch (error) {
+      console.error("Error fetching section content:", error);
+    } finally {
+      setLoadingSections((prev) => ({ ...prev, [id]: false }));
+    }
+  };
+
+  const handleToggleCard = (id: string) => {
     setExpandedCards((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
     );
+    // جلب المحتوى عند فتح البطاقة
+    if (!expandedCards.includes(id)) {
+      fetchSectionContent(id);
+    }
   };
 
   const handlePlayVideo = (link?: string) => {
@@ -51,6 +87,7 @@ export default function CourseViewer({
   const scrollToSection = (id: string) => {
     if (!isPodcast) {
       setExpandedCards((prev) => (!prev.includes(id) ? [...prev, id] : prev));
+      fetchSectionContent(id); // جلب المحتوى عند التمرير للسورة
     }
 
     const element = document.getElementById(id);
@@ -100,7 +137,7 @@ export default function CourseViewer({
         >
           <div className={`p-4 ${isPodcast ? "" : "pt-20 lg:pt-6"}`}>
             <div
-              className={`flex items-center gap-2 mb-6 px-2 ${
+              className={`flex items-center gap-2 mb-4 px-2 ${
                 darkMode ? "text-amber-500" : "text-amber-700"
               }`}
             >
@@ -110,8 +147,43 @@ export default function CourseViewer({
               </h3>
             </div>
 
+            {/* شريط البحث */}
+            <div className="mb-6 px-2 relative flex items-center">
+              <input
+                type="text"
+                placeholder={isPodcast ? "ابحث عن حلقة..." : "ابحث عن سورة أو قسم..."}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className={`w-full py-2.5 pr-10 pl-10 rounded-xl text-sm transition-all border outline-none
+                  ${
+                    darkMode
+                      ? "bg-slate-800 border-slate-700 focus:border-amber-500 text-slate-200"
+                      : "bg-white border-amber-200 focus:border-amber-500 text-slate-700 focus:ring-2 focus:ring-amber-500/20"
+                  }`}
+              />
+              <Search
+                size={18}
+                className={`absolute right-5 ${
+                  darkMode ? "text-slate-400" : "text-slate-400"
+                }`}
+              />
+              
+              {/* زر مسح البحث (يظهر فقط إذا كان هناك نص) */}
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className={`absolute left-4 p-1 rounded-full transition-colors 
+                    ${darkMode ? "hover:bg-slate-700 text-slate-300" : "hover:bg-amber-100 text-slate-600"}
+                  `}
+                  aria-label="مسح البحث"
+                >
+                  <X size={16} />
+                </button>
+              )}
+            </div>
+
             <nav className="space-y-1.5">
-              {content.map((section, index) => (
+              {filteredContent.map((section, index) => (
                 <button
                   key={section.id}
                   onClick={() => scrollToSection(section.id)}
@@ -151,6 +223,11 @@ export default function CourseViewer({
                   </span>
                 </button>
               ))}
+              {filteredContent.length === 0 && (
+                <div className="text-center text-sm mt-8 opacity-60">
+                  لا توجد نتائج مطابقة
+                </div>
+              )}
             </nav>
           </div>
         </aside>
@@ -178,8 +255,10 @@ export default function CourseViewer({
             )}
 
             <div className="grid grid-cols-1 gap-6">
-              {content.map((section, index) => {
+              {filteredContent.map((section, index) => {
                 const isExpanded = expandedCards.includes(section.id);
+                const sectionContent = section.content || fetchedContent[section.id];
+                const isLoading = loadingSections[section.id];
 
                 return (
                   <article
@@ -194,7 +273,7 @@ export default function CourseViewer({
                   >
                     <div
                       className="p-5 flex items-center justify-between gap-4 cursor-pointer"
-                      onClick={() => toggleCard(section.id)}
+                      onClick={() => handleToggleCard(section.id)}
                     >
                       <div className="flex items-center gap-4 flex-1">
                         {isPodcast ? (
@@ -265,7 +344,7 @@ export default function CourseViewer({
                             isPodcast
                               ? (e) => {
                                   e.stopPropagation();
-                                  toggleCard(section.id);
+                                  handleToggleCard(section.id);
                                 }
                               : undefined
                           }
@@ -300,63 +379,69 @@ export default function CourseViewer({
                           darkMode ? "border-slate-700" : "border-amber-50"
                         }`}
                       >
-                        <ReactMarkdown
-                          components={{
-                            h3: ({ ...props }) => (
-                              <h3
-                                className={`text-xl md:text-2xl font-bold font-amiri mt-10 mb-4 pb-2 border-b
-                                ${
-                                  darkMode
-                                    ? "text-amber-400 border-slate-700"
-                                    : "text-amber-800 border-amber-100"
-                                }`}
-                                {...props}
-                              />
-                            ),
-                            p: ({ ...props }) => (
-                              <p
-                                className={`text-base md:text-lg leading-loose mb-6 font-amiri text-justify
-                                ${
-                                  darkMode ? "text-slate-300" : "text-slate-700"
-                                }`}
-                                {...props}
-                              />
-                            ),
-                            ul: ({ ...props }) => (
-                              <ul
-                                className="space-y-4 my-6 list-none pr-0"
-                                {...props}
-                              />
-                            ),
-                            li: ({ ...props }) => (
-                              <li
-                                className={`relative pr-6 text-base md:text-lg leading-relaxed
-                                ${
-                                  darkMode ? "text-slate-300" : "text-slate-700"
-                                }`}
-                              >
-                                <span
-                                  className={`absolute top-2.5 right-0 w-2 h-2 rounded-full
-                                  ${darkMode ? "bg-amber-500" : "bg-amber-600"}`}
+                        {isLoading ? (
+                          <div className="flex justify-center items-center py-10">
+                            <div className="w-8 h-8 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
+                          </div>
+                        ) : (
+                          <ReactMarkdown
+                            components={{
+                              h3: ({ ...props }) => (
+                                <h3
+                                  className={`text-xl md:text-2xl font-bold font-amiri mt-10 mb-4 pb-2 border-b
+                                  ${
+                                    darkMode
+                                      ? "text-amber-400 border-slate-700"
+                                      : "text-amber-800 border-amber-100"
+                                  }`}
+                                  {...props}
                                 />
-                                <span {...props} />
-                              </li>
-                            ),
-                            strong: ({ ...props }) => (
-                              <strong
-                                className={`font-bold mx-1 px-1 rounded
-                                ${
-                                  darkMode
-                                    ? "text-amber-300 bg-amber-900/20"
-                                    : "text-amber-900 bg-amber-50"
-                                }`}
-                                {...props}
-                              />
-                            ),
-                          }}
-                        >
-                          {section.content || ""}
-                        </ReactMarkdown>
+                              ),
+                              p: ({ ...props }) => (
+                                <p
+                                  className={`text-base md:text-lg leading-loose mb-6 font-amiri text-justify
+                                  ${
+                                    darkMode ? "text-slate-300" : "text-slate-700"
+                                  }`}
+                                  {...props}
+                                />
+                              ),
+                              ul: ({ ...props }) => (
+                                <ul
+                                  className="space-y-4 my-6 list-none pr-0"
+                                  {...props}
+                                />
+                              ),
+                              li: ({ ...props }) => (
+                                <li
+                                  className={`relative pr-6 text-base md:text-lg leading-relaxed
+                                  ${
+                                    darkMode ? "text-slate-300" : "text-slate-700"
+                                  }`}
+                                >
+                                  <span
+                                    className={`absolute top-2.5 right-0 w-2 h-2 rounded-full
+                                    ${darkMode ? "bg-amber-500" : "bg-amber-600"}`}
+                                  />
+                                  <span {...props} />
+                                </li>
+                              ),
+                              strong: ({ ...props }) => (
+                                <strong
+                                  className={`font-bold mx-1 px-1 rounded
+                                  ${
+                                    darkMode
+                                      ? "text-amber-300 bg-amber-900/20"
+                                      : "text-amber-900 bg-amber-50"
+                                  }`}
+                                  {...props}
+                                />
+                              ),
+                            }}
+                          >
+                            {sectionContent || ""}
+                          </ReactMarkdown>
+                        )}
                       </div>
                     </div>
                   </article>

@@ -35,38 +35,36 @@ export default function IntroSection({
   };
 
   return (
-    <div className="space-y-8 mb-12 ">
-      <div className="mb-8 flex justify-end r ">
-        <button
-          onClick={() => router.back()}
-          className={`text-sm flex items-center gap-2 px-4 py-2 rounded-full transition-colors cursor-pointer ${
-            darkMode
-              ? "bg-slate-800 hover:bg-slate-700"
-              : "bg-white hover:bg-amber-50 shadow-sm"
-          }`}
-        >
-          <ArrowRight size={16} />
-          رجوع
-        </button>
-      </div>
-
+    <div className="space-y-8 mb-12">
       <div
         className={`rounded-3xl p-8 text-center relative overflow-hidden ${
           darkMode ? "bg-slate-800/40" : "bg-amber-100/50"
         }`}
       >
+        {/* أيقونة الخلفية الزخرفية */}
         <div className="absolute top-0 right-0 p-8 opacity-5">
           <ScrollText size={120} />
         </div>
 
-        <div className="relative z-10 flex flex-col items-center">
-          <ScrollText
-            className={`w-14 h-14 mb-4 ${
-              darkMode ? "text-amber-500" : "text-amber-700"
-            }`}
-          />
+        {/* زر الرجوع - تم نقله هنا بتموضع مطلق */}
+        <button
+          onClick={() => router.back()}
+          className={`absolute top-6 right-6 z-20 text-sm flex items-center gap-2 px-4 py-2 rounded-full transition-colors cursor-pointer ${
+            darkMode
+              ? "bg-slate-800 hover:bg-slate-700 text-slate-300"
+              : "bg-white hover:bg-amber-50 shadow-sm text-slate-700"
+          }`}
+        >
+          <ArrowRight size={16} />
+          رجوع
+        </button>
 
-          <h2 className={`text-2xl  md:text-5xl font-bold mb-4 leading-tight ${darkMode? ` text-stone-400`: `text-gray-700`}`}>
+        <div className="relative z-10 flex flex-col items-center mt-8">
+          <h2
+            className={`text-2xl md:text-5xl font-bold mb-4 leading-tight ${
+              darkMode ? `text-stone-400` : `text-gray-700`
+            }`}
+          >
             {title}
           </h2>
 

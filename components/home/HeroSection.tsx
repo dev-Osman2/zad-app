@@ -45,11 +45,8 @@ export default function HeroSection() {
 
   return (
     <section className="relative flex flex-col lg:flex-row items-center justify-center px-4 md:px-6 lg:px-20 py-8 md:py-12 gap-10 lg:gap-12 grow min-h-[calc(100vh-160px)]">
-
       <div className="flex-1 text-center lg:text-right z-10 space-y-6 md:space-y-8 animate-fade-in-up w-full max-w-2xl mx-auto lg:mx-0">
-        <SadqaBadge
-          name="وَتَزَوَّدُوا فَإِنَّ خَيْرَ الزَّادِ التَّقْوَىٰ ۚ "
-        />
+        <SadqaBadge name="وَتَزَوَّدُوا فَإِنَّ خَيْرَ الزَّادِ التَّقْوَىٰ ۚ " />
 
         <div className="space-y-3">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold font-amiri leading-tight relative">

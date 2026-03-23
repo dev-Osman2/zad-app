@@ -5,7 +5,6 @@ export const inforamadanCouncils: CourseInfo = {
   desc: "كتاب نافع للعلامة محمد بن صالح العثيمين، رتبه على ثلاثين مجلساً بعدد أيام الشهر، جمع فيه بين الأحكام الفقهية للصيام والقيام والزكاة، وبين المواعظ والرقائق التي تزكي النفوس وتقربها إلى الله.",
   bookLink:
     "https://drive.google.com/file/d/1kLzC0l6Uphb9ISKkFCh3tpE_d-ohvBTj/view?usp=sharing",
-  videoLink: "https://youtu.be/qXambPSAC6I?si=SLRj44OddLruK3wz",
 };
 
 export const ramadanCouncils: Section[] = [

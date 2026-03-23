@@ -6,10 +6,11 @@ import { arbaeenExams } from "./content/hadiths/hadithExam";
 
 import { arbaeenSharh } from "./content/hadiths/hadithSharh";
 
-import {
-  infoMeditateQuran,
-  MeditateQuran,
-} from "./content/quran/meditateQuran";
+// 💡 تم حذف الاستيراد القديم لملف meditateQuran البطيء
+// 💡 واستبداله باستيراد ملفات JSON الخفيفة التي أنشأناها
+import meditateIndex from "@/lib/data/meditateQuran/index.json";
+import meditateInfo from "@/lib/data/meditateQuran/info.json";
+
 import {
   inforamadanCouncils,
   ramadanCouncils,
@@ -38,8 +39,8 @@ export const allCourses: Record<string, CourseData> = {
     content: Tafsir,
   },
   "Meditate-Quran": {
-    info: infoMeditateQuran,
-    content: MeditateQuran,
+    info: meditateInfo,
+    content: meditateIndex, // 💡 هنا نمرر الفهرس الخفيف فقط (بدون المحتوى الطويل)
   },
   "Ramadan-Councils": {
     info: inforamadanCouncils,

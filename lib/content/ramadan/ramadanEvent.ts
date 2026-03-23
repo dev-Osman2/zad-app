@@ -5,7 +5,6 @@ export const infoRamadanEvent: CourseInfo = {
   desc: "سفر تاريخي ماتع للدكتور عبد الرحمن رأفت الباشا، يروي بأسلوب قصصي أحداثاً عظاماً غيرت مجرى التاريخ وقعت في شهر رمضان، بدءاً من غزوة بدر وفتح مكة، ومروراً بمعارك الأندلس وعين جالوت، وصولاً لفتوحات العثمانيين في أوروبا.",
   bookLink:
     "https://drive.google.com/file/d/1fg3MPMvKGis_-iChOD6RwSVsArEApMgM/view?usp=sharing", 
-  videoLink: "https://youtu.be/-yt7pEcuDb0?si=e33RGh4egU022r02", 
 };
 
 export const RamadanEvent: Section[] = [
