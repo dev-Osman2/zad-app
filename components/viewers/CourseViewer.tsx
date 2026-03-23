@@ -39,14 +39,19 @@ export default function CourseViewer({
 
   // حالات خاصة بشريط البحث والتحميل الديناميكي
   const [searchQuery, setSearchQuery] = useState("");
-  const [fetchedContent, setFetchedContent] = useState<Record<string, string>>({});
-  const [loadingSections, setLoadingSections] = useState<Record<string, boolean>>({});
+  const [fetchedContent, setFetchedContent] = useState<Record<string, string>>(
+    {},
+  );
+  const [loadingSections, setLoadingSections] = useState<
+    Record<string, boolean>
+  >({});
 
   const isPodcast = variant === "podcast";
 
   // تصفية المحتوى بناءً على شريط البحث
-  const filteredContent = content.filter((section) =>
-    section.title.includes(searchQuery) || section.id.includes(searchQuery)
+  const filteredContent = content.filter(
+    (section) =>
+      section.title.includes(searchQuery) || section.id.includes(searchQuery),
   );
 
   // دالة جلب المحتوى من السيرفر إذا لم يكن موجوداً
@@ -115,8 +120,8 @@ export default function CourseViewer({
         darkMode
           ? "bg-slate-900 text-slate-100"
           : isPodcast
-            ? "bg-[#FFF7EA] text-slate-800"
-            : "bg-[#fdfbf7] text-slate-800"
+          ? "bg-[#FFF7EA] text-slate-800"
+          : "bg-[#fdfbf7] text-slate-800"
       }`}
     >
       <div className="container mx-auto px-4 py-8 flex gap-8 items-start relative">
@@ -129,8 +134,8 @@ export default function CourseViewer({
             darkMode
               ? "bg-slate-900/95 border-l border-slate-800"
               : isPodcast
-                ? "bg-[#FFFDF6]/95 border-l border-amber-100"
-                : "bg-white/95 border-l border-amber-100"
+              ? "bg-[#FFFDF6]/95 border-l border-amber-100"
+              : "bg-white/95 border-l border-amber-100"
           }
           shadow-2xl backdrop-blur-lg overflow-y-auto no-scrollbar
         `}
@@ -151,7 +156,9 @@ export default function CourseViewer({
             <div className="mb-6 px-2 relative flex items-center">
               <input
                 type="text"
-                placeholder={isPodcast ? "ابحث عن حلقة..." : "ابحث عن سورة أو قسم..."}
+                placeholder={
+                  isPodcast ? "ابحث عن حلقة..." : "ابحث عن سورة أو قسم..."
+                }
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className={`w-full py-2.5 pr-10 pl-10 rounded-xl text-sm transition-all border outline-none
@@ -167,13 +174,17 @@ export default function CourseViewer({
                   darkMode ? "text-slate-400" : "text-slate-400"
                 }`}
               />
-              
+
               {/* زر مسح البحث (يظهر فقط إذا كان هناك نص) */}
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
                   className={`absolute left-4 p-1 rounded-full transition-colors 
-                    ${darkMode ? "hover:bg-slate-700 text-slate-300" : "hover:bg-amber-100 text-slate-600"}
+                    ${
+                      darkMode
+                        ? "hover:bg-slate-700 text-slate-300"
+                        : "hover:bg-amber-100 text-slate-600"
+                    }
                   `}
                   aria-label="مسح البحث"
                 >
@@ -194,29 +205,26 @@ export default function CourseViewer({
                   ? "bg-amber-900/20 text-amber-400 font-bold border-r-4 border-amber-500"
                   : "bg-amber-50 text-amber-900 font-bold border-r-4 border-amber-600 shadow-sm"
                 : darkMode
-                  ? "text-slate-400 hover:bg-slate-800 hover:text-slate-200"
-                  : "text-slate-600 hover:bg-white hover:text-amber-800 hover:shadow-sm"
+                ? "text-slate-400 hover:bg-slate-800 hover:text-slate-200"
+                : "text-slate-600 hover:bg-white hover:text-amber-800 hover:shadow-sm"
             }
           `}
                 >
                   <span
                     className={`shrink-0 w-6 h-6 flex items-center justify-center rounded text-[10px] font-bold
-            ${
-              !isPodcast && activeSection === section.id
-                ? darkMode
-                  ? "bg-amber-500 text-slate-900"
-                  : "bg-amber-600 text-white"
-                : darkMode
-                  ? "bg-slate-800 text-slate-500"
-                  : "bg-slate-100 text-slate-500 group-hover:bg-amber-100 group-hover:text-amber-700"
-            }
-          `}
+                          ${
+                            !isPodcast && activeSection === section.id
+                              ? darkMode
+                                ? "bg-amber-500 text-slate-900"
+                                : "bg-amber-600 text-white"
+                              : darkMode
+                              ? "bg-slate-800 text-slate-500"
+                              : "bg-slate-100 text-slate-500 group-hover:bg-amber-100 group-hover:text-amber-700"
+                          }
+                        `}
                   >
-                    {isPodcast
-                      ? index + 1
-                      : section.id === "intro" || section.id === "1"
-                        ? "م"
-                        : section.id.replace("m", "").replace("h", "")}
+                    {/* هنا التعديل: جعل العد يبدأ من 1 دائماً باستخدام الـ index */}
+                    {index + 1}
                   </span>
                   <span className="truncate font-amiri text-base">
                     {section.title}
@@ -240,7 +248,9 @@ export default function CourseViewer({
         )}
 
         <main
-          className={`flex-1 min-w-0 ${isPodcast ? "pb-20 lg:p-12" : "pb-16 lg:p-15"}`}
+          className={`flex-1 min-w-0 ${
+            isPodcast ? "pb-20 lg:p-12" : "pb-16 lg:p-15"
+          }`}
         >
           <div className={isPodcast ? "space-y-12" : "space-y-8"}>
             {isPodcast ? (
@@ -257,14 +267,17 @@ export default function CourseViewer({
             <div className="grid grid-cols-1 gap-6">
               {filteredContent.map((section, index) => {
                 const isExpanded = expandedCards.includes(section.id);
-                const sectionContent = section.content || fetchedContent[section.id];
+                const sectionContent =
+                  section.content || fetchedContent[section.id];
                 const isLoading = loadingSections[section.id];
 
                 return (
                   <article
                     id={section.id}
                     key={section.id}
-                    className={`${!isPodcast ? "scroll-mt-24" : ""} rounded-2xl transition-all duration-300 border
+                    className={`${
+                      !isPodcast ? "scroll-mt-24" : ""
+                    } rounded-2xl transition-all duration-300 border
                     ${
                       darkMode
                         ? "bg-slate-800/40 border-slate-700 hover:border-slate-600"
@@ -279,7 +292,11 @@ export default function CourseViewer({
                         {isPodcast ? (
                           <div
                             className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0
-                            ${darkMode ? "bg-slate-700 text-amber-500" : "bg-amber-50 text-amber-600"}`}
+                            ${
+                              darkMode
+                                ? "bg-slate-700 text-amber-500"
+                                : "bg-amber-50 text-amber-600"
+                            }`}
                           >
                             <Podcast size={24} />
                           </div>
@@ -298,21 +315,27 @@ export default function CourseViewer({
                         )}
                         <div>
                           <h3
-                            className={`${isPodcast ? "text-sm md:text-xl" : "text-lg md:text-xl lg:text-2xl"} font-bold ${
+                            className={`${
+                              isPodcast
+                                ? "text-sm md:text-xl"
+                                : "text-lg md:text-xl lg:text-2xl"
+                            } font-bold ${
                               isPodcast
                                 ? darkMode
                                   ? "text-slate-200"
                                   : "text-slate-800"
                                 : darkMode
-                                  ? "text-amber-400"
-                                  : "text-amber-800"
+                                ? "text-amber-400"
+                                : "text-amber-800"
                             } ${isPodcast ? "font-amiri" : ""}`}
                           >
                             {section.title}
                           </h3>
                           {isPodcast && (
                             <p
-                              className={`text-xs mt-1 ${darkMode ? "text-slate-500" : "text-slate-400"}`}
+                              className={`text-xs mt-1 ${
+                                darkMode ? "text-slate-500" : "text-slate-400"
+                              }`}
                             >
                               الحلقة رقم {index + 1}
                             </p>
@@ -401,7 +424,9 @@ export default function CourseViewer({
                                 <p
                                   className={`text-base md:text-lg leading-loose mb-6 font-amiri text-justify
                                   ${
-                                    darkMode ? "text-slate-300" : "text-slate-700"
+                                    darkMode
+                                      ? "text-slate-300"
+                                      : "text-slate-700"
                                   }`}
                                   {...props}
                                 />
@@ -416,12 +441,16 @@ export default function CourseViewer({
                                 <li
                                   className={`relative pr-6 text-base md:text-lg leading-relaxed
                                   ${
-                                    darkMode ? "text-slate-300" : "text-slate-700"
+                                    darkMode
+                                      ? "text-slate-300"
+                                      : "text-slate-700"
                                   }`}
                                 >
                                   <span
                                     className={`absolute top-2.5 right-0 w-2 h-2 rounded-full
-                                    ${darkMode ? "bg-amber-500" : "bg-amber-600"}`}
+                                    ${
+                                      darkMode ? "bg-amber-500" : "bg-amber-600"
+                                    }`}
                                   />
                                   <span {...props} />
                                 </li>

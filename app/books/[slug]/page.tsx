@@ -6,7 +6,8 @@ export function generateStaticParams() {
   return [
     { slug: 'abnothemen' }, { slug: 'ta3zeem-al3elm' }, { slug: 'tafsir' },
     { slug: 'Meditate-Quran' }, { slug: 'Ramadan-Councils' },
-    { slug: 'Ramadan-Event' }, { slug: 'Quran-Stages' }
+    { slug: 'Ramadan-Event' }, { slug: 'Quran-Stages' }, { slug: 'sahaba-1'},
+    { slug: 'sahaba-2' }, { slug: 'sahabiyat' }, { slug: 'Tabi3een' },
   ];
 }
 

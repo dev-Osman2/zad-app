@@ -23,6 +23,9 @@ import { infoQuranStages, QuranStages } from "./content/quran/quranStages";
 import { infota3zeem, ta3zeem } from "./content/ramadan/ta3zeem";
 import { infoTafsir, Tafsir } from "./content/quran/Tafsir";
 
+
+import { infoSahaba1, Sahaba1  } from "./content/sahaba/sahaba-1";
+
 import { infodrNaif, drNaif } from "./content/podcasts/1/drNaif";
 import { infodrOsman, drOsman } from "./content/podcasts/2/osman";
 import { infoother, other } from "./content/podcasts/3/other";
@@ -53,6 +56,12 @@ export const allCourses: Record<string, CourseData> = {
     info: infoQuranStages,
     content: QuranStages,
   },
+
+  "sahaba-1": {
+    info: infoSahaba1,
+    content: Sahaba1,
+  }
+
 };
 
 export const allHadithBooks: Record<string, CourseData> = {

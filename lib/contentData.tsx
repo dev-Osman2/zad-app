@@ -1,4 +1,5 @@
-import { BookOpen, ScrollText, Moon, Mic } from "lucide-react";
+import { BookOpen, ScrollText, Moon, Flame, Podcast } from "lucide-react";
+
 
 export type SectionData = {
   id: string;
@@ -85,7 +86,7 @@ export const sectionsData: SectionData[] = [
   {
     id: "sec4",
     title: "بودكاست ديني",
-    icon: <Mic size={24} />,
+    icon: <Podcast size={24} />,
     items: [
       {
         id: 8,
@@ -113,4 +114,35 @@ export const sectionsData: SectionData[] = [
       },
     ],
   },
+  {
+    id: "sec5",
+    title: "قصص الصحابة والتابعين",
+    icon: <Flame   size={24} />,
+    items: [
+      {
+        id: 1,
+        title: "صور من حياة الصحابة - الجزء الأول",
+        author: "د.عبدالرحمن رأفت الباشا",
+        link: "/books/sahaba-1",
+      },
+      {
+        id: 2,
+        title: "صور من حياة الصحابة - الجزء الثاني",
+        author: "د.عبدالرحمن رأفت الباشا",
+        link: "/books/sahaba-2",
+      },
+      {
+        id: 3,
+        title: "صور من حياة الصحابيات",
+        author: "د.عبدالرحمن رأفت الباشا",
+        link: "/books/sahabiyat",
+      },
+      {
+        id: 4,
+        title: "صور من حياة التابعين",
+        author: "د.عبدالرحمن رأفت الباشا",
+        link: "/books/tabi3een",
+      },
+    ],
+  }
 ];
