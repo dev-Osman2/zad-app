@@ -44,10 +44,16 @@ export const sectionsData: SectionData[] = [
     icon: <ScrollText size={24} />,
     items: [
       {
-        id: 1,
+        id: 0,
         title: "شرح الأربعين النووية",
         author: "الشيخ محمد بن صالح العثيمين",
         link: "/hadiths/arbaeen",
+      },
+      {
+        id: 1,
+        title: "علمني رسول الله",
+        author: "المهندس علاء حامد",
+        link: "/hadiths/qisas",
       },
     ],
   },

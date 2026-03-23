@@ -1,4 +1,4 @@
-import { CourseInfo, Section } from "../../types/types";
+import { CourseInfo, Section } from "../../../types/types";
 
 export const infoAbnothemen: CourseInfo = {
   title: " شرح الأربعين النووية",

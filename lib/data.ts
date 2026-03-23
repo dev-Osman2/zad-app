@@ -1,10 +1,13 @@
 import { CourseData, ExamData } from "./types/types";
 
-import { infoAbnothemen, Abnothemen } from "./content/hadiths/othemen";
+import { infoAbnothemen, Abnothemen } from "./content/hadiths/arbaeen/othemen";
+import { infoQisas, qisas } from "./content/hadiths/qisas-nabawi/qisas";
 
-import { arbaeenExams } from "./content/hadiths/hadithExam";
+import { arbaeenExams } from "./content/hadiths/arbaeen/hadithExam";
+import { qisasExam } from "./content/hadiths/qisas-nabawi/qisasExam";
 
-import { arbaeenSharh } from "./content/hadiths/hadithSharh";
+import { arbaeenSharh } from "./content/hadiths/arbaeen/hadithSharh";
+import { qisasSharh } from "./content/hadiths/qisas-nabawi/qisasSharh";
 
 // 💡 تم حذف الاستيراد القديم لملف meditateQuran البطيء
 // 💡 واستبداله باستيراد ملفات JSON الخفيفة التي أنشأناها
@@ -26,10 +29,6 @@ import { infoother, other } from "./content/podcasts/3/other";
 import { infosahm, sahm } from "./content/podcasts/4/sahm";
 
 export const allCourses: Record<string, CourseData> = {
-  abnothemen: {
-    info: infoAbnothemen,
-    content: Abnothemen,
-  },
   "ta3zeem-al3elm": {
     info: infota3zeem,
     content: ta3zeem,
@@ -61,6 +60,10 @@ export const allHadithBooks: Record<string, CourseData> = {
     info: infoAbnothemen || { title: "الأربعين النووية", desc: "" },
     content: Abnothemen || [],
   },
+  qisas: {
+    info: infoQisas || { title: "قصص نبوية", desc: "" },
+    content: qisas || [],
+  },
 };
 
 export const allHadithSharhByBook: Record<
@@ -68,6 +71,7 @@ export const allHadithSharhByBook: Record<
   Record<string, { id: string; content: string }>
 > = {
   arbaeen: arbaeenSharh,
+  qisas: qisasSharh,
 };
 
 export const allPodcasts: Record<string, CourseData> = {
@@ -91,8 +95,8 @@ export const allPodcasts: Record<string, CourseData> = {
 
 function buildExamsFromHadiths(
   bookSlug: string,
-  hadiths: typeof Abnothemen,
-  examQuestions: typeof arbaeenExams,
+  hadiths: typeof   Abnothemen | typeof qisas,
+  examQuestions: typeof arbaeenExams | typeof qisasExam,
 ): Record<string, ExamData> {
   const exams: Record<string, ExamData> = {};
   for (const hadith of hadiths) {
@@ -109,4 +113,5 @@ function buildExamsFromHadiths(
 
 export const allExams: Record<string, ExamData> = {
   ...buildExamsFromHadiths("arbaeen", Abnothemen, arbaeenExams),
+  ...buildExamsFromHadiths("qisas", qisas, qisasExam),
 };

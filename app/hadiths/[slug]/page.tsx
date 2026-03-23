@@ -1,7 +1,7 @@
 import ClientPage from "./ClientPage";
 
 export function generateStaticParams() {
-  return [{ slug: 'arbaeen' }];
+  return [{ slug: 'arbaeen' }, { slug: 'qisas' }];
 }
 
 export default function Page({ params }: any) {
