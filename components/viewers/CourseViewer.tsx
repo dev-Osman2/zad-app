@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation"; // أضفنا هذا السطر
 import {
   ScrollText,
   ChevronDown,
@@ -15,8 +16,9 @@ import IntroSection from "@/components/sections/IntroSection";
 import { useTheme } from "@/providers/ThemeProvider";
 import { useSidebar } from "@/providers/SidebarProvider";
 import { CourseInfo, Section } from "@/lib/types/types";
-// تأكد من وجود دالة الجلب التي أنشأناها في الخطوة السابقة
+
 import { getMeditateSection } from "@/lib/actions/meditateActions";
+import { getSahaba1Section } from "@/lib/actions/sahaba1Actions";
 
 interface CourseViewerProps {
   info: CourseInfo;
@@ -31,13 +33,14 @@ export default function CourseViewer({
 }: CourseViewerProps) {
   const { darkMode } = useTheme();
   const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
+  const pathname = usePathname(); // الحصول على المسار الحالي (URL)
+  
   const [activeSection, setActiveSection] = useState("intro");
   const [expandedCards, setExpandedCards] = useState<string[]>([]);
   const [currentVideo, setCurrentVideo] = useState<string | undefined>(
     variant === "podcast" ? info.videoLink : undefined,
   );
 
-  // حالات خاصة بشريط البحث والتحميل الديناميكي
   const [searchQuery, setSearchQuery] = useState("");
   const [fetchedContent, setFetchedContent] = useState<Record<string, string>>(
     {},
@@ -48,20 +51,28 @@ export default function CourseViewer({
 
   const isPodcast = variant === "podcast";
 
-  // تصفية المحتوى بناءً على شريط البحث
   const filteredContent = content.filter(
     (section) =>
       section.title.includes(searchQuery) || section.id.includes(searchQuery),
   );
 
-  // دالة جلب المحتوى من السيرفر إذا لم يكن موجوداً
+  // الدالة المعدلة لاكتشاف الصفحة وجلب البيانات المناسبة
   const fetchSectionContent = async (id: string) => {
     const existingContent = content.find((s) => s.id === id)?.content;
     if (existingContent || fetchedContent[id] || loadingSections[id]) return;
 
     setLoadingSections((prev) => ({ ...prev, [id]: true }));
+    
     try {
-      const data = await getMeditateSection(id);
+      let data;
+
+      // التحقق من الرابط: إذا كان يحتوي على sahaba نستخدم آكشن الصحابة، وإلا نستخدم التأمل
+      if (pathname.includes("sahaba")) {
+        data = await getSahaba1Section(id);
+      } else {
+        data = await getMeditateSection(id);
+      }
+
       if (data && data.content) {
         setFetchedContent((prev) => ({ ...prev, [id]: data.content }));
       }
@@ -76,7 +87,6 @@ export default function CourseViewer({
     setExpandedCards((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
     );
-    // جلب المحتوى عند فتح البطاقة
     if (!expandedCards.includes(id)) {
       fetchSectionContent(id);
     }
@@ -92,7 +102,7 @@ export default function CourseViewer({
   const scrollToSection = (id: string) => {
     if (!isPodcast) {
       setExpandedCards((prev) => (!prev.includes(id) ? [...prev, id] : prev));
-      fetchSectionContent(id); // جلب المحتوى عند التمرير للسورة
+      fetchSectionContent(id);
     }
 
     const element = document.getElementById(id);
@@ -152,7 +162,6 @@ export default function CourseViewer({
               </h3>
             </div>
 
-            {/* شريط البحث */}
             <div className="mb-6 px-2 relative flex items-center">
               <input
                 type="text"
@@ -175,7 +184,6 @@ export default function CourseViewer({
                 }`}
               />
 
-              {/* زر مسح البحث (يظهر فقط إذا كان هناك نص) */}
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
@@ -223,7 +231,6 @@ export default function CourseViewer({
                           }
                         `}
                   >
-                    {/* هنا التعديل: جعل العد يبدأ من 1 دائماً باستخدام الـ index */}
                     {index + 1}
                   </span>
                   <span className="truncate font-amiri text-base">
@@ -393,7 +400,7 @@ export default function CourseViewer({
                         isExpanded
                           ? isPodcast
                             ? "max-h-2500 opacity-100"
-                            : "max-h-[5000px] opacity-100"
+                            : "max-h-1250 opacity-100"
                           : "max-h-0 opacity-0"
                       }`}
                     >

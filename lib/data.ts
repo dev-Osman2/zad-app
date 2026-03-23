@@ -14,6 +14,9 @@ import { qisasSharh } from "./content/hadiths/qisas-nabawi/qisasSharh";
 import meditateIndex from "@/lib/data/meditateQuran/index.json";
 import meditateInfo from "@/lib/data/meditateQuran/info.json";
 
+import sahaba1Index from "@/lib/data/sahaba-1/index.json";
+import sahaba1Info from "@/lib/data/sahaba-1/info.json";
+
 import {
   inforamadanCouncils,
   ramadanCouncils,
@@ -24,7 +27,7 @@ import { infota3zeem, ta3zeem } from "./content/ramadan/ta3zeem";
 import { infoTafsir, Tafsir } from "./content/quran/Tafsir";
 
 
-import { infoSahaba1, Sahaba1  } from "./content/sahaba/sahaba-1";
+// import { infoSahaba1, Sahaba1  } from "./content/sahaba/sahaba-1";
 
 import { infodrNaif, drNaif } from "./content/podcasts/1/drNaif";
 import { infodrOsman, drOsman } from "./content/podcasts/2/osman";
@@ -58,8 +61,8 @@ export const allCourses: Record<string, CourseData> = {
   },
 
   "sahaba-1": {
-    info: infoSahaba1,
-    content: Sahaba1,
+    info: sahaba1Info ,
+    content: sahaba1Index,
   }
 
 };
