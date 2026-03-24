@@ -33,19 +33,16 @@ export interface SurahDetail {
   verses: Verse[];
 }
 
-// دالة لجلب الفهرس (قائمة السور) من الملف المحلي
 export async function getAllSurahs(): Promise<Chapter[]> {
   try {
-    // استخدمنا await import لقراءة الملفات محلياً في الـ Server/Client
-    const data = await import('@/lib/data/quran/chapters.json');
-    return data.default || data; 
+    const data = await import("@/lib/data/quran/chapters.json");
+    return data.default || data;
   } catch (error) {
     console.error("Error loading chapters from local file:", error);
     return [];
   }
 }
 
-// دالة لجلب تفاصيل سورة معينة (الآيات والبيانات الوصفية) من الملف المحلي
 export async function getSurah(id: number): Promise<SurahDetail | null> {
   try {
     const data = await import(`@/lib/data/quran/${id}.json`);

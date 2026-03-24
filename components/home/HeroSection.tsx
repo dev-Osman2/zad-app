@@ -44,23 +44,18 @@ export default function HeroSection() {
   });
 
   return (
-    // التعديل هنا: تم تغيير lg:flex-row إلى xl:flex-row
     <section className="relative flex flex-col xl:flex-row items-center justify-center px-4 md:px-6 lg:px-20 py-8 md:py-12 gap-10 lg:gap-12 grow min-h-[calc(100vh-160px)]">
-      
-      {/* التعديل هنا: تغيير lg:text-right إلى xl:text-right و lg:mx-0 إلى xl:mx-0 */}
       <div className="flex-1 text-center xl:text-right z-10 space-y-6 md:space-y-8 animate-fade-in-up w-full max-w-2xl mx-auto xl:mx-0">
         <SadqaBadge name="وَتَزَوَّدُوا فَإِنَّ خَيْرَ الزَّادِ التَّقْوَىٰ ۚ " />
 
         <div className="space-y-3">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold font-amiri leading-tight relative">
-            {/* التعديل هنا: تغيير lg:justify-start إلى xl:justify-start */}
             <span className="text-transparent bg-clip-text bg-gradient-to-l from-amber-600 to-orange-600 flex items-center justify-center xl:justify-start gap-2 md:gap-3 drop-shadow-sm">
               رفيقك في رحلة الحياة
             </span>
           </h1>
 
           {data.hijriDate && (
-            // التعديل هنا: تغيير lg:justify-start إلى xl:justify-start
             <div
               className={`flex items-center justify-center xl:justify-start gap-2 text-base md:text-lg font-amiri ${
                 darkMode ? "text-amber-400/80" : "text-amber-700/80"
@@ -72,7 +67,6 @@ export default function HeroSection() {
           )}
         </div>
 
-        {/* التعديل هنا: تغيير lg:max-w-2xl إلى xl:max-w-2xl و lg:mx-0 إلى xl:mx-0 */}
         <p
           className={`text-base md:text-lg lg:text-xl font-amiri leading-loose max-w-full xl:max-w-2xl mx-auto xl:mx-0 min-h-[3rem] ${
             darkMode ? "text-slate-400" : "text-slate-600"
@@ -81,7 +75,6 @@ export default function HeroSection() {
           {data.quote}
         </p>
 
-        {/* التعديل هنا: تغيير lg:justify-start إلى xl:justify-start */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center xl:justify-start pt-2 md:pt-4">
           <Link
             href="/hadiths/arbaeen"
@@ -107,9 +100,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* التعديل هنا: تغيير lg:mt-0 إلى xl:mt-0 لضمان وجود مسافة بين النص والصورة في الـ iPad */}
       <div className="flex-1 w-full max-w-sm md:max-w-md lg:max-w-xl z-10 mt-8 xl:mt-0">
-        {/* التعديل هنا: تغيير lg:rotate إلى xl:rotate */}
         <div
           className={`relative rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-2xl transform xl:rotate-[-2deg] hover:rotate-0 transition-transform duration-500 border-4 md:border-8 aspect-[4/3] md:aspect-auto md:h-100 lg:h-125 ${
             darkMode

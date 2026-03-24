@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link"; // تمت إضافة استيراد Link
+import Link from "next/link";
 import { getSurah, SurahDetail } from "@/lib/services/quranApi";
 import { useTheme } from "@/providers/ThemeProvider";
-import { BookOpen, Loader2, ChevronRight, ChevronLeft } from "lucide-react"; // تمت إضافة أيقونات الأسهم
+import { BookOpen, Loader2, ChevronRight, ChevronLeft } from "lucide-react";
 import { useParams } from "next/navigation";
 
 export default function ClientPage() {
@@ -34,7 +34,9 @@ export default function ClientPage() {
   if (loading) {
     return (
       <div
-        className={`flex items-center justify-center min-h-[50vh] ${darkMode ? "text-amber-500" : "text-amber-700"}`}
+        className={`flex items-center justify-center min-h-[50vh] ${
+          darkMode ? "text-amber-500" : "text-amber-700"
+        }`}
       >
         <Loader2 className="animate-spin" size={40} />
       </div>
@@ -50,13 +52,14 @@ export default function ClientPage() {
   const startJuz = surah.verses[0]?.juz_number;
   const showBismillahHeader = surah.meta.id !== 1 && surah.meta.id !== 9;
 
-  // حساب أرقام السور السابقة والتالية
   const prevChapterId = chapterId && chapterId > 1 ? chapterId - 1 : null;
   const nextChapterId = chapterId && chapterId < 114 ? chapterId + 1 : null;
 
   return (
     <div
-      className={`min-h-screen pb-20 px-4 md:px-8 pt-20 ${darkMode ? "bg-slate-900" : "bg-[#fdfbf7]"}`}
+      className={`min-h-screen pb-20 px-4 md:px-8 pt-20 ${
+        darkMode ? "bg-slate-900" : "bg-[#fdfbf7]"
+      }`}
     >
       <div className="container mx-auto py-8 max-w-4xl">
         <div
@@ -70,13 +73,19 @@ export default function ClientPage() {
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-50"></div>
           <div className="relative z-10">
             <h1
-              className={`text-4xl md:text-6xl font-amiri font-bold mb-6 ${darkMode ? "text-amber-400" : "text-amber-700"}`}
+              className={`text-4xl md:text-6xl font-amiri font-bold mb-6 ${
+                darkMode ? "text-amber-400" : "text-amber-700"
+              }`}
             >
               سورة {surah.meta.name_arabic}
             </h1>
             <div
               className={`inline-flex flex-wrap justify-center items-center gap-3 text-sm font-medium px-6 py-3 rounded-2xl border
-              ${darkMode ? "bg-slate-900 border-slate-700 text-slate-400" : "bg-amber-50 border-amber-200 text-amber-900"}`}
+              ${
+                darkMode
+                  ? "bg-slate-900 border-slate-700 text-slate-400"
+                  : "bg-amber-50 border-amber-200 text-amber-900"
+              }`}
             >
               <span className="flex items-center gap-2">
                 <BookOpen size={16} className="text-amber-500" /> صفحة{" "}
@@ -96,7 +105,9 @@ export default function ClientPage() {
 
         {showBismillahHeader && (
           <div
-            className={`text-center mb-12 font-amiri text-3xl md:text-4xl select-none ${darkMode ? "text-slate-300" : "text-slate-600"}`}
+            className={`text-center mb-12 font-amiri text-3xl md:text-4xl select-none ${
+              darkMode ? "text-slate-300" : "text-slate-600"
+            }`}
           >
             بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
           </div>
@@ -130,10 +141,14 @@ export default function ClientPage() {
                 className="inline relative text-xl md:text-2xl"
               >
                 {text}
-                {/* تم تكبير الدائرة هنا w-10 h-10 بدلاً من w-6 h-6 */}
+
                 <span
                   className={`inline-flex items-center justify-center w-6 h-6  mx-2 md:mx-3 align-middle text-[0.6em] border-[2px] rounded-full font-bold select-none
-                  ${darkMode ? "border-amber-600 text-amber-400 bg-slate-800" : "border-amber-600 text-amber-800 bg-[#fbf9f5]"}`}
+                  ${
+                    darkMode
+                      ? "border-amber-600 text-amber-400 bg-slate-800"
+                      : "border-amber-600 text-amber-800 bg-[#fbf9f5]"
+                  }`}
                 >
                   {ayah.verse_key.split(":")[1]}
                 </span>
@@ -142,8 +157,10 @@ export default function ClientPage() {
           })}
         </div>
 
-        {/* أزرار التنقل (السابق والتالي) */}
-        <div className="flex items-center justify-between mt-10 gap-4" dir="rtl">
+        <div
+          className="flex items-center justify-between mt-10 gap-4"
+          dir="rtl"
+        >
           {prevChapterId ? (
             <Link
               href={`/quran/${prevChapterId}`}
@@ -178,7 +195,6 @@ export default function ClientPage() {
             <div className="flex-1" />
           )}
         </div>
-        
       </div>
     </div>
   );

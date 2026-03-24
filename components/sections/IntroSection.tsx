@@ -41,12 +41,10 @@ export default function IntroSection({
           darkMode ? "bg-slate-800/40" : "bg-amber-100/50"
         }`}
       >
-        {/* أيقونة الخلفية الزخرفية */}
         <div className="absolute top-0 right-0 p-8 opacity-5">
           <ScrollText size={120} />
         </div>
 
-        {/* زر الرجوع - تم نقله هنا بتموضع مطلق */}
         <button
           onClick={() => router.back()}
           className={`absolute top-6 right-6 z-20 text-sm flex items-center gap-2 px-4 py-2 rounded-full transition-colors cursor-pointer ${

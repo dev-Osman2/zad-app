@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { usePathname } from "next/navigation"; // أضفنا هذا السطر
+import { usePathname } from "next/navigation";
 import {
   ScrollText,
   ChevronDown,
@@ -33,8 +33,8 @@ export default function CourseViewer({
 }: CourseViewerProps) {
   const { darkMode } = useTheme();
   const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
-  const pathname = usePathname(); // الحصول على المسار الحالي (URL)
-  
+  const pathname = usePathname();
+
   const [activeSection, setActiveSection] = useState("intro");
   const [expandedCards, setExpandedCards] = useState<string[]>([]);
   const [currentVideo, setCurrentVideo] = useState<string | undefined>(
@@ -56,20 +56,18 @@ export default function CourseViewer({
       section.title.includes(searchQuery) || section.id.includes(searchQuery),
   );
 
-  // الدالة المعدلة لاكتشاف الصفحة وجلب البيانات المناسبة
   const fetchSectionContent = async (id: string) => {
     const existingContent = content.find((s) => s.id === id)?.content;
     if (existingContent || fetchedContent[id] || loadingSections[id]) return;
 
     setLoadingSections((prev) => ({ ...prev, [id]: true }));
-    
+
     try {
       let data;
 
-      // التحقق من الرابط: إذا كان يحتوي على sahaba نستخدم آكشن الصحابة، وإلا نستخدم التأمل
-      if (pathname.includes("sahaba")) {
+      if (pathname.includes("sahaba-1")) {
         data = await getSahaba1Section(id);
-      } else {
+      } else if (pathname.includes("Meditate-Quran")) {
         data = await getMeditateSection(id);
       }
 

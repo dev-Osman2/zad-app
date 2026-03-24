@@ -63,7 +63,6 @@ export default function QuickAccessSidebar({
         dir="rtl"
       >
         <div className="p-4 pt-4 lg:pt-8 min-h-[100dvh] pb-24 flex flex-col">
-          {/* تم حذف mt-16 لتبدأ من أعلى الشاشة مباشرة */}
           <div className="flex items-center justify-between mb-6 px-2 mt-0 border-b border-amber-500/20 pb-4 shrink-0">
             <h3
               className={`font-bold text-lg uppercase tracking-wider ${

@@ -1,4 +1,4 @@
-import { CourseInfo, Section } from "../../../types/types";
+import { CourseInfo, SectionHadith } from "../../../types/types";
 
 export const infoAbnothemen: CourseInfo = {
   title: " شرح الأربعين النووية",
@@ -7,7 +7,7 @@ export const infoAbnothemen: CourseInfo = {
     "https://drive.google.com/file/d/1ZOzwqAW9wpDpO4fOKe0Pw2FOFNd_vfAg/view?usp=sharing",
 };
 
-export const Abnothemen: Section[] = [
+export const Abnothemen: SectionHadith[] = [
   {
     id: "intro",
     type: "intro",

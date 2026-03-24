@@ -1,13 +1,13 @@
-import { CourseInfo, Section } from "../../../types/types";
+import { CourseInfo, SectionHadith } from "../../../types/types";
 
 export const infoQisas: CourseInfo = {
   title: "علمني رسول الله",
   desc: "سلسلة القصص النبوي للمهندس علاء حامد، نستلهم فيها الدروس التربوية والإيمانية من قصص النبي ﷺ وتوجيهاته، لنرتقي بالهمم ونصلح القلوب.",
   bookLink:
-    "https://drive.google.com/file/d/1Vv32C1pvHLiEIb7NqRDzf2rufqaNtqAY/view?usp=sharing", // يمكنك إضافة رابط تفريغ الدورة هنا إذا وجد
-};
+    "https://drive.google.com/file/d/1Vv32C1pvHLiEIb7NqRDzf2rufqaNtqAY/view?usp=sharing", 
+  };
 
-export const qisas: Section[] = [
+export const qisas: SectionHadith[] = [
   {
     id: "intro",
     type: "intro",

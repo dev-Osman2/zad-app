@@ -1,19 +1,13 @@
-"use client"; // أضفنا هذه ليصبح المكون خاصاً بالمتصفح (Client Component)
+"use client";
 
 import CourseViewer from "@/components/viewers/CourseViewer";
 
-// نستقبل البيانات المفلترة من السيرفر كـ Prop
-export default function ClientPage({
-  courseData,
-}: {
-  courseData: any; // يمكنك تغيير any إلى نوع البيانات الصحيح الخاص بك (Interface)
-}) {
-  
+export default function ClientPage({ courseData }: { courseData: any }) {
   return (
-    <CourseViewer 
-      info={courseData.info} 
-      content={courseData.content}  
-      variant="books" 
+    <CourseViewer
+      info={courseData.info}
+      content={courseData.content}
+      variant="books"
     />
   );
 }

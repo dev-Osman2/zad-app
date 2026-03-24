@@ -3,7 +3,7 @@ import path from 'path';
 
 // 💡 ملاحظة: تأكد من أن أسماء التصدير (SahabaData و infoSahaba) تطابق ما هو موجود داخل ملف sahaba-1.ts
 // إذا كانت المصفوفة تسمى Sahaba1 فقم بتغيير الاسم هنا
-import { Sahaba1, infoSahaba1 } from '../lib/content/sahaba/sahaba-1'; 
+import { Sahaba1, infoSahaba1 } from '../lib/content/sahaba/sahaba-1Exam'; 
 
 const DIR = path.join(process.cwd(), 'lib/data/sahaba');
 

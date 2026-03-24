@@ -22,8 +22,10 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = totalHeight > 0 ? (currentScrollY / totalHeight) * 100 : 0;
+      const totalHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const progress =
+        totalHeight > 0 ? (currentScrollY / totalHeight) * 100 : 0;
       setScrollProgress(Math.min(100, Math.max(0, progress)));
     };
 
@@ -41,7 +43,9 @@ export default function Header() {
     }
   };
 
-  const isMenuCurrentlyOpen = isQuickAccessPage ? isQuickAccessOpen : isSidebarOpen;
+  const isMenuCurrentlyOpen = isQuickAccessPage
+    ? isQuickAccessOpen
+    : isSidebarOpen;
 
   return (
     <>
@@ -52,8 +56,6 @@ export default function Header() {
             : "bg-white border-amber-200"
         }`}
       >
-        {/* تم حذف حاوية الصورة الخلفية والـ Overlay هنا */}
-
         <div className="container mx-auto px-4 h-20 flex items-center justify-between relative z-20">
           <Link href="/" className="flex items-center gap-3">
             <div className="relative w-12 h-12">
@@ -96,7 +98,6 @@ export default function Header() {
           </div>
         </div>
 
-        {/* شريط التقدم (Scroll Progress) */}
         <div className="absolute bottom-0 left-0 w-full h-1 bg-transparent z-30">
           <div
             className="h-full transition-all duration-150 ease-out"
@@ -108,7 +109,6 @@ export default function Header() {
         </div>
       </header>
 
-      {/* مباعد (Spacer) لمنع المحتوى من الاختفاء خلف الهيدر الثابت */}
       <div className="h-20" />
 
       <QuickAccessSidebar
