@@ -2,7 +2,6 @@ import { CourseData, ExamData } from "./types/types";
 
 import { infoAbnothemen, Abnothemen } from "./content/hadiths/arbaeen/othemen";
 import { infoQisas, qisas } from "./content/hadiths/qisas-nabawi/qisas";
-import { Sahaba2, infoSahaba2 } from "./content/sahaba/sahaba-2";
 
 import { arbaeenExams } from "./content/hadiths/arbaeen/hadithExam";
 import { qisasExam } from "./content/hadiths/qisas-nabawi/qisasExam";
@@ -16,9 +15,14 @@ import meditateInfo from "@/lib/data/meditateQuran/info.json";
 import sahaba1Index from "@/lib/data/sahaba-1/index.json";
 import sahaba1Info from "@/lib/data/sahaba-1/info.json";
 
+import sahaba2Index from "@/lib/data/sahaba-2/index.json";
+import sahaba2Info from "@/lib/data/sahaba-2/info.json";
 
-import { sahaba2ExamsData } from "./content/sahaba/sahaba2Exam";
+import { infoSahabiyat, sahabiyat } from "./content/sahaba/sahabiyat";
+
 import { sahaba1ExamsData } from "./content/sahaba/sahaba1Exam";
+import { sahaba2ExamsData } from "./content/sahaba/sahaba2Exam";
+import { sahabiyatExamsData } from "./content/sahaba/sahabiyatExam";
 
 import {
   inforamadanCouncils,
@@ -65,8 +69,12 @@ export const allCourses: Record<string, CourseData> = {
     content: sahaba1Index,
   },
   "sahaba-2": {
-    info: infoSahaba2,
-    content: Sahaba2,
+    info: sahaba2Info,
+    content: sahaba2Index,
+  },
+  "sahabiyat": {
+    info: infoSahabiyat,
+    content: sahabiyat,
   },
 };
 
@@ -138,6 +146,13 @@ Object.entries(sahaba1ExamsData).forEach(([examSlug, questions]) => {
 });
 
 Object.entries(sahaba2ExamsData).forEach(([examSlug, questions]) => {
+  sahabaExams[examSlug] = {
+    title: "الإختبار " + examSlug.split("-").pop(), // مجرد مثال لتوليد عنوان، يمكنك تغييره
+    questions: questions,
+  };
+});
+
+Object.entries(sahabiyatExamsData).forEach(([examSlug, questions]) => {
   sahabaExams[examSlug] = {
     title: "الإختبار " + examSlug.split("-").pop(), // مجرد مثال لتوليد عنوان، يمكنك تغييره
     questions: questions,

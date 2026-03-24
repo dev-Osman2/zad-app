@@ -21,6 +21,7 @@ import { CourseInfo, Section } from "@/lib/types/types";
 
 import { getMeditateSection } from "@/lib/actions/meditateActions";
 import { getSahaba1Section } from "@/lib/actions/sahaba1Actions";
+import { getSahaba2Section } from "@/lib/actions/sahaba2Actions";
 
 interface CourseViewerProps {
   info: CourseInfo;
@@ -67,9 +68,12 @@ export default function CourseViewer({
       let data;
       if (pathname.includes("sahaba-1")) {
         data = await getSahaba1Section(id);
+      } else if (pathname.includes("sahaba-2")) {
+        data = await getSahaba2Section(id);
       } else if (pathname.includes("Meditate-Quran")) {
         data = await getMeditateSection(id);
       }
+      
 
       if (data && data.content) {
         setFetchedContent((prev) => ({ ...prev, [id]: data.content }));
