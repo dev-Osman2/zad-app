@@ -8,16 +8,19 @@ import {
   XCircle,
   Trophy,
   RotateCcw,
+  LayoutDashboard, // أيقونة السايدبار السريع
 } from "lucide-react";
 import { useTheme } from "@/providers/ThemeProvider";
+import { useSidebar } from "@/providers/SidebarProvider"; // استدعاء السايدبار العام
 import { ExamData, Section } from "@/lib/types/types";
 import HadithSidebarDrawer from "@/components/viewers/HadithSidebarDrawer";
 
 interface ExamViewerProps {
   data: ExamData;
-  hadithSections?: Section[];
+  category: "hadith" | "sahaba" | "general"; // التحديث: تحديد نوع الاختبار
+  sections?: Section[]; // التحديث: اسم عام بدلاً من hadithSections
   bookSlug?: string;
-  currentHadithId?: string;
+  currentId?: string; // التحديث: اسم عام بدلاً من currentHadithId
   examSlugs?: Record<string, string>;
   sharhSlugs?: Record<string, string>;
 }
@@ -26,13 +29,15 @@ type ExamState = "taking" | "submitted";
 
 export default function ExamViewer({
   data,
-  hadithSections,
+  category,
+  sections,
   bookSlug,
-  currentHadithId,
+  currentId,
   examSlugs,
   sharhSlugs,
 }: ExamViewerProps) {
   const { darkMode } = useTheme();
+  const { setIsSidebarOpen } = useSidebar(); // للتحكم في القائمة الجانبية السريعة
   const { questions, title, desc } = data;
   const totalQuestions = questions.length;
 
@@ -43,10 +48,12 @@ export default function ExamViewer({
   const currentQuestion = questions[currentIndex];
   const answeredCount = Object.keys(answers).length;
 
-  const hasSidebar = !!(
-    hadithSections &&
+  // التحقق من صلاحية ظهور سايدبار الأحاديث الداخلي
+  const hasHadithSidebar = !!(
+    category === "hadith" &&
+    sections &&
     bookSlug &&
-    currentHadithId &&
+    currentId &&
     examSlugs &&
     sharhSlugs
   );
@@ -92,14 +99,28 @@ export default function ExamViewer({
         darkMode ? "bg-slate-900 text-slate-100" : "bg-[#FFF7EA] text-slate-800"
       }`}
     >
-      {hasSidebar && (
+      {/* 1. السايدبار الخاص بالأحاديث (يظهر فقط إذا كان التصنيف حديث) */}
+      {hasHadithSidebar && (
         <HadithSidebarDrawer
-          sections={hadithSections!}
+          sections={sections!}
           bookSlug={bookSlug!}
-          currentHadithId={currentHadithId!}
+          currentHadithId={currentId!}
           examSlugs={examSlugs!}
           sharhSlugs={sharhSlugs!}
         />
+      )}
+
+      {/* 2. الزر العائم للوصول السريع (يظهر للاختبارات العامة والصحابة في الموبايل) */}
+      {category !== "hadith" && (
+        <button
+          onClick={() => setIsSidebarOpen(true)}
+          title="فهرس المحتوى"
+          className={`fixed bottom-6 left-6 z-40 p-4 rounded-full shadow-2xl transition-all hover:scale-110 active:scale-95 md:hidden ${
+            darkMode ? "bg-amber-600 text-white" : "bg-amber-500 text-white"
+          }`}
+        >
+          <LayoutDashboard size={24} />
+        </button>
       )}
 
       <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -153,6 +174,10 @@ export default function ExamViewer({
     </div>
   );
 }
+
+// ---------------------------------------------------------
+// المكونات الفرعية (Sub-components)
+// ---------------------------------------------------------
 
 function ExamHeader({
   title,

@@ -5,6 +5,7 @@ export interface Section {
   desc?: string;
   bookLink?: string;
   videoLink?: string;
+  pageLink?: string;
 }
 
 export interface CourseInfo {

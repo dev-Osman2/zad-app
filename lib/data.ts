@@ -16,6 +16,10 @@ import meditateInfo from "@/lib/data/meditateQuran/info.json";
 import sahaba1Index from "@/lib/data/sahaba-1/index.json";
 import sahaba1Info from "@/lib/data/sahaba-1/info.json";
 
+
+import { sahaba2ExamsData } from "./content/sahaba/sahaba2Exam";
+import { sahaba1ExamsData } from "./content/sahaba/sahaba1Exam";
+
 import {
   inforamadanCouncils,
   ramadanCouncils,
@@ -122,7 +126,27 @@ function buildExamsFromHadiths(
   return exams;
 }
 
+// 2. إنشاء كائن يجمع اختبارات الصحابة وتحويلها لتطابق واجهة ExamData
+const sahabaExams: Record<string, ExamData> = {};
+
+// تحويل sahaba2
+Object.entries(sahaba1ExamsData).forEach(([examSlug, questions]) => {
+  sahabaExams[examSlug] = {
+    title: "الإختبار " + examSlug.split("-").pop(), // مجرد مثال لتوليد عنوان، يمكنك تغييره
+    questions: questions,
+  };
+});
+
+Object.entries(sahaba2ExamsData).forEach(([examSlug, questions]) => {
+  sahabaExams[examSlug] = {
+    title: "الإختبار " + examSlug.split("-").pop(), // مجرد مثال لتوليد عنوان، يمكنك تغييره
+    questions: questions,
+  };
+});
+
+
 export const allExams: Record<string, ExamData> = {
   ...buildExamsFromHadiths("arbaeen", Abnothemen, arbaeenExams),
   ...buildExamsFromHadiths("qisas", qisas, qisasExam),
+  ...sahabaExams,
 };
