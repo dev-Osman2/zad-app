@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-import { BookOpen, Calendar, Download } from "lucide-react";
+import { BookOpen, Calendar, Lightbulb } from "lucide-react";
 import SadqaBadge from "@/components/ui/SadqaBadge";
 import { useTheme } from "@/providers/ThemeProvider";
 
@@ -84,19 +84,17 @@ export default function HeroSection() {
             <span>الأربعين النووية لإبن عثيمين</span>
           </Link>
 
-          <a
-            href="https://play.google.com/store/apps/details?id=ca.basira.mantooqapp"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/hadiths/qisas"
             className={`group px-6 md:px-8 py-3 md:py-4 rounded-2xl transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-3 font-bold text-base md:text-lg w-full sm:w-auto border-2 ${
               darkMode
                 ? "border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-700/80"
                 : "border-amber-200 bg-amber-50/60 text-amber-800 hover:bg-amber-100/80"
             }`}
           >
-            <Download size={20} className="md:w-6 md:h-6" />
-            <span>تحميل تطبيق منطوق</span>
-          </a>
+            <Lightbulb size={20} className="md:w-6 md:h-6" />
+            <span>علمني رسول الله</span>
+          </Link>
         </div>
       </div>
 

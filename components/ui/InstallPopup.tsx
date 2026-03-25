@@ -7,6 +7,7 @@ export default function InstallBanner() {
   useEffect(() => {
     const isDismissed = localStorage.getItem("install_banner_dismissed");
     if (!isDismissed) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setShowBanner(true);
     }
   }, []);

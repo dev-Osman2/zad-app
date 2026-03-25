@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useTheme } from "@/providers/ThemeProvider";
-import { X, ChevronDown, MessageSquareHeart } from "lucide-react";
+import { X, ChevronDown, MessageSquareHeart, Download } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { sectionsData } from "@/lib/contentData";
@@ -208,6 +208,37 @@ export default function QuickAccessSidebar({
                 شاركنا رأيك ومقترحاتك
               </span>
             </Link>
+            <a
+              href="https://github.com/dev-Osman2/zad-app/releases/download/v1.0.0/zad-app.apk"
+              download 
+              onClick={onClose}
+              className={`flex items-center gap-3 w-full px-4 py-3 rounded-xl transition-all
+               ${
+                 darkMode
+                   ? "bg-slate-800/80 hover:bg-slate-800"
+                   : "bg-amber-50 hover:bg-amber-100"
+               }
+             `}
+                       >
+                         <span
+                           className={`w-8 h-8 flex items-center justify-center rounded-lg text-sm font-bold
+               ${
+                 darkMode
+                   ? "bg-amber-900/50 text-amber-500"
+                   : "bg-amber-200 text-amber-800"
+               }
+             `}
+              >
+                <Download size={18} />
+              </span>
+              <span
+                className={`font-bold font-amiri text-base ${
+                  darkMode ? "text-slate-200" : "text-slate-700"
+                }`}
+              >
+                تثبيت التطبيق أندرويد
+              </span>
+            </a>
           </nav>
         </div>
       </aside>

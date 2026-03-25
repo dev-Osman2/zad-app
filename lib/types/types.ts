@@ -1,7 +1,11 @@
 export interface Section {
   id: string;
   title: string;
+  type?: string;
   content?: string;
+  matn?: string;
+  fawaid?: string[];
+  sharh?: string;
   desc?: string;
   bookLink?: string;
   videoLink?: string;
@@ -15,15 +19,7 @@ export interface CourseInfo {
   videoLink?: string;
 }
 
-export interface SectionHadith {
-  id: string;
-  title: string;
-  type?: string;
-  content?: string;
-  matn?: string;
-  fawaid?: string[];
-  sharh?: string;
-}
+
 
 export interface CourseData {
   info: CourseInfo;

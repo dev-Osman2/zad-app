@@ -22,6 +22,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const saved = localStorage.getItem("zad_theme");
     if (saved === "light") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setDarkMode(false);
     } else if (saved === "dark") {
       setDarkMode(true);
