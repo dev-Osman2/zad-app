@@ -55,7 +55,8 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 z-40 w-full shadow-sm md:px-10 border-b transition-colors duration-300 ${
+        // 👈 السر هنا: أضفنا مساحة علوية للموبايل تتوافق مع شريط البطارية، ونلغيها في الشاشات الكبيرة
+        className={`fixed top-0 left-0 right-0 z-40 w-full shadow-sm md:px-10 border-b transition-colors duration-300 pt-[env(safe-area-inset-top,28px)] md:pt-0 ${
           darkMode
             ? "bg-slate-900 border-slate-700"
             : "bg-white border-amber-200"
@@ -114,7 +115,8 @@ export default function Header() {
         </div>
       </header>
 
-      <div className="h-20" />
+      {/* 👈 يجب أيضاً زيادة طول المساحة الفارغة تحت الهيدر لكي لا يختفي المحتوى تحته */}
+      <div className="h-[calc(5rem+env(safe-area-inset-top,28px))] md:h-20" />
 
       <QuickAccessSidebar
         isOpen={isQuickAccessOpen}
