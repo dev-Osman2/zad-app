@@ -14,8 +14,7 @@
       "iosSpinnerStyle": "small"
     },
     "StatusBar": {
-      "backgroundColor": "#0F172B",
-      "style": "DARK" 
+      "overlaysWebView": false
     },
     "Keyboard": {
       "resize": "body",

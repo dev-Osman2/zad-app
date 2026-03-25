@@ -28,16 +28,6 @@ const notoSans = Noto_Sans_Arabic({
   display: "swap",
 });
 
-export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0F172B" },
-  ],
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 1,
-};
-
 export const metadata: Metadata = {
   title: "زاد",
   description:
