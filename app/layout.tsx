@@ -38,6 +38,7 @@ export const metadata: Metadata = {
     apple: "/icon-192.png",
   },
 
+
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
@@ -46,6 +47,16 @@ export const metadata: Metadata = {
   verification: {
     google: "EK88A_02hP3bsgTaEERUyy_hKzASQFGRz2Df3h5L_wE",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fdfbf7" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({

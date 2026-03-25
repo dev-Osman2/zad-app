@@ -2,19 +2,44 @@
 import { useEffect, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { App as CapacitorApp } from '@capacitor/app';
+import { StatusBar, Style } from '@capacitor/status-bar';
+import { useTheme } from '@/providers/ThemeProvider';
 
 export default function AppManager() {
   const router = useRouter();
   const pathname = usePathname();
   const isFirstLoad = useRef(true);
+  const { darkMode } = useTheme();
 
-  // 1. استرجاع وحفظ آخر صفحة كان بها المستخدم
+  
+  useEffect(() => {
+    const updateStatusBar = async () => {
+      try {
+        
+        await StatusBar.setOverlaysWebView({ overlay: false });
+        
+        if (darkMode ) {
+          
+          await StatusBar.setBackgroundColor({ color: '#0f172a' });
+          await StatusBar.setStyle({ style: Style.Dark });
+        } else {
+          
+          await StatusBar.setBackgroundColor({ color: '#fdfbf7' });
+          await StatusBar.setStyle({ style: Style.Light });
+        }
+      } catch (error) {
+        
+      }
+    };
+
+    updateStatusBar();
+  }, [darkMode]);
+
+  
   useEffect(() => {
     if (isFirstLoad.current) {
       isFirstLoad.current = false;
       const lastRoute = localStorage.getItem('last_saved_route');
-      
-      // إذا كان هناك مسار محفوظ والتطبيق يفتح للتو على الصفحة الرئيسية، اذهب للمسار المحفوظ
       if (lastRoute && lastRoute !== '/' && pathname === '/') {
         router.replace(lastRoute);
       }
@@ -22,26 +47,24 @@ export default function AppManager() {
   }, [pathname, router]);
 
   useEffect(() => {
-    // حفظ المسار الحالي كلما تنقل المستخدم
     if (pathname) {
       localStorage.setItem('last_saved_route', pathname);
     }
   }, [pathname]);
 
-  // 2. التحكم في زر الرجوع الفعلي للهاتف
+  
   useEffect(() => {
     CapacitorApp.addListener('backButton', ({ canGoBack }) => {
       if (canGoBack) {
         router.back();
       } else {
-        CapacitorApp.exitApp(); // إغلاق التطبيق إذا كنا في الصفحة الرئيسية
+        CapacitorApp.exitApp();
       }
     });
-
     return () => {
       CapacitorApp.removeAllListeners();
     };
   }, [router]);
 
-  return null; // هذا المكون يعمل في الخلفية ولا يظهر شيئاً
+  return null;
 }
