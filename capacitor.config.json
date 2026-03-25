@@ -2,5 +2,24 @@
   "appId": "app.zad.islam",
   "appName": "زاد",
   "webDir": "out",
-  "bundledWebRuntime": false
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 3000,
+      "backgroundColor": "#FFFCF1", 
+      "showSpinner": true,
+      "androidSpinnerStyle": "large",
+      "iosSpinnerStyle": "small"
+    },
+    "StatusBar": {
+      "backgroundColor": "#0F172B",
+      "style": "DARK" 
+    },
+    "Keyboard": {
+      "resize": "body",
+      "style": "dark"
+    }
+  }
 }

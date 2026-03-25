@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { SidebarProvider } from "@/providers/SidebarProvider";
+import AppManager from "@/providers/AppManager";
 
 const amiri = Amiri({
   subsets: ["arabic"],
@@ -77,6 +78,7 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <SidebarProvider>
+            <AppManager />
             <Header />
             <main className="min-h-screen">{children}</main>
 

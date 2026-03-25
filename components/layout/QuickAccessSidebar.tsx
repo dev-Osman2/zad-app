@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useTheme } from "@/providers/ThemeProvider";
-import { X, ChevronDown, MessageSquareHeart, Download } from "lucide-react";
+import { X, ChevronDown, MessageSquareHeart } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { sectionsData } from "@/lib/contentData";
@@ -44,14 +44,14 @@ export default function QuickAccessSidebar({
     <>
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/60 z-40 backdrop-blur-sm transition-opacity h-[100dvh]"
+          className="fixed inset-0 bg-black/60 z-40 backdrop-blur-sm transition-opacity h-dvh"
           onClick={onClose}
         />
       )}
 
       <aside
         className={` border-2 ${darkMode ? "border-slate-800" : "border-white"}
-          fixed top-0 right-0 h-[100dvh] w-80 z-50 transform transition-transform duration-300 ease-in-out
+          fixed top-0 right-0 h-dvh w-80 z-50 transform transition-transform duration-300 ease-in-out
           ${isOpen ? "translate-x-0" : "translate-x-full"}
           ${
             darkMode
@@ -62,7 +62,7 @@ export default function QuickAccessSidebar({
         `}
         dir="rtl"
       >
-        <div className="p-4 pt-4 lg:pt-8 min-h-[100dvh] pb-24 flex flex-col">
+        <div className="p-4 pt-4 lg:pt-8 min-h-dvh pb-24 flex flex-col">
           <div className="flex items-center justify-between mb-6 px-2 mt-0 border-b border-amber-500/20 pb-4 shrink-0">
             <h3
               className={`font-bold text-lg uppercase tracking-wider ${
@@ -84,7 +84,7 @@ export default function QuickAccessSidebar({
             </button>
           </div>
 
-          <nav className="flex flex-col gap-4 flex-grow">
+          <nav className="flex flex-col gap-4 grow">
             {sectionsData.map((category) => {
               const isCategoryOpen = openCategories[category.title];
 

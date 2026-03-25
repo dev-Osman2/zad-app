@@ -24,7 +24,7 @@ export default function Footer() {
 
           return (
             <div
-              className={`text-2xl md:text-3xl font-bold ${
+              className={`text-xl md:text-3xl font-bold ${
           darkMode ? "text-amber-400" : "text-amber-700"
               }`}
               style={{ fontFamily: "'Aref Ruqaa', serif" }}

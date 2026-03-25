@@ -1,9 +1,11 @@
-"use server";
-
+// لا يوجد "use server" هنا!
 export async function getSahaba1Section(id: string) {
   try {
-    const data = await import(`@/lib/data/sahaba-1/${id}.json`);
-    return data.default || data;
+    // نجلب البيانات من مجلد public مباشرة كأننا نتصفح الموقع
+    const response = await fetch(`/data/sahaba-1/${id}.json`);
+    if (!response.ok) throw new Error("Not found");
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.error("Error loading section:", error);
     return null;

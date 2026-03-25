@@ -1,4 +1,4 @@
-import { CourseInfo, SectionHadith } from "../../../types/types";
+import { CourseInfo, Section } from "../../../types/types";
 
 export const infoQisas: CourseInfo = {
   title: "علمني رسول الله",
@@ -7,7 +7,7 @@ export const infoQisas: CourseInfo = {
     "https://drive.google.com/file/d/1Vv32C1pvHLiEIb7NqRDzf2rufqaNtqAY/view?usp=sharing", 
   };
 
-export const qisas: SectionHadith[] = [
+export const qisas: Section[] = [
   {
     id: "intro",
     type: "intro",

@@ -35,7 +35,7 @@ export interface SurahDetail {
 
 export async function getAllSurahs(): Promise<Chapter[]> {
   try {
-    const data = await import("@/lib/data/quran/chapters.json");
+    const data = await import("@/public/data/quran/chapters.json");
     return data.default || data;
   } catch (error) {
     console.error("Error loading chapters from local file:", error);
@@ -45,7 +45,7 @@ export async function getAllSurahs(): Promise<Chapter[]> {
 
 export async function getSurah(id: number): Promise<SurahDetail | null> {
   try {
-    const data = await import(`@/lib/data/quran/${id}.json`);
+    const data = await import(`@/public/data/quran/${id}.json`);
     return data.default || data;
   } catch (error) {
     console.error(`Error loading surah ${id} from local file:`, error);

@@ -1,12 +1,10 @@
 name: Build Android APK
 on:
-  push:
-    branches:
-      - main # 👈 سيعمل هذا الملف تلقائياً في كل مرة ترفع فيها كود جديد من التيرمنال
-  workflow_dispatch:
+  # تم حذف الـ push من هنا لكي لا يعمل تلقائياً
+  workflow_dispatch: # 👈 هذا السطر يسمح لك بتشغيل البناء يدوياً من صفحة Actions في GitHub
 
 permissions:
-  contents: write # 👈 السماح لجيت هاب بمسح وإضافة الملفات في صفحة الإصدارات
+  contents: write 
 
 jobs:
   build:

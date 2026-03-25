@@ -9,17 +9,17 @@ import { qisasExam } from "./content/hadiths/qisas-nabawi/qisasExam";
 import { arbaeenSharh } from "./content/hadiths/arbaeen/hadithSharh";
 import { qisasSharh } from "./content/hadiths/qisas-nabawi/qisasSharh";
 
-import meditateIndex from "@/lib/data/meditateQuran/index.json";
-import meditateInfo from "@/lib/data/meditateQuran/info.json";
+import meditateIndex from "@/public/data/meditateQuran/index.json";
+import meditateInfo from "@/public/data/meditateQuran/info.json";
 
-import sahaba1Index from "@/lib/data/sahaba-1/index.json";
-import sahaba1Info from "@/lib/data/sahaba-1/info.json";
+import sahaba1Index from "@/public/data/sahaba-1/index.json";
+import sahaba1Info from "@/public/data/sahaba-1/info.json";
 
-import sahaba2Index from "@/lib/data/sahaba-2/index.json";
-import sahaba2Info from "@/lib/data/sahaba-2/info.json";
+import sahaba2Index from "@/public/data/sahaba-2/index.json";
+import sahaba2Info from "@/public/data/sahaba-2/info.json";
 
-import tabi3een2Index from "@/lib/data/tabi3een/index.json";
-import tabi3een2Info from "@/lib/data/tabi3een/info.json";
+import tabi3een2Index from "@/public/data/tabi3een/index.json";
+import tabi3een2Info from "@/public/data/tabi3een/info.json";
 
 import { sahabiyatInfo, sahabiyat } from "./content/sahaba/sahabiyat";
 
