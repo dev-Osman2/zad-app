@@ -17,7 +17,12 @@ export default function Header() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isQuickAccessOpen, setIsQuickAccessOpen] = useState(false);
 
-  const isQuickAccessPage = pathname === "/" || pathname === "/feedback" ;
+  const isQuickAccessPage = 
+    pathname === "/" || 
+    pathname === "/feedback" || 
+    pathname.includes("/exam/sahaba") || 
+    pathname.includes("/exam/sahabiyat") || 
+    pathname.includes("/exam/tabi3een");
 
   useEffect(() => {
     const handleScroll = () => {

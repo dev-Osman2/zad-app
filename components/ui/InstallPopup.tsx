@@ -24,10 +24,10 @@ export default function InstallBanner() {
         <div className="flex items-center gap-3">
           <img src="/logo.svg" alt="زاد" className="w-8 h-8" />
           <p className="text-sm font-medium">
-            لأفضل تجربة واستخدام "زاد" بدون إنترنت، حمل تطبيق الأندرويد
+            &quot;زاد&quot; بدون إنترنت، حمل تطبيق الأندرويد
           </p>
         </div>
-        
+
         <div className="flex items-center gap-4">
           <a
             href="https://github.com/dev-Osman2/zad-app/releases/download/v1.0.0/zad-app.apk"
@@ -35,11 +35,24 @@ export default function InstallBanner() {
           >
             تثبيت الآن
           </a>
-          <button 
+          <button
             onClick={handleDismiss}
             className="text-slate-400 hover:text-white transition-colors"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
           </button>
         </div>
       </div>

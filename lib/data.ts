@@ -18,11 +18,15 @@ import sahaba1Info from "@/lib/data/sahaba-1/info.json";
 import sahaba2Index from "@/lib/data/sahaba-2/index.json";
 import sahaba2Info from "@/lib/data/sahaba-2/info.json";
 
-import { infoSahabiyat, sahabiyat } from "./content/sahaba/sahabiyat";
+import tabi3een2Index from "@/lib/data/tabi3een/index.json";
+import tabi3een2Info from "@/lib/data/tabi3een/info.json";
+
+import { sahabiyatInfo, sahabiyat } from "./content/sahaba/sahabiyat";
 
 import { sahaba1ExamsData } from "./content/sahaba/sahaba1Exam";
 import { sahaba2ExamsData } from "./content/sahaba/sahaba2Exam";
 import { sahabiyatExamsData } from "./content/sahaba/sahabiyatExam";
+import { tabi3eenExamsData } from "./content/sahaba/tabi3eenExam";
 
 import {
   inforamadanCouncils,
@@ -72,9 +76,13 @@ export const allCourses: Record<string, CourseData> = {
     info: sahaba2Info,
     content: sahaba2Index,
   },
-  "sahabiyat": {
-    info: infoSahabiyat,
+  sahabiyat: {
+    info: sahabiyatInfo,
     content: sahabiyat,
+  },
+  tabi3een: {
+    info: tabi3een2Info,
+    content: tabi3een2Index,
   },
 };
 
@@ -134,31 +142,35 @@ function buildExamsFromHadiths(
   return exams;
 }
 
-// 2. إنشاء كائن يجمع اختبارات الصحابة وتحويلها لتطابق واجهة ExamData
 const sahabaExams: Record<string, ExamData> = {};
 
-// تحويل sahaba2
 Object.entries(sahaba1ExamsData).forEach(([examSlug, questions]) => {
   sahabaExams[examSlug] = {
-    title: "الإختبار " + examSlug.split("-").pop(), // مجرد مثال لتوليد عنوان، يمكنك تغييره
+    title: "الإختبار " + examSlug.split("-").pop(),
     questions: questions,
   };
 });
 
 Object.entries(sahaba2ExamsData).forEach(([examSlug, questions]) => {
   sahabaExams[examSlug] = {
-    title: "الإختبار " + examSlug.split("-").pop(), // مجرد مثال لتوليد عنوان، يمكنك تغييره
+    title: "الإختبار " + examSlug.split("-").pop(),
     questions: questions,
   };
 });
 
 Object.entries(sahabiyatExamsData).forEach(([examSlug, questions]) => {
   sahabaExams[examSlug] = {
-    title: "الإختبار " + examSlug.split("-").pop(), // مجرد مثال لتوليد عنوان، يمكنك تغييره
+    title: "الإختبار " + examSlug.split("-").pop(),
     questions: questions,
   };
 });
 
+Object.entries(tabi3eenExamsData).forEach(([examSlug, questions]) => {
+  sahabaExams[examSlug] = {
+    title: "الإختبار " + examSlug.split("-").pop(),
+    questions: questions,
+  };
+});
 
 export const allExams: Record<string, ExamData> = {
   ...buildExamsFromHadiths("arbaeen", Abnothemen, arbaeenExams),

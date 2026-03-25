@@ -60,6 +60,37 @@ export const sectionsData: SectionData[] = [
   },
   {
     id: "sec3",
+    title: "قصص الصحابة",
+    icon: <Flame   size={24} />,
+    items: [
+      {
+        id: 1,
+        title: "صور من حياة الصحابة - 1",
+        author: "الشيخ عبدالرحمن رأفت الباشا",
+        link: "/books/sahaba-1",
+      },
+      {
+        id: 2,
+        title: "صور من حياة الصحابة - 2",
+        author: "الشيخ عبدالرحمن رأفت الباشا",
+        link: "/books/sahaba-2",
+      },
+      {
+        id: 3,
+        title: "صور من حياة الصحابيات",
+        author: "الشيخ عبدالرحمن رأفت الباشا",
+        link: "/books/sahabiyat",
+      },
+      {
+        id: 4,
+        title: "صور من حياة التابعين",
+        author: "الشيخ عبدالرحمن رأفت الباشا",
+        link: "/books/tabi3een",
+      },
+    ],
+  },
+  {
+    id: "sec4",
     title: "مجالس شهر رمضان",
     icon: <Moon size={24} />,
     items: [
@@ -84,7 +115,7 @@ export const sectionsData: SectionData[] = [
     ],
   },
   {
-    id: "sec4",
+    id: "sec5",
     title: "بودكاست ديني",
     icon: <Podcast size={24} />,
     items: [
@@ -114,35 +145,4 @@ export const sectionsData: SectionData[] = [
       },
     ],
   },
-  {
-    id: "sec5",
-    title: "قصص الصحابة",
-    icon: <Flame   size={24} />,
-    items: [
-      {
-        id: 1,
-        title: "صور من حياة الصحابة - 1",
-        author: "الشيخ عبدالرحمن رأفت الباشا",
-        link: "/books/sahaba-1",
-      },
-      {
-        id: 2,
-        title: "صور من حياة الصحابة - 2",
-        author: "الشيخ عبدالرحمن رأفت الباشا",
-        link: "/books/sahaba-2",
-      },
-      {
-        id: 3,
-        title: "صور من حياة الصحابيات",
-        author: "الشيخ عبدالرحمن رأفت الباشا",
-        link: "/books/sahabiyat",
-      },
-      {
-        id: 4,
-        title: "صور من حياة التابعين",
-        author: "الشيخ عبدالرحمن رأفت الباشا",
-        link: "/books/tabi3een",
-      },
-    ],
-  }
 ];

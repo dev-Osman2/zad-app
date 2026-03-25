@@ -1,5 +1,4 @@
-// lib/content/sahaba/sahaba1Exam.ts (مثال افتراضي)
-import { ExamQuestion } from "../../types/types"; // تأكد من مسار الاستيراد
+import { ExamQuestion } from "../../types/types";
 
 export const sahaba2ExamsData: Record<string, ExamQuestion[]> = {
   "sahaba-2-1": [

@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme } from "@/providers/ThemeProvider";
-
+import { footerQuotes } from "@/lib/dailyQuotes";
 export default function Footer() {
   const { darkMode } = useTheme();
 
@@ -15,14 +15,24 @@ export default function Footer() {
       }`}
     >
       <div className="container mx-auto px-4 flex flex-col items-center gap-5">
-        <div
-          className={`text-2xl md:text-3xl font-bold ${
-            darkMode ? "text-amber-400" : "text-amber-700"
-          }`}
-          style={{ fontFamily: "'Aref Ruqaa', serif" }}
-        >
-          &quot; يا باغيَ الخيرِ أقبل، ويا باغيَ الشَّرِّ أقصِر &quot;
-        </div>
+        {(() => {
+          const hijriDay = new Intl.DateTimeFormat("en-TN-u-ca-islamic", {
+            day: "numeric",
+          }).format(new Date());
+
+          const quote = footerQuotes[hijriDay] ?? footerQuotes["1"];
+
+          return (
+            <div
+              className={`text-2xl md:text-3xl font-bold ${
+          darkMode ? "text-amber-400" : "text-amber-700"
+              }`}
+              style={{ fontFamily: "'Aref Ruqaa', serif" }}
+            >
+              &quot;{quote}&quot;
+            </div>
+          );
+        })()}
 
 
         <div

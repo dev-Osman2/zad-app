@@ -14,7 +14,7 @@ export function generateStaticParams() {
     { slug: "sahaba-1" },
     { slug: "sahaba-2" },
     { slug: "sahabiyat" },
-    { slug: "Tabi3een" },
+    { slug: "tabi3een" },
   ];
 }
 

@@ -1,6 +1,5 @@
 import { allExams, allHadithBooks, allHadithSharhByBook } from "@/lib/data";
-// افترض وجود بيانات الصحابة هنا أو جلبها ديناميكياً
-// import { sahaba1Content } from "@/lib/content/sahaba/sahaba-1"; 
+
 import { notFound } from "next/navigation";
 import ExamViewer from "@/components/viewers/ExamViewer";
 
@@ -14,7 +13,6 @@ export default async function ExamPage({
 
   if (!examData) return notFound();
 
-  // --- منطق التعميم الجديد ---
   let sidebarSections;
   let category: "hadith" | "sahaba" | "general" = "general";
   let bookSlug;
@@ -22,14 +20,9 @@ export default async function ExamPage({
   const examSlugs: Record<string, string> = {};
   const sharhSlugs: Record<string, string> = {};
 
-  // 1. التحقق إذا كان اختبار صحابة (مثال: sahaba-1-exam-1)
   if (slug.includes("sahaba")) {
     category = "sahaba";
-    // sidebarSections = sahaba1Content; // أو المصدر المناسب للجزء 1 أو 2
-    // هنا لا نحتاج لروابط شرح، فقط الفهرس
-  } 
-  // 2. التحقق إذا كان اختبار أحاديث (المنطق القديم)
-  else {
+  } else {
     const parts = slug.match(/^(.+?)-(h\d+)$/);
     if (parts) {
       category = "hadith";
@@ -42,7 +35,8 @@ export default async function ExamPage({
         for (const section of bookData.content) {
           const eSlug = `${bookSlug}-${section.id}`;
           if (allExams[eSlug]) examSlugs[section.id] = eSlug;
-          if (sharhMap[section.id]) sharhSlugs[section.id] = `sharh-${section.id}`;
+          if (sharhMap[section.id])
+            sharhSlugs[section.id] = `sharh-${section.id}`;
         }
       }
     }

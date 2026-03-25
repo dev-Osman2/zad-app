@@ -64,13 +64,14 @@ Zad is an open-source Islamic web application designed to provide a focused and 
 ```
 zad-app/
 ├── app/                   # Next.js App Router
-│   ├── books/             # Islamic books pages
-│   ├── exam/              # Interactive exams
-│   ├── feedback/          # User feedback form
-│   ├── hadiths/           # Hadith collections
-│   ├── plan/              # Ramadan daily planner
-│   ├── podcast/           # Podcast pages
-│   ├── quran/             # Quran reader
+│   ├── books/[slug]/      # Dynamic Islamic books pages
+│   ├── exam/[slug]/       # Dynamic interactive exams
+│   ├── feedback/          # User feedback page
+│   ├── hadiths/[slug]/    # Hadith books pages
+│   ├── hadiths/[slug]/[sharhId]/ # Hadith commentary pages
+│   ├── podcast/[slug]/    # Dynamic podcast pages
+│   ├── quran/             # Quran landing page
+│   ├── quran/[chapterId]/ # Dynamic Surah pages (1-114)
 │   ├── layout.tsx         # Root layout
 │   └── page.tsx           # Home page
 ├── components/
@@ -90,6 +91,20 @@ zad-app/
 │   └── SidebarProvider.tsx # Sidebar state context
 └── public/                # Static assets & PWA manifest
 ```
+
+---
+
+## Routes
+
+- `/` Home page
+- `/feedback` Feedback form
+- `/quran` Quran main page
+- `/quran/[chapterId]` Surah page (1-114)
+- `/books/[slug]` Book reader page
+- `/hadiths/[slug]` Hadith book page
+- `/hadiths/[slug]/[sharhId]` Hadith commentary page
+- `/podcast/[slug]` Podcast page
+- `/exam/[slug]` Exam page
 
 ---
 

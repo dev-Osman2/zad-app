@@ -9,6 +9,12 @@ export function generateStaticParams() {
   ];
 }
 
-export default function Page({ params }: any) {
+type PageProps = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
+
+export default function Page({ params }: PageProps) {
   return <ClientPage params={params} />;
 }

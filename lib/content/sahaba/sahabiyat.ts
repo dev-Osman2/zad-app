@@ -1,10 +1,10 @@
 import { CourseInfo, Section } from "@/lib/types/types";
 
-export const infoSahabiyat: CourseInfo = {
+export const sahabiyatInfo: CourseInfo = {
   title: "صور من حياة الصحابيات",
   desc: `يعرض الكتاب قصصا ملهمة لصحابيات جليلات سطرن أروع ملاحم الإيمان والتضحية في سبيل الله
 ليكن القدوة الحسنة لكل امرأة تطمح لبناء أسرة صالحة ترفع راية الحق`,
-  bookLink: "",
+  bookLink: "https://drive.google.com/file/d/1fbWoFsgus3H7JNBv3xN3nn1OmaB3raUU/view?usp=sharing",
 };
 
 export const sahabiyat: Section[] = [

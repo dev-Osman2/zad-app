@@ -40,6 +40,5 @@ export interface ExamQuestion {
 export interface ExamData {
   title: string;
   desc?: string;
-  duration?: number;
   questions: ExamQuestion[];
 }
