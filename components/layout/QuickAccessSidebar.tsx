@@ -178,7 +178,7 @@ export default function QuickAccessSidebar({
               }`}
             />
             <a
-              href="https://github.com/dev-Osman2/zad-app/releases/download/v1.0.0/zad-app.apk"
+              href="https://github.com/dev-Osman2/zad-app/releases/download/latest/zad-app.apk"
               download 
               onClick={onClose}
               className={`flex items-center gap-3 w-full px-4 py-3 rounded-xl transition-all

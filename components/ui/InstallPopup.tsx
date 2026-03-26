@@ -31,7 +31,7 @@ export default function InstallBanner() {
 
         <div className="flex items-center gap-4">
           <a
-            href="https://github.com/dev-Osman2/zad-app/releases/download/v1.0.0/zad-app.apk"
+            href="https://github.com/dev-Osman2/zad-app/releases/download/latest/zad-app.apk"
             className="bg-white text-[#0f172a] px-4 py-1.5 rounded-lg text-sm font-bold whitespace-nowrap hover:bg-slate-200 transition-colors"
           >
             تثبيت الآن
