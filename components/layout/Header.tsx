@@ -17,11 +17,12 @@ export default function Header() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isQuickAccessOpen, setIsQuickAccessOpen] = useState(false);
 
-  const isQuickAccessPage = 
-    pathname === "/" || 
-    pathname === "/feedback" || 
-    pathname.includes("/exam/sahaba") || 
-    pathname.includes("/exam/sahabiyat") || 
+  const isQuickAccessPage =
+    pathname === "/" ||
+    pathname === "/feedback" ||
+    pathname === "/recommended-apps" ||
+    pathname.includes("/exam/sahaba") ||
+    pathname.includes("/exam/sahabiyat") ||
     pathname.includes("/exam/tabi3een");
 
   useEffect(() => {
@@ -55,7 +56,6 @@ export default function Header() {
   return (
     <>
       <header
-        // 👈 السر هنا: أضفنا مساحة علوية للموبايل تتوافق مع شريط البطارية، ونلغيها في الشاشات الكبيرة
         className={`fixed top-0 left-0 right-0 z-40 w-full shadow-sm md:px-10 border-b transition-colors duration-300 pt-[env(safe-area-inset-top,28px)] md:pt-0 ${
           darkMode
             ? "bg-slate-900 border-slate-700"
@@ -115,7 +115,6 @@ export default function Header() {
         </div>
       </header>
 
-      {/* 👈 يجب أيضاً زيادة طول المساحة الفارغة تحت الهيدر لكي لا يختفي المحتوى تحته */}
       <div className="h-[calc(5rem+env(safe-area-inset-top,28px))] md:h-20" />
 
       <QuickAccessSidebar

@@ -1,0 +1,166 @@
+import { Headphones, BookOpen, Clock, Smartphone, LucideIcon, Compass } from "lucide-react";
+
+export interface AppItem {
+  id: string;
+  name: string;
+  description: string;
+  icon: LucideIcon;
+  deepLink: string;
+  fallbackUrl: string;
+}
+
+export interface AppCategory {
+  id: string;
+  title: string;
+  apps: AppItem[];
+}
+
+export interface YouTubeChannel {
+  id: string;
+  name: string;
+  url: string; // تم التعديل لرابط ويب عادي
+}
+
+export interface TelegramBot {
+  id: string;
+  name: string;
+  description: string;
+  deepLink: string;
+  fallbackUrl: string;
+}
+
+export const recommendedApps: AppCategory[] = [
+  {
+    id: "listening",
+    title: "الاستماع والدورات العلمية",
+    apps: [
+      {
+        id: "mantooq",
+        name: "تطبيق منطوق",
+        description: "رفيقك في السماع الشرعي؛ استمع لدورات وشروحات ابن عثيمين بجودة عالية.",
+        icon: Headphones,
+        deepLink: "market://details?id=ca.basira.mantooqapp",
+        fallbackUrl: "https://play.google.com/store/apps/details?id=ca.basira.mantooqapp",
+      },
+      {
+        id: "soundcloud",
+        name: "SoundCloud",
+        description: "مكتبة صوتية شاملة للدروس والمحاضرات لأبرز المشايخ والعلماء.",
+        icon: Headphones,
+        deepLink: "market://details?id=com.soundcloud.android",
+        fallbackUrl: "https://play.google.com/store/apps/details?id=com.soundcloud.android",
+      },
+    ],
+  },
+  {
+    id: "quran",
+    title: "حفظ القرآن الكريم",
+    apps: [
+      {
+        id: "abdo-quran",
+        name: "تطبيق المصحف",
+        description: "مصحف إلكتروني مميز للقراءة، الحفظ، والتلاوة العذبة.",
+        icon: BookOpen,
+        deepLink: "market://details?id=com.abdo.quran",
+        fallbackUrl: "https://play.google.com/store/apps/details?id=com.abdo.quran",
+      },
+    ],
+  },
+  {
+    id: "mutoon",
+    title: "المتون وكتب الحديث",
+    apps: [
+      {
+        id: "mutoon-app",
+        name: "حفظ المتون",
+        description: "أداتك الرئيسية لحفظ وضبط المتون العلمية الشرعية.",
+        icon: BookOpen,
+        deepLink: "market://details?id=com.tamayyuzcenter.huffazulmutoon",
+        fallbackUrl: "https://play.google.com/store/apps/details?id=com.tamayyuzcenter.huffazulmutoon",
+      },
+      {
+        id: "sunna-9",
+        name: "جامع الكتب التسعة",
+        description: "مكتبة حديثية ضخمة تضم أمهات كتب الحديث النبوي الشريف.",
+        icon: BookOpen,
+        deepLink: "market://details?id=com.arabiait.sunna",
+        fallbackUrl: "https://play.google.com/store/apps/details?id=com.arabiait.sunna",
+      },
+    ],
+  },
+  {
+    id: "productivity",
+    title: "تنظيم الوقت والفوائد",
+    apps: [
+      {
+        id: "athan-qibla-quran",
+        name: "أذان، قبلة وقرآن",
+        description: "تطبيق شامل يجمع لك مواقيت الصلاة الدقيقة، التنبيه بالأذان، وتحديد القبلة مع تلاوة القرآن الكريم.",
+        icon: Compass, // يمكنك استخدام أيقونة Compass أو Mosque حسب مكتبة الأيقونات لديك
+        deepLink: "market://details?id=com.fyxtech.muslim",
+        fallbackUrl: "https://play.google.com/store/apps/details?id=com.fyxtech.muslim",
+      },
+      {
+        id: "muslim-house",
+        name: "أنا مسلم",
+        description: "حقيبة المسلم اليومية من أذكار، مواقيت، وعبادات منظمـة.",
+        icon: Clock,
+        deepLink: "market://details?id=com.mfk4apps.muslimhouse",
+        fallbackUrl: "https://play.google.com/store/apps/details?id=com.mfk4apps.muslimhouse",
+      },
+      {
+        id: "colornote",
+        name: "ColorNote",
+        description: "لن تفوتك فائدة بعد الآن؛ سجل ملاحظاتك ونظم دروسك العلمية.",
+        icon: Smartphone,
+        deepLink: "market://details?id=com.socialnmobile.dictapps.notepad.color.note",
+        fallbackUrl: "https://play.google.com/store/apps/details?id=com.socialnmobile.dictapps.notepad.color.note",
+      },
+    ],
+  },
+];
+
+export const recommendedChannels: YouTubeChannel[] = [
+  {
+    id: "alaa-hamed",
+    name: "م. علاء حامد",
+    url: "https://www.youtube.com/@3laaHamed",
+  },
+  {
+    id: "mostafa-aladwy",
+    name: "الشيخ مصطفى العدوي",
+    url: "https://www.youtube.com/@ftawamostafaaladwy",
+  },
+  {
+    id: "alshuwayer",
+    name: "د. عبدالسلام الشويعر",
+    url: "https://www.youtube.com/@alshuwayer9",
+  },
+  {
+    id: "osaimi",
+    name: "د. صالح العصيمي (قطوف)",
+    url: "https://www.youtube.com/@Qutofosaimi",
+  },
+  {
+    id: "waie",
+    name: "قناة وعي",
+    url: "https://www.youtube.com/@Waie",
+  },
+];
+
+export const recommendedBots: TelegramBot[] = [
+  {
+    id: "alaa-hamed-bot",
+    name: "بوت المهندس علاء حامد",
+    description: "أرشيف جامع ومنظم لكل ما يخص دروس وسلاسل المهندس علاء حامد.",
+    deepLink: "tg://resolve?domain=Alaahamed_bot",
+    fallbackUrl: "https://t.me/Alaahamed_bot",
+  },
+  {
+    id: "athrrrr-bot",
+    name: "بوت الشامل",
+    description: "بوت شامل لكل ما يحتاجه المسلم من صوتيات، بودكاست، ومكتبة إسلامية.",
+    deepLink: "tg://resolve?domain=athrrrrBot",
+    fallbackUrl: "https://t.me/athrrrrBot",
+  },
+];
