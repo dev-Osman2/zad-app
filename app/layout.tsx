@@ -6,7 +6,6 @@ import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { SidebarProvider } from "@/providers/SidebarProvider";
 import AppManager from "@/providers/AppManager";
-import InstallPopup from "@/components/ui/InstallPopup";
 
 const amiri = Amiri({
   subsets: ["arabic"],
@@ -80,7 +79,6 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <SidebarProvider>
-            <InstallPopup />
             <AppManager />
             <Header />
             <main className="min-h-screen">{children}</main>
