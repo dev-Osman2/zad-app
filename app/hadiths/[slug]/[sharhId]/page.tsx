@@ -1,4 +1,8 @@
-import { allExams, allHadithBooks, allHadithSharhByBook } from "@/lib/data";
+import {
+  allExams,
+  allHadithBooks,
+  allHadithSharhByBook,
+} from "@/lib/constants/data";
 import HadithSidebarDrawer from "@/components/viewers/HadithSidebarDrawer";
 import { notFound } from "next/navigation";
 

@@ -1,13 +1,13 @@
-import { CourseData, ExamData } from "./types/types";
+import { CourseData, ExamData } from "../types/types";
 
-import { infoAbnothemen, Abnothemen } from "./content/hadiths/arbaeen/othemen";
-import { infoQisas, qisas } from "./content/hadiths/qisas-nabawi/qisas";
+import { infoAbnothemen, Abnothemen } from "../content/hadiths/arbaeen/othemen";
+import { infoQisas, qisas } from "../content/hadiths/qisas-nabawi/qisas";
 
-import { arbaeenExams } from "./content/hadiths/arbaeen/hadithExam";
-import { qisasExam } from "./content/hadiths/qisas-nabawi/qisasExam";
+import { arbaeenExams } from "../content/hadiths/arbaeen/hadithExam";
+import { qisasExam } from "../content/hadiths/qisas-nabawi/qisasExam";
 
-import { arbaeenSharh } from "./content/hadiths/arbaeen/hadithSharh";
-import { qisasSharh } from "./content/hadiths/qisas-nabawi/qisasSharh";
+import { arbaeenSharh } from "../content/hadiths/arbaeen/hadithSharh";
+import { qisasSharh } from "../content/hadiths/qisas-nabawi/qisasSharh";
 
 import meditateIndex from "@/public/data/meditateQuran/index.json";
 import meditateInfo from "@/public/data/meditateQuran/info.json";
@@ -21,26 +21,29 @@ import sahaba2Info from "@/public/data/sahaba-2/info.json";
 import tabi3een2Index from "@/public/data/tabi3een/index.json";
 import tabi3een2Info from "@/public/data/tabi3een/info.json";
 
-import { sahabiyatInfo, sahabiyat } from "./content/sahaba/sahabiyat";
+import { sahabiyatInfo, sahabiyat } from "../content/sahaba/sahabiyat";
 
-import { sahaba1ExamsData } from "./content/sahaba/sahaba1Exam";
-import { sahaba2ExamsData } from "./content/sahaba/sahaba2Exam";
-import { sahabiyatExamsData } from "./content/sahaba/sahabiyatExam";
-import { tabi3eenExamsData } from "./content/sahaba/tabi3eenExam";
+import { sahaba1ExamsData } from "../content/sahaba/sahaba1Exam";
+import { sahaba2ExamsData } from "../content/sahaba/sahaba2Exam";
+import { sahabiyatExamsData } from "../content/sahaba/sahabiyatExam";
+import { tabi3eenExamsData } from "../content/sahaba/tabi3eenExam";
 
 import {
   inforamadanCouncils,
   ramadanCouncils,
-} from "./content/ramadan/ramadanCouncils";
-import { infoRamadanEvent, RamadanEvent } from "./content/ramadan/ramadanEvent";
-import { infoQuranStages, QuranStages } from "./content/quran/quranStages";
-import { infota3zeem, ta3zeem } from "./content/ramadan/ta3zeem";
-import { infoTafsir, Tafsir } from "./content/quran/Tafsir";
+} from "../content/ramadan/ramadanCouncils";
+import {
+  infoRamadanEvent,
+  RamadanEvent,
+} from "../content/ramadan/ramadanEvent";
+import { infoQuranStages, QuranStages } from "../content/quran/quranStages";
+import { infota3zeem, ta3zeem } from "../content/ramadan/ta3zeem";
+import { infoTafsir, Tafsir } from "../content/quran/Tafsir";
 
-import { infodrNaif, drNaif } from "./content/podcasts/1/drNaif";
-import { infodrOsman, drOsman } from "./content/podcasts/2/osman";
-import { infoother, other } from "./content/podcasts/3/other";
-import { infosahm, sahm } from "./content/podcasts/4/sahm";
+import { infodrNaif, drNaif } from "../content/podcasts/1/drNaif";
+import { infodrOsman, drOsman } from "../content/podcasts/2/osman";
+import { infoother, other } from "../content/podcasts/3/other";
+import { infosahm, sahm } from "../content/podcasts/4/sahm";
 
 export const allCourses: Record<string, CourseData> = {
   "ta3zeem-al3elm": {

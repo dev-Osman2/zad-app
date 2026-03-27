@@ -1,5 +1,5 @@
 import ClientPage from "./ClientPage";
-import { allCourses } from "@/lib/data";
+import { allCourses } from "@/lib/constants/data";
 import { notFound } from "next/navigation";
 
 export function generateStaticParams() {

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Library, BookOpen, ChevronDown, ChevronUp } from "lucide-react";
-import { sectionsData } from "@/lib/contentData";
+import { sectionsData } from "@/lib/constants/contentData";
 import { useTheme } from "@/providers/ThemeProvider";
 
 const BookCard = ({
@@ -74,7 +74,11 @@ export default function BooksSection() {
   };
 
   return (
-    <section className={`px-6 lg:px-20 py-12 relative z-10 space-y-8 ${darkMode ? "bg-[#131C30]!" : ""}`}  >
+    <section
+      className={`px-6 lg:px-20 py-12 relative z-10 space-y-8 ${
+        darkMode ? "bg-[#131C30]!" : ""
+      }`}
+    >
       <div className="flex items-center gap-3 mb-8 justify-center lg:justify-start">
         <Library className="text-amber-500" size={28} />
         <h2 className="text-3xl font-bold font-amiri">المتون المشروحة</h2>

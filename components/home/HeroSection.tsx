@@ -8,7 +8,7 @@ import { BookOpen, Calendar, Lightbulb } from "lucide-react";
 import SadqaBadge from "@/components/ui/SadqaBadge";
 import { useTheme } from "@/providers/ThemeProvider";
 
-import { Quotes } from "@/lib/dailyQuotes";
+import { Quotes } from "@/lib/constants/dailyQuotes";
 
 const darkImg = "/landingDark.avif";
 const lightImg = "/landing.avif";

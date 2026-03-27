@@ -5,7 +5,7 @@ import {
   recommendedApps,
   recommendedChannels,
   recommendedBots,
-} from "@/lib/recommendedData";
+} from "@/lib/constants/recommendedData";
 
 export default function RecommendedAppsPage() {
   const handleLinkClick = (

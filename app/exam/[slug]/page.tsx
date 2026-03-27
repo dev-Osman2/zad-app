@@ -1,5 +1,5 @@
 import ClientPage from "./ClientPage";
-import { allExams } from "@/lib/data";
+import { allExams } from "@/lib/constants/data";
 
 export function generateStaticParams() {
   return Object.keys(allExams).map((examKey) => ({

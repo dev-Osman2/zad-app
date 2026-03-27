@@ -1,10 +1,9 @@
 "use client";
 
 import { useTheme } from "@/providers/ThemeProvider";
-import { footerQuotes } from "@/lib/dailyQuotes";
+import { footerQuotes } from "@/lib/constants/dailyQuotes";
 export default function Footer() {
   const { darkMode } = useTheme();
-
 
   return (
     <footer
@@ -25,7 +24,7 @@ export default function Footer() {
           return (
             <div
               className={`text-xl md:text-3xl font-bold ${
-          darkMode ? "text-amber-400" : "text-amber-700"
+                darkMode ? "text-amber-400" : "text-amber-700"
               }`}
               style={{ fontFamily: "'Aref Ruqaa', serif" }}
             >
@@ -33,7 +32,6 @@ export default function Footer() {
             </div>
           );
         })()}
-
 
         <div
           dir="ltr"
@@ -56,7 +54,9 @@ export default function Footer() {
             Osman
           </a>
 
-          <span className="hidden sm:inline">{"< All Copy Rights Reserved @2026 >"}</span>
+          <span className="hidden sm:inline">
+            {"< All Copy Rights Reserved @2026 >"}
+          </span>
           <span className="sm:hidden">{"< / >"}</span>
         </div>
       </div>

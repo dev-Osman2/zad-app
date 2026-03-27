@@ -5,7 +5,7 @@ import {
   allHadithBooks,
   allHadithSharhByBook,
   allPodcasts,
-} from "@/lib/data";
+} from "@/lib/constants/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://zad-app.vercel.app";

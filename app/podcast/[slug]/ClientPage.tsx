@@ -1,8 +1,6 @@
-import { allPodcasts } from "@/lib/data";
+import { allPodcasts } from "@/lib/constants/data";
 import { notFound } from "next/navigation";
 import CourseViewer from "@/components/viewers/CourseViewer";
-
-
 
 export default async function PodcastPage({
   params,

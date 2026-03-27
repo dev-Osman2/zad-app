@@ -1,7 +1,10 @@
-import { allHadithBooks, allExams, allHadithSharhByBook } from "@/lib/data";
+import {
+  allHadithBooks,
+  allExams,
+  allHadithSharhByBook,
+} from "@/lib/constants/data";
 import { notFound } from "next/navigation";
 import HadithViewer from "@/components/viewers/HadithViewer";
-
 
 export default async function HadithPage({
   params,
@@ -30,7 +33,6 @@ export default async function HadithPage({
       hadithSharhSlugs[section.id] = `sharh-${section.id}`;
     }
   }
-
 
   return (
     <HadithViewer
