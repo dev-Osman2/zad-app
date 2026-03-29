@@ -65,6 +65,18 @@ export default function QuranSidebar({ surahs }: { surahs: Chapter[] }) {
               size={16}
               className={`absolute right-3 top-1/2 -translate-y-1/2 ${darkMode ? "text-slate-500" : "text-slate-400"}`}
             />
+            {searchTerm && (
+                <button
+                  onClick={() => setSearchTerm("")}
+                  className={`absolute left-4 top-2 p-1 rounded-full transition-colors ${
+                    darkMode
+                      ? "hover:bg-slate-700 text-slate-300"
+                      : "hover:bg-amber-100 text-slate-600"
+                  }`}
+                >
+                  <X size={16} />
+                </button>
+              )}
           </div>
         </div>
 

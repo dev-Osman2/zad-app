@@ -142,6 +142,11 @@ export const recommendedChannels: YouTubeChannel[] = [
     url: "https://www.youtube.com/@Qutofosaimi",
   },
   {
+    id: "osman",
+    name: "الشيخ عثمان الخميس",
+    url: "https://www.youtube.com/@othmanalkamees",
+  },
+  {
     id: "waie",
     name: "قناة وعي",
     url: "https://www.youtube.com/@Waie",
@@ -163,4 +168,11 @@ export const recommendedBots: TelegramBot[] = [
     deepLink: "tg://resolve?domain=athrrrrBot",
     fallbackUrl: "https://t.me/athrrrrBot",
   },
+  {
+    id: "zad-books-drive",
+    name: "جوجل درايف",
+    description: "مجلد يحتوي على جميع الكتب والمتون الخاصة بمحتوى التطبيق.",
+    deepLink: "https://drive.google.com/drive/folders/1gc5O5FL3eKi6536QVmy-kxgYMu9CrMRa?usp=sharing",
+    fallbackUrl: "https://drive.google.com/drive/folders/1gc5O5FL3eKi6536QVmy-kxgYMu9CrMRa?usp=sharing",
+  }
 ];

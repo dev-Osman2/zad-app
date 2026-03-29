@@ -41,6 +41,7 @@ export default async function HadithPage({
       storageKey={`hadith_progress_${slug}`}
       hadithExamSlugs={hadithExamSlugs}
       hadithSharhSlugs={hadithSharhSlugs}
+      sharhLabel = {slug === "qisas" ? "شرح المهندس علاء حامد" : undefined}
     />
   );
 }

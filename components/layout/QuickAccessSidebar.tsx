@@ -28,7 +28,7 @@ export default function QuickAccessSidebar({
 
   const [openCategories, setOpenCategories] = useState<Record<string, boolean>>(
     {
-      "القرآن الكريم وعلومه": false,
+      "القرآن الكريم وعلومه": true,
     },
   );
 

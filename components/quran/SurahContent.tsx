@@ -2,12 +2,10 @@
 
 import { SurahDetail } from "@/lib/services/quranApi";
 import { useTheme } from "@/providers/ThemeProvider";
-import { BookOpen } from "lucide-react";
 
 export default function SurahContent({ surah }: { surah: SurahDetail }) {
   const { darkMode } = useTheme();
 
-  const startPage = surah.verses[0]?.page_number;
   const startJuz = surah.verses[0]?.juz_number;
   const showBismillahHeader = surah.meta.id !== 1 && surah.meta.id !== 9;
 
@@ -35,10 +33,6 @@ export default function SurahContent({ surah }: { surah: SurahDetail }) {
               className={`inline-flex flex-wrap justify-center items-center gap-3 text-sm font-medium px-6 py-3 rounded-2xl border
               ${darkMode ? "bg-slate-900 border-slate-700 text-slate-400" : "bg-amber-50 border-amber-200 text-amber-900"}`}
             >
-              <span className="flex items-center gap-2">
-                <BookOpen size={16} className="text-amber-500" /> صفحة{" "}
-                {startPage}
-              </span>
               <span className="w-px h-4 bg-current opacity-20"></span>
               <span>الجزء {startJuz}</span>
               <span className="w-px h-4 bg-current opacity-20"></span>

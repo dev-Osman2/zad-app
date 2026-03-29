@@ -32,14 +32,11 @@ const notoSans = Noto_Sans_Arabic({
 export const metadata: Metadata = {
   title: "زاد",
   description:
-    "منصة زاد التعليمية: رفيقك الأمثل في شهر رمضان المبارك لتدبر القرآن الكريم، ودراسة المتون المشروحة، والاستماع لأفضل البودكاست الإسلامي بوعي وبناء.",
-  manifest: "/manifest.json",
+    "منصة زاد: رفيقك في رحلة الحياة لتدبر القرآن الكريم، وتزكية النفس، ودراسة المتون، والاستماع لأفضل المحتوى الإسلامي بوعي وبناء.",
   icons: {
     icon: "/logo.svg",
     apple: "/icon-192.png",
   },
-
-
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",

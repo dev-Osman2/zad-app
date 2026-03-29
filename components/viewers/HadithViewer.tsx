@@ -27,7 +27,7 @@ export default function HadithViewer({
   data,
   hadithSlug,
   storageKey,
-  sharhLabel = "شرح الشيخ ابن عثيمين",
+  sharhLabel = "شرح الشيخ إبن عثيمين",
   hadithExamSlugs = {},
   hadithSharhSlugs = {},
 }: HadithViewerProps) {
@@ -194,7 +194,7 @@ export default function HadithViewer({
                               className={`flex items-center gap-2 text-xl font-bold mb-4 font-amiri ${darkMode ? "text-blue-400" : "text-blue-800"}`}
                             >
                               <BookOpen className="w-5 h-5" />
-                              {sharhLabel}
+                              {Number(item.id.replace("h", "")) <= 42 ? `${sharhLabel}` : "شرح إبن رجب"}
                             </h3>
                             <div
                               className={`prose prose-lg max-w-none text-base md:text-lg leading-loose text-justify ${darkMode ? "text-slate-300" : "text-slate-700"}`}

@@ -176,6 +176,16 @@ export default function CourseViewer({
           shadow-2xl backdrop-blur-lg overflow-y-auto no-scrollbar`}
         >
           <div className={`p-4 ${isPodcast ? "" : "pt-20 lg:pt-6"}`}>
+            <button
+              onClick={() => setIsSidebarOpen(false)}
+              className={`absolute top-4 left-4 p-2 rounded-full ${
+                darkMode
+                  ? "hover:bg-slate-800 text-slate-400"
+                  : "hover:bg-amber-100 text-amber-800"
+              }`}
+            >
+              <X size={24} />
+            </button>
             <div
               className={`flex items-center gap-2 mb-4 px-2 ${
                 darkMode ? "text-amber-500" : "text-amber-700"

@@ -16,8 +16,11 @@ export default function Header() {
 
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isQuickAccessOpen, setIsQuickAccessOpen] = useState(false);
+  const [isNotFound, setIsNotFound] = useState(false);
 
+  // تحديث الشرط ليفتح QuickAccessSidebar إذا كنا في صفحة 404
   const isQuickAccessPage =
+    isNotFound || 
     pathname === "/" ||
     pathname === "/feedback" ||
     pathname === "/recommended-apps" ||
@@ -39,6 +42,20 @@ export default function Header() {
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // الاستماع لحدث الـ 404
+  useEffect(() => {
+    const handleNotFound = () => setIsNotFound(true);
+    const handleResetNotFound = () => setIsNotFound(false);
+
+    window.addEventListener("set-not-found", handleNotFound);
+    window.addEventListener("reset-not-found", handleResetNotFound);
+
+    return () => {
+      window.removeEventListener("set-not-found", handleNotFound);
+      window.removeEventListener("reset-not-found", handleResetNotFound);
+    };
   }, []);
 
   const handleMenuClick = () => {
