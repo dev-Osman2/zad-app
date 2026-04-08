@@ -31,6 +31,20 @@ export interface TelegramBot {
 
 export const recommendedApps: AppCategory[] = [
   {
+    id: "quran",
+    title: "حفظ القرآن الكريم",
+    apps: [
+      {
+        id: "abdo-quran",
+        name: "تطبيق المصحف",
+        description: "مصحف إلكتروني مميز للقراءة، الحفظ، والتلاوة العذبة.",
+        icon: BookOpen,
+        deepLink: "market://details?id=com.abdo.quran",
+        fallbackUrl: "https://play.google.com/store/apps/details?id=com.abdo.quran",
+      },
+    ],
+  },
+  {
     id: "listening",
     title: "الاستماع والدورات العلمية",
     apps: [
@@ -49,20 +63,6 @@ export const recommendedApps: AppCategory[] = [
         icon: Headphones,
         deepLink: "market://details?id=com.soundcloud.android",
         fallbackUrl: "https://play.google.com/store/apps/details?id=com.soundcloud.android",
-      },
-    ],
-  },
-  {
-    id: "quran",
-    title: "حفظ القرآن الكريم",
-    apps: [
-      {
-        id: "abdo-quran",
-        name: "تطبيق المصحف",
-        description: "مصحف إلكتروني مميز للقراءة، الحفظ، والتلاوة العذبة.",
-        icon: BookOpen,
-        deepLink: "market://details?id=com.abdo.quran",
-        fallbackUrl: "https://play.google.com/store/apps/details?id=com.abdo.quran",
       },
     ],
   },
@@ -167,6 +167,13 @@ export const recommendedBots: TelegramBot[] = [
     description: "بوت شامل لكل ما يحتاجه المسلم من صوتيات، بودكاست، ومكتبة إسلامية.",
     deepLink: "tg://resolve?domain=athrrrrBot",
     fallbackUrl: "https://t.me/athrrrrBot",
+  },
+  {
+    id: "riyadh-aljannah-channel",
+    name: "رياض الجنة",
+    description: "قناة إسلامية تهتم بنشر الفوائد والتذكير بالسنن والأعمال الصالحة ومجالس العلم.",
+    deepLink: "tg://join?invite=4ICL5WhCUfQ5MTQ0",
+    fallbackUrl: "https://t.me/+4ICL5WhCUfQ5MTQ0",
   },
   {
     id: "zad-books-drive",

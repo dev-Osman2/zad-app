@@ -23,11 +23,6 @@ export default function HeroSection() {
     const date = new Date();
     date.setDate(date.getDate() - 1);
 
-    const dayFormatter = new Intl.DateTimeFormat("en-u-ca-islamic-umalqura", {
-      day: "numeric",
-    });
-    const hijriDay = dayFormatter.format(date);
-
     const fullFormatter = new Intl.DateTimeFormat(
       "ar-SA-u-ca-islamic-umalqura",
       {
