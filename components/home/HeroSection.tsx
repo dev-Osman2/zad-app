@@ -8,7 +8,7 @@ import { BookOpen, Calendar, Lightbulb } from "lucide-react";
 import SadqaBadge from "@/components/ui/SadqaBadge";
 import { useTheme } from "@/providers/ThemeProvider";
 
-import { Quotes } from "@/lib/constants/dailyQuotes";
+import { Quotes, getPeriodicQuote } from "@/lib/constants/dailyQuotes";
 
 const darkImg = "/landingDark.avif";
 const lightImg = "/landing.avif";
@@ -39,7 +39,7 @@ export default function HeroSection() {
 
     return {
       hijriDate: fullFormatter.format(date),
-      quote: dailyQuotes[hijriDay] || dailyQuotes["15"],
+      quote: getPeriodicQuote(dailyQuotes),
     };
   });
 

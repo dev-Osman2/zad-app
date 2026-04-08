@@ -6,6 +6,7 @@ import {
   ClipboardList,
   BookOpen,
   CheckCircle2,
+  X,
 } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "@/providers/ThemeProvider";
@@ -84,12 +85,22 @@ export default function HadithSidebarDrawer({
       >
         <div className="p-4">
           <div
-            className={`flex items-center gap-2 mb-6 px-2 ${darkMode ? "text-amber-500" : "text-amber-700"}`}
+            className={`flex items-center justify-between mb-6 px-2 ${darkMode ? "text-amber-500" : "text-amber-700"}`}
           >
             <ScrollText size={18} />
             <h3 className="font-bold text-sm uppercase tracking-wider">
               فهرس الأحاديث
             </h3>
+            <button
+              onClick={() => setIsSidebarOpen(false)}
+              className={` p-2 rounded-full left-0${
+                darkMode
+                  ? "hover:bg-slate-800 text-slate-400"
+                  : "hover:bg-amber-100 text-amber-800"
+              }`}
+            >
+              <X size={24} />
+            </button>
           </div>
 
           <nav className="space-y-1.5">

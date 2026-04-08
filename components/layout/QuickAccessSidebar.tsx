@@ -81,7 +81,7 @@ export default function QuickAccessSidebar({
 
             <button
               onClick={onClose}
-              className={`p-2 rounded-lg transition-colors lg:hidden ${
+              className={`p-2 rounded-lg transition-colors ${
                 darkMode
                   ? "hover:bg-slate-800 text-slate-400"
                   : "hover:bg-slate-100 text-slate-600"

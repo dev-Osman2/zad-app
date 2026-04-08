@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme } from "@/providers/ThemeProvider";
-import { footerQuotes } from "@/lib/constants/dailyQuotes";
+import { footerQuotes, getPeriodicQuote } from "@/lib/constants/dailyQuotes";
 export default function Footer() {
   const { darkMode } = useTheme();
 
@@ -15,12 +15,7 @@ export default function Footer() {
     >
       <div className="container mx-auto px-4 flex flex-col items-center gap-5">
         {(() => {
-          const hijriDay = new Intl.DateTimeFormat("en-TN-u-ca-islamic", {
-            day: "numeric",
-          }).format(new Date());
-
-          const quote = footerQuotes[hijriDay] ?? footerQuotes["1"];
-
+          const quote = getPeriodicQuote(footerQuotes);
           return (
             <div
               className={`text-xl md:text-3xl font-bold ${
