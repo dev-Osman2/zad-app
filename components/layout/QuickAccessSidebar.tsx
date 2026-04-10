@@ -187,7 +187,7 @@ export default function QuickAccessSidebar({
             
             {Capacitor.getPlatform() === "web" && (
               <a
-                href="#" // ضع رابط التحميل الفعلي هنا
+                href="https://download.zad-islam.app/zad.apk" 
                 download
                 onClick={onClose}
                 className={`flex items-center gap-3 w-full px-4 py-3 rounded-xl transition-all

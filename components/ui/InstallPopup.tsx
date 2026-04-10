@@ -36,7 +36,7 @@ export default function InstallBanner() {
 
         <div className="flex items-center gap-4">
           <a
-            href="#" // Replace this with the actual APK download link
+            href="https://download.zad-islam.app/zad.apk" 
             download
             className="px-4 py-1.5 rounded-lg text-sm font-bold whitespace-nowrap transition-colors bg-amber-600 text-white hover:bg-amber-700 dark:bg-amber-500 dark:text-slate-900 dark:hover:bg-amber-400"
           >
