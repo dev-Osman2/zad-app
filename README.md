@@ -2,25 +2,34 @@
 
 <img src="public/logo.svg" alt="Zad Logo" width="120"/>
 
-# Zad
+# Zad 📖
 
-**منصة تعليمية إسلامية لتدبر القرآن، ودراسة المتون، والاستماع للبودكاست**
+**منصة تعليمية إسلامية شاملة بلا اتصال بالإنترنت — لتدبر القرآن، ودراسة الحديث، والاستماع للبودكاست، واستكشاف قصص الصحابة**
 
 <p>
-  <img src="https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js&logoColor=white" alt="Next.js" />
+  <img src="https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js&logoColor=white" alt="Next.js" />
   <img src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black" alt="React" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
   <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/PWA-Supported-5A0FC8?style=flat-square&logo=pwa&logoColor=white" alt="PWA" />
+  <img src="https://img.shields.io/badge/Capacitor-Android_APK-3880FF?style=flat-square&logo=capacitor&logoColor=white" alt="Capacitor" />
 </p>
 
 </div>
 
 ---
 
-## About
+## 📱 حول المشروع
 
-Zad is an open-source Islamic web application designed to provide a focused and distraction-free environment for spiritual learning. It combines a live Quran reader, authentic Hadith collections with commentary, Islamic book viewer, podcast library, and a Ramadan daily planner into a single Arabic-first platform.
+**Zad** هي منصة تعليمية إسلامية مفتوحة المصدر مصممة لتوفير بيئة تعليمية مركزة وخالية من المشتتات. تجمع بين مجموعة شاملة من الأدوات التعليمية:
+
+- 📕 **قارئ القرآن الكريم** - مع التلاوة والتفسير
+- 🕌 **مجموعات الحديث الشريف** - مع الشروحات العلمية
+- 📚 **قصص الصحابة الكرام** - للتعلم من سيرتهم
+- 🎙️ **مكتبة البودكاست الإسلامي** - مع النصوص والنقاط الرئيسية
+- 🧪 **الاختبارات التفاعلية** - لقياس الفهم والاستيعاب
+- 🌙 **دعم الوضع الليلي** - لراحة العينين أثناء الدراسة
+
+وكل ذلك في تطبيق **مستقل تماماً عن الإنترنت** (Offline-First) يعمل بدون الحاجة إلى اتصال بالشبكة.
 
 <p align="center">
   <img src="public/landing.avif" alt="Light Mode" width="48%" style="border-radius: 8px;" />
@@ -29,117 +38,255 @@ Zad is an open-source Islamic web application designed to provide a focused and 
 
 ---
 
-## Features
+## ✨ المميزات الرئيسية
 
-- **Quran Reader** — Real-time Surah and Ayah fetching via the Quran API with Incremental Static Regeneration (ISR) caching.
-- **Hadith Collections** — Specialized viewer for studying Hadith texts with scholarly commentary (e.g., Al-Arba'in An-Nawawiyyah with Ibn Uthaymeen's explanation).
-- **Islamic Books Viewer** — Distraction-free reader for annotated Islamic texts rendered from Markdown.
-- **Podcast Library** — Integrated audio player with transcript support for Islamic educational podcasts.
-- **Ramadan Planner** — Daily task checklist with visual progress tracking for spiritual goals.
-- **Exams** — Interactive quizzes to test comprehension of studied content.
-- **Dark Mode** — Class-based theme switching with CSS variables for comfortable night reading.
-- **PWA Support** — Installable as a Progressive Web App for offline-capable access.
-- **RTL-First Design** — Fully right-to-left interface with Arabic typography (Amiri, Aref Ruqaa, Noto Sans Arabic).
-- **Static Generation** — Pages pre-rendered at build time via SSG with `generateStaticParams` for instant navigation.
-
----
-
-## Tech Stack
-
-| Layer     | Technology              |
-| --------- | ----------------------- |
-| Framework | Next.js 16 (App Router) |
-| UI        | React 19                |
-| Styling   | Tailwind CSS 4          |
-| Language  | TypeScript 5            |
-| PWA       | @ducanh2912/next-pwa    |
-| Icons     | Lucide React            |
-| Markdown  | react-markdown          |
-| Email     | EmailJS                 |
+| المميزة                  | الوصف                                                                            |
+| ------------------------ | -------------------------------------------------------------------------------- |
+| 📖 **قارئ القرآن**       | عرض كامل لكتاب الله مع إمكانية البحث والتنقل السلس بين الآيات                    |
+| 🕌 **الحديث الشريف**     | مجموعات حديثية موثوقة مع شروحات علمية من العلماء                                 |
+| 🧬 **قصص الصحابة**       | سير وحكايات ملهمة عن صحابة رسول الله ﷺ                                           |
+| 🎙️ **البودكاست**         | محتوى صوتي تعليمي إسلامي متنوع                                                   |
+| 🧪 **الامتحانات**        | اختبارات تفاعلية لتقييم المعرفة                                                  |
+| 🌙 **الوضع الليلي**      | تبديل سلس بين الوضع الفاتح والداكن                                               |
+| 📱 **تطبيق أندرويد**     | تم تغليف التطبيق باستخدام **Capacitor** لإنشاء APK أصلي يعمل على أي جهاز أندرويد |
+| 🔐 **بدون اتصال إنترنت** | كل البيانات محفوظة محلياً - لا حاجة للاتصال بخوادم خارجية                        |
+| ➡️ **واجهة عربية 100%**  | تصميم كامل من اليمين إلى اليسار مع خطوط عربية متقنة                              |
+| ⚡ **سرعة فائقة**        | الصفحات محررة مسبقاً (Static Generation) للتحميل الفوري                          |
 
 ---
 
-## Project Structure
+## 🛠️ المكدس التقني (Tech Stack)
+
+| الطبقة                | التقنية                 | الملاحظات                               |
+| --------------------- | ----------------------- | --------------------------------------- |
+| **الإطار الرئيسي**    | Next.js 15 (App Router) | إطار React حديث وقوي                    |
+| **المكتبة**           | React 19                | أحدث إصدار من React مع المميزات الجديدة |
+| **التنسيق**           | Tailwind CSS 4          | لغة CSS منفعة وسريعة                    |
+| **لغة البرمجة**       | TypeScript 5            | لضمان سلامة الكود                       |
+| **الأيقونات**         | Lucide React            | مجموعة أيقونات حديثة وجميلة             |
+| **معالجة Markdown**   | react-markdown          | لتحويل نصوص Markdown إلى HTML           |
+| **تطبيق الجوال**      | Capacitor               | تحويل بناء Next.js إلى APK أندرويد أصلي |
+| **البريد الإلكتروني** | EmailJS                 | لإرسال الآراء والمقترحات                |
+
+---
+
+## 📁 هيكل المشروع
 
 ```
-zad-app/
-├── app/                   # Next.js App Router
-│   ├── books/[slug]/      # Dynamic Islamic books pages
-│   ├── exam/[slug]/       # Dynamic interactive exams
-│   ├── feedback/          # User feedback page
-│   ├── hadiths/[slug]/    # Hadith books pages
-│   ├── hadiths/[slug]/[sharhId]/ # Hadith commentary pages
-│   ├── podcast/[slug]/    # Dynamic podcast pages
-│   ├── quran/             # Quran landing page
-│   ├── quran/[chapterId]/ # Dynamic Surah pages (1-114)
-│   ├── layout.tsx         # Root layout
-│   └── page.tsx           # Home page
-├── components/
-│   ├── home/              # Landing page sections
-│   ├── layout/            # Header, Footer
-│   ├── quran/             # Quran sidebar & UI
-│   ├── viewers/           # Content viewers (Books, Hadith, Exam, etc.)
-│   ├── ui/                # Shared UI components
-│   └── forms/             # Form components
-├── lib/
-│   ├── services/          # API fetchers (Quran API)
-│   ├── content/           # Static content & transcripts
-│   ├── contentData.tsx    # Books & sections metadata
-│   └── types/             # TypeScript type definitions
-├── providers/
-│   ├── ThemeProvider.tsx   # Dark/Light mode context
-│   └── SidebarProvider.tsx # Sidebar state context
-└── public/                # Static assets & PWA manifest
+zad/
+│
+├── 📂 app/                          # صفحات Next.js App Router
+│   ├── 📂 books/[slug]/             # قارئ الكتب الإسلامية (ديناميكي)
+│   ├── 📂 quran/                    # صفحة القرآن الرئيسية
+│   ├── 📂 quran/[chapterId]/        # صفحات السور (1-114)
+│   ├── 📂 hadiths/[slug]/           # صفحات كتب الحديث
+│   ├── 📂 hadiths/[slug]/[sharhId]/ # شروحات الحديث (ديناميكي)
+│   ├── 📂 sahaba/[slug]/            # قصص الصحابة الكرام
+│   ├── 📂 podcast/[slug]/           # صفحات البودكاست
+│   ├── 📂 exam/[slug]/              # الامتحانات التفاعلية
+│   ├── 📂 feedback/                 # صفحة الآراء والمقترحات
+│   ├── layout.tsx                   # الـ Layout الأساسي
+│   └── page.tsx                     # الصفحة الرئيسية
+│
+├── 📂 components/                   # مكونات React القابلة لإعادة الاستخدام
+│   ├── 📂 home/                     # مكونات الصفحة الرئيسية
+│   ├── 📂 layout/                   # الرأس والتذييل والقوائم
+│   ├── 📂 quran/                    # مكونات قارئ القرآن
+│   ├── 📂 viewers/                  # عارضات المحتوى المختلفة
+│   ├── 📂 ui/                       # مكونات واجهة المستخدم المشتركة
+│   └── 📂 forms/                    # مكونات النماذج
+│
+├── 📂 lib/                          # المنطق والأدوات المساعدة
+│   ├── 📂 actions/                  # دوال الخادم (Server Actions)
+│   ├── 📂 content/                  # محتوى ثابت والنصوص الكاملة
+│   ├── 📂 data/                     # ثوابت وبيانات متنوعة
+│   └── 📂 types/                    # تعريفات TypeScript
+│
+├── 📂 providers/                    # موفرو السياق (Context Providers)
+│   ├── ThemeProvider.tsx            # التحكم بالوضع الليلي والفاتح
+│   └── SidebarProvider.tsx          # إدارة حالة الشريط الجانبي
+│
+├── 📂 public/                       # الملفات الثابتة والوسائط
+│   ├── 📂 data/                     # قواعد البيانات JSON محلياً
+│   │   ├── quran.json               # نصوص القرآن الكامل
+│   │   ├── hadiths.json             # مجموعات الحديث
+│   │   ├── sahaba.json              # قصص الصحابة
+│   │   └── podcasts.json            # معلومات البودكاست
+│   ├── logo.svg                     # شعار التطبيق
+│   └── ...                          # صور وأيقونات أخرى
+│
+├── android/                         # مجلد تطبيق Capacitor للأندرويد
+│   └── (ملفات بناء Capacitor)
+│
+├── capacitor.config.json            # إعدادات Capacitor
+├── package.json                     # الاعتماديات والسكريبتات
+├── tsconfig.json                    # إعدادات TypeScript
+├── tailwind.config.js               # إعدادات Tailwind CSS
+└── next.config.js                   # إعدادات Next.js
+
 ```
 
----
+### 📌 شرح المجلدات الرئيسية:
 
-## Routes
-
-- `/` Home page
-- `/feedback` Feedback form
-- `/quran` Quran main page
-- `/quran/[chapterId]` Surah page (1-114)
-- `/books/[slug]` Book reader page
-- `/hadiths/[slug]` Hadith book page
-- `/hadiths/[slug]/[sharhId]` Hadith commentary page
-- `/podcast/[slug]` Podcast page
-- `/exam/[slug]` Exam page
+- **`app/`** — جميع صفحات التطبيق باستخدام App Router الحديث
+- **`components/`** — مكونات React قابلة لإعادة الاستخدام ومعزولة
+- **`lib/`** — الدوال المساعدة والمنطق التجاري (Business Logic)
+- **`public/data/`** — قاعدة البيانات المحلية (JSON files) - **جميع البيانات محفوظة هنا**
+- **`android/`** — ملفات بناء تطبيق Capacitor للأندرويد
 
 ---
 
-## Getting Started
+## 🔄 معمارية تدفق البيانات (Offline-First Architecture)
 
-### Prerequisites
+### المبدأ الأساسي: عدم الاعتماد على خوادم خارجية
 
-- Node.js 20+
-- npm
+هذا التطبيق مصمم ليكون **مستقلاً تماماً** (Offline-First) — جميع البيانات محفوظة محلياً في ملفات JSON ضمن مجلد `public/data/`.
 
-### Installation
+```mermaid
+graph LR
+    A["👤 تفاعل المستخدم<br/>User Interaction"] -->|النقر على زر| B["⚛️ مكون React<br/>UI Component"]
+    B -->|استدعاء دالة| C["⚙️ الإجراءات<br/>lib/actions"]
+    C -->|قراءة البيانات| D["📊 قاعدة البيانات<br/>public/data/<br/>(JSON files)"]
+    D -->|تحديث الواجهة| E["🎨 عرض النتيجة<br/>Display Result"]
+    E -->|تحديث الحالة| B
+
+    style A fill:#FF6B6B
+    style B fill:#4ECDC4
+    style C fill:#45B7D1
+    style D fill:#FFA07A
+    style E fill:#98D8C8
+```
+
+### خطوات تدفق البيانات بالتفصيل:
+
+```
+1️⃣  المستخدم يتفاعل مع الواجهة
+    └─ يضغط على زر البحث، أو يختار سورة، أو يبحث عن حديث
+
+2️⃣  مكون React يستقبل التفاعل
+    └─ الحالة (State) تتغير
+    └─ يستدعي دالة من lib/actions
+
+3️⃣  الإجراء (Action) يعالج الطلب
+    └─ يقرأ البيانات المطلوبة من public/data/
+    └─ يعالج البيانات (بحث، تصفية، ترتيب)
+
+4️⃣  قاعدة البيانات المحلية ترجع البيانات
+    └─ ملفات JSON لا تحتاج إلى اتصال إنترنت
+    └─ البيانات فورية وآمنة
+
+5️⃣  النتيجة تُعرض على الشاشة
+    └─ الواجهة تتحدث مباشرة
+    └─ المستخدم يرى البيانات فوراً
+```
+
+### 🎯 المزايا:
+
+✅ **لا حاجة للإنترنت** — التطبيق يعمل تماماً بدون اتصال  
+✅ **أمان البيانات** — جميع المحتوى محفوظ محلياً  
+✅ **سرعة فائقة** — لا انتظار على الشبكة  
+✅ **خصوصية** — لا تتبع أو إرسال البيانات لخوادم خارجية  
+✅ **استقرار** — يعمل بنفس الكفاءة دائماً
+
+---
+
+## 🚀 الطرق الرئيسية (Routes)
+
+| المسار                      | الوصف                    |
+| --------------------------- | ------------------------ |
+| `/`                         | الصفحة الرئيسية          |
+| `/quran`                    | قائمة السور              |
+| `/quran/[chapterId]`        | قراءة سورة معينة (1-114) |
+| `/hadiths/[slug]`           | كتاب حديثي               |
+| `/hadiths/[slug]/[sharhId]` | شرح الحديث               |
+| `/sahaba/[slug]`            | قصة صحابي                |
+| `/books/[slug]`             | قراءة كتاب إسلامي        |
+| `/podcast/[slug]`           | استماع لبودكاست          |
+| `/exam/[slug]`              | حل امتحان تفاعلي         |
+| `/feedback`                 | نموذج الآراء والمقترحات  |
+
+---
+
+## 🚀 البدء السريع
+
+### المتطلبات
+
+- **Node.js 20+**
+- **npm** أو **yarn**
+- **(اختياري) Android SDK** - إذا كنت تريد بناء APK
+
+### التثبيت والتشغيل
 
 ```bash
+# استنساخ المشروع
 git clone https://github.com/OsmanTaher/zad-app.git
-cd zad-app
+cd zad
+
+# تثبيت الاعتماديات
 npm install
-```
 
-### Development
-
-```bash
+# تشغيل خادم التطوير
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+افتح المتصفح على: **[http://localhost:3000](http://localhost:3000)**
 
-### Production Build
+### بناء التطبيق للإنتاج
 
 ```bash
+# بناء التطبيق
 npm run build
+
+# تشغيل النسخة المُنتجة
 npm start
+```
+
+### بناء APK للأندرويد (باستخدام Capacitor)
+
+```bash
+# بناء الويب أولاً
+npm run build
+
+# نسخ الملفات إلى Capacitor
+npx cap copy
+
+# فتح Android Studio لبناء APK
+npx cap open android
+
+# أو بناء APK من سطر الأوامر (بعد إعداد Android SDK)
+cd android
+./gradlew assembleRelease
 ```
 
 ---
 
-## License
+## 📝 معايير المساهمة
 
-This project is open source. Feel free to use, modify, and distribute it for educational and Islamic benefit.
+نرحب بمساهماتك! يرجى:
+
+1. عمل Fork للمشروع
+2. إنشاء branch جديد (`git checkout -b feature/amazing-feature`)
+3. Commit التغييرات (`git commit -m 'Add amazing feature'`)
+4. Push إلى الـ branch (`git push origin feature/amazing-feature`)
+5. فتح Pull Request
+
+---
+
+## 📄 الترخيص
+
+هذا المشروع مفتوح المصدر ومتاح للاستخدام الحر. يرجى استخدامه والاستفادة منه في نشر العلم الإسلامي والمنفعة العامة.
+
+**للاستخدام التعليمي والديني بدون قيود.**
+
+---
+
+## 🙏 شكر وتقدير
+
+شكراً لك على استخدام **Zad**. نأمل أن يكون هذا التطبيق خادماً مخلصاً لك في رحلتك التعليمية الإسلامية.
+
+> _"العلم نور والجهل ظلام"_
+
+---
+
+**حرر بواسطة:** عثمان طاهر  
+**تاريخ التحديث:** 2026
