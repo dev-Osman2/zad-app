@@ -27,6 +27,7 @@ export default function AppManager() {
           await StatusBar.setBackgroundColor({ color: '#fdfbf7' });
           await StatusBar.setStyle({ style: Style.Light });
         }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         
       }

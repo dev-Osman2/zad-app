@@ -1,29 +1,29 @@
-"use client"; 
+"use client";
 
 import { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FileQuestion, Home, ArrowRight } from "lucide-react";
-import { useTheme } from "@/providers/ThemeProvider"; 
+import { useTheme } from "@/providers/ThemeProvider";
 
 export default function NotFound() {
   const router = useRouter();
-  const { darkMode } = useTheme(); 
-  
-  // إرسال حدث لتنبيه الـ Header أننا في صفحة 404
+  const { darkMode } = useTheme();
+
   useEffect(() => {
     window.dispatchEvent(new Event("set-not-found"));
 
-    // إعادة الضبط عند مغادرة الصفحة
     return () => {
       window.dispatchEvent(new Event("reset-not-found"));
     };
   }, []);
-  
+
   return (
     <div
       className={`min-h-screen flex flex-col items-center justify-center p-4 text-center transition-colors duration-300
-      ${darkMode ? "bg-slate-900 text-slate-100" : "bg-[#fdfbf7] text-slate-800"}
+      ${
+        darkMode ? "bg-slate-900 text-slate-100" : "bg-[#fdfbf7] text-slate-800"
+      }
       `}
     >
       <div className="relative mb-8">

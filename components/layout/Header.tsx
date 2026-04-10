@@ -18,9 +18,8 @@ export default function Header() {
   const [isQuickAccessOpen, setIsQuickAccessOpen] = useState(false);
   const [isNotFound, setIsNotFound] = useState(false);
 
-  // تحديث الشرط ليفتح QuickAccessSidebar إذا كنا في صفحة 404
   const isQuickAccessPage =
-    isNotFound || 
+    isNotFound ||
     pathname === "/" ||
     pathname === "/feedback" ||
     pathname === "/recommended-apps" ||
@@ -44,7 +43,6 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // الاستماع لحدث الـ 404
   useEffect(() => {
     const handleNotFound = () => setIsNotFound(true);
     const handleResetNotFound = () => setIsNotFound(false);

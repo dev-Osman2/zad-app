@@ -184,17 +184,17 @@ export default function QuickAccessSidebar({
                 darkMode ? "border-slate-800/50" : "border-amber-100/50"
               }`}
             />
-            {/* يظهر فقط في المتصفح ولا يظهر داخل التطبيق */}
+            
             {Capacitor.getPlatform() === "web" && (
               <a
-                href="https://download.zad-islam.app/zad.apk"
+                href="#" // ضع رابط التحميل الفعلي هنا
                 download
                 onClick={onClose}
                 className={`flex items-center gap-3 w-full px-4 py-3 rounded-xl transition-all
                 ${
                   darkMode
                     ? "bg-slate-800/80 hover:bg-slate-800"
-                    : "bg-amber-50 hover:bg-amber-100"
+                    : "bg-amber-50 hover:bg-amber-100" 
                 }
               `}
               >

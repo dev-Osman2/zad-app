@@ -1,12 +1,17 @@
 "use client";
 
-// Added FolderOpen for the new section
-import { Download, Youtube, Send, ExternalLink, FolderOpen } from "lucide-react";
+import {
+  Download,
+  Youtube,
+  Send,
+  ExternalLink,
+  FolderOpen,
+} from "lucide-react";
 import {
   recommendedApps,
   recommendedChannels,
   recommendedBots,
-  recommendedDriveFolders, // Import the new array
+  recommendedDriveFolders,
 } from "@/lib/constants/recommendedData";
 
 export default function RecommendedAppsPage() {
@@ -93,10 +98,7 @@ export default function RecommendedAppsPage() {
           ))}
         </div>
 
-        {/* Unified Bottom Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 pt-8 border-t-2 border-dashed border-slate-200 dark:border-slate-800">
-          
-          {/* Left Column: YouTube */}
           <section className="space-y-6">
             <div className="flex items-center gap-3 border-b border-red-200 dark:border-slate-800 pb-3">
               <Youtube className="text-red-600 dark:text-red-500" size={32} />
@@ -125,10 +127,7 @@ export default function RecommendedAppsPage() {
             </div>
           </section>
 
-          {/* Right Column: Split into Bots and Drive */}
           <div className="space-y-12">
-            
-            {/* Telegram Bots */}
             <section className="space-y-6">
               <div className="flex items-center gap-3 border-b border-blue-200 dark:border-slate-800 pb-3">
                 <Send className="text-blue-500 dark:text-blue-400" size={30} />
@@ -163,10 +162,12 @@ export default function RecommendedAppsPage() {
               </div>
             </section>
 
-            {/* Google Drive Resources */}
             <section className="space-y-6">
               <div className="flex items-center gap-3 border-b border-emerald-200 dark:border-slate-800 pb-3">
-                <FolderOpen className="text-emerald-500 dark:text-emerald-400" size={30} />
+                <FolderOpen
+                  className="text-emerald-500 dark:text-emerald-400"
+                  size={30}
+                />
                 <h2 className="text-2xl font-bold font-amiri text-slate-800 dark:text-slate-200">
                   جوجل درايف
                 </h2>
@@ -196,7 +197,6 @@ export default function RecommendedAppsPage() {
                 ))}
               </div>
             </section>
-
           </div>
         </div>
       </div>

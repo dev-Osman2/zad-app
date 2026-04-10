@@ -79,18 +79,26 @@ export default function HadithSidebarDrawer({
         className={`
           fixed top-0 right-0 h-full w-80 z-50 transform transition-transform duration-300 ease-in-out pt-24 lg:pt-24
           ${isSidebarOpen ? "translate-x-0" : "translate-x-full"}
-          ${darkMode ? "bg-slate-900/95 border-l border-slate-800" : "bg-[#FFFDF6]/95 border-l border-amber-100"}
+          ${
+            darkMode
+              ? "bg-slate-900/95 border-l border-slate-800"
+              : "bg-[#FFFDF6]/95 border-l border-amber-100"
+          }
           shadow-2xl backdrop-blur-lg overflow-y-auto no-scrollbar
         `}
       >
         <div className="p-4">
           <div
-            className={`flex items-center justify-between mb-6 px-2 ${darkMode ? "text-amber-500" : "text-amber-700"}`}
+            className={`flex items-center justify-between mb-6 px-2 ${
+              darkMode ? "text-amber-500" : "text-amber-700"
+            }`}
           >
-            <ScrollText size={18} />
-            <h3 className="font-bold text-sm uppercase tracking-wider">
-              فهرس الأحاديث
-            </h3>
+            <div className="flex gap-2">
+              <ScrollText size={18} />
+              <h3 className="font-bold text-sm uppercase tracking-wider">
+                فهرس الأحاديث
+              </h3>
+            </div>
             <button
               onClick={() => setIsSidebarOpen(false)}
               className={` p-2 rounded-full left-0${
@@ -124,8 +132,8 @@ export default function HadithSidebarDrawer({
                             ? "bg-amber-900/20 text-amber-400 font-bold border-r-4 border-amber-500"
                             : "bg-amber-50 text-amber-900 font-bold border-r-4 border-amber-600 shadow-sm"
                           : darkMode
-                            ? "text-slate-400 hover:bg-slate-800 hover:text-slate-200"
-                            : "text-slate-600 hover:bg-white hover:text-amber-800 hover:shadow-sm"
+                          ? "text-slate-400 hover:bg-slate-800 hover:text-slate-200"
+                          : "text-slate-600 hover:bg-white hover:text-amber-800 hover:shadow-sm"
                       }`}
                   >
                     <div className="flex items-center gap-2">
@@ -137,8 +145,8 @@ export default function HadithSidebarDrawer({
                                 ? "bg-amber-500 text-slate-900"
                                 : "bg-amber-600 text-white"
                               : darkMode
-                                ? "bg-slate-800 text-slate-500"
-                                : "bg-slate-100 text-slate-500 group-hover:bg-amber-100 group-hover:text-amber-700"
+                              ? "bg-slate-800 text-slate-500"
+                              : "bg-slate-100 text-slate-500 group-hover:bg-amber-100 group-hover:text-amber-700"
                           }`}
                       >
                         {section.id.replace(/h|m/, "")}
@@ -168,8 +176,8 @@ export default function HadithSidebarDrawer({
                               ? "bg-blue-900/30 text-blue-300 font-bold"
                               : "bg-blue-50 text-blue-700 font-bold"
                             : darkMode
-                              ? "text-slate-500 hover:bg-slate-800 hover:text-blue-300"
-                              : "text-slate-400 hover:bg-blue-50 hover:text-blue-600"
+                            ? "text-slate-500 hover:bg-slate-800 hover:text-blue-300"
+                            : "text-slate-400 hover:bg-blue-50 hover:text-blue-600"
                         }`}
                     >
                       <BookOpen size={13} />
@@ -188,8 +196,8 @@ export default function HadithSidebarDrawer({
                               ? "bg-teal-900/30 text-teal-400 font-bold"
                               : "bg-teal-50 text-teal-700 font-bold"
                             : darkMode
-                              ? "text-slate-500 hover:bg-slate-800 hover:text-teal-400"
-                              : "text-slate-400 hover:bg-teal-50 hover:text-teal-600"
+                            ? "text-slate-500 hover:bg-slate-800 hover:text-teal-400"
+                            : "text-slate-400 hover:bg-teal-50 hover:text-teal-600"
                         }`}
                     >
                       <ClipboardList size={13} />

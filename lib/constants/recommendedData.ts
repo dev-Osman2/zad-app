@@ -144,16 +144,6 @@ export const recommendedApps: AppCategory[] = [
           "https://play.google.com/store/apps/details?id=com.fyxtech.muslim",
       },
       {
-        id: "athan-qibla-quran",
-        name: "أذان، قبلة وقرآن",
-        description:
-          "تطبيق شامل يجمع لك مواقيت الصلاة الدقيقة، التنبيه بالأذان، وتحديد القبلة مع تلاوة القرآن الكريم.",
-        icon: Compass, // يمكنك استخدام أيقونة Compass أو Mosque حسب مكتبة الأيقونات لديك
-        deepLink: "market://details?id=com.fyxtech.muslim",
-        fallbackUrl:
-          "https://play.google.com/store/apps/details?id=com.fyxtech.muslim",
-      },
-      {
         id: "colornote",
         name: "ColorNote",
         description:

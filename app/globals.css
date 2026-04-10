@@ -51,7 +51,7 @@ body {
     color 0.3s;
 }
 
-.boundres {
+.boundries {
   @apply border-white border-2;
 }
 

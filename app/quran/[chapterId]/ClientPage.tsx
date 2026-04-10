@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getSurah, SurahDetail } from "@/lib/services/quranApi";
 import { useTheme } from "@/providers/ThemeProvider";
-import { BookOpen, Loader2, ChevronRight, ChevronLeft } from "lucide-react";
+import {  Loader2, ChevronRight, ChevronLeft } from "lucide-react";
 import { useParams } from "next/navigation";
 
 export default function ClientPage() {
@@ -48,7 +48,6 @@ export default function ClientPage() {
       <div className="text-center p-10 font-bold">لم يتم العثور على السورة</div>
     );
 
-  const startPage = surah.verses[0]?.page_number;
   const startJuz = surah.verses[0]?.juz_number;
   const showBismillahHeader = surah.meta.id !== 1 && surah.meta.id !== 9;
 
@@ -70,7 +69,7 @@ export default function ClientPage() {
               : "bg-white border-amber-100 shadow-sm"
           }`}
         >
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-50"></div>
+          <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-amber-500 to-transparent opacity-50"></div>
           <div className="relative z-10">
             <h1
               className={`text-4xl md:text-6xl font-amiri font-bold mb-6 ${
@@ -109,7 +108,7 @@ export default function ClientPage() {
         )}
 
         <div
-          className={`  text-justify leading-[2.5] md:leading-[3] font-amiri text-2xl md:text-4xl px-3 py-10 rounded-[2rem] border-2 shadow-sm
+          className={`  text-justify leading-[2.5] md:leading-[3] font-amiri text-2xl md:text-4xl px-3 py-10 rounded-4xl border-2 shadow-sm
           ${
             darkMode
               ? "bg-slate-800/20 text-slate-200 border-slate-800"
@@ -138,7 +137,7 @@ export default function ClientPage() {
                 {text}
 
                 <span
-                  className={`inline-flex items-center justify-center w-6 h-6  mx-2 md:mx-3 align-middle text-[0.6em] border-[2px] rounded-full font-bold select-none
+                  className={`inline-flex items-center justify-center w-6 h-6  mx-2 md:mx-3 align-middle text-[0.6em] border-2 rounded-full font-bold select-none
                   ${
                     darkMode
                       ? "border-amber-600 text-amber-400 bg-slate-800"
