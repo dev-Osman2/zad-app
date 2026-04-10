@@ -1,4 +1,12 @@
-import { Headphones, BookOpen, Clock, Smartphone, LucideIcon, Compass } from "lucide-react";
+import {
+  Headphones,
+  BookOpen,
+  Clock,
+  Smartphone,
+  LucideIcon,
+  Compass,
+  MoonStar,
+} from "lucide-react";
 
 export interface AppItem {
   id: string;
@@ -29,6 +37,13 @@ export interface TelegramBot {
   fallbackUrl: string;
 }
 
+export interface DriveResource {
+  id: string;
+  name: string;
+  description: string;
+  url: string;
+}
+
 export const recommendedApps: AppCategory[] = [
   {
     id: "quran",
@@ -40,7 +55,8 @@ export const recommendedApps: AppCategory[] = [
         description: "مصحف إلكتروني مميز للقراءة، الحفظ، والتلاوة العذبة.",
         icon: BookOpen,
         deepLink: "market://details?id=com.abdo.quran",
-        fallbackUrl: "https://play.google.com/store/apps/details?id=com.abdo.quran",
+        fallbackUrl:
+          "https://play.google.com/store/apps/details?id=com.abdo.quran",
       },
     ],
   },
@@ -51,18 +67,22 @@ export const recommendedApps: AppCategory[] = [
       {
         id: "mantooq",
         name: "تطبيق منطوق",
-        description: "رفيقك في السماع الشرعي؛ استمع لدورات وشروحات ابن عثيمين بجودة عالية.",
+        description:
+          "رفيقك في السماع الشرعي؛ استمع لدورات وشروحات ابن عثيمين بجودة عالية.",
         icon: Headphones,
         deepLink: "market://details?id=ca.basira.mantooqapp",
-        fallbackUrl: "https://play.google.com/store/apps/details?id=ca.basira.mantooqapp",
+        fallbackUrl:
+          "https://play.google.com/store/apps/details?id=ca.basira.mantooqapp",
       },
       {
         id: "soundcloud",
         name: "SoundCloud",
-        description: "مكتبة صوتية شاملة للدروس والمحاضرات لأبرز المشايخ والعلماء.",
+        description:
+          "مكتبة صوتية شاملة للدروس والمحاضرات لأبرز المشايخ والعلماء.",
         icon: Headphones,
         deepLink: "market://details?id=com.soundcloud.android",
-        fallbackUrl: "https://play.google.com/store/apps/details?id=com.soundcloud.android",
+        fallbackUrl:
+          "https://play.google.com/store/apps/details?id=com.soundcloud.android",
       },
     ],
   },
@@ -76,7 +96,8 @@ export const recommendedApps: AppCategory[] = [
         description: "أداتك الرئيسية لحفظ وضبط المتون العلمية الشرعية.",
         icon: BookOpen,
         deepLink: "market://details?id=com.tamayyuzcenter.huffazulmutoon",
-        fallbackUrl: "https://play.google.com/store/apps/details?id=com.tamayyuzcenter.huffazulmutoon",
+        fallbackUrl:
+          "https://play.google.com/store/apps/details?id=com.tamayyuzcenter.huffazulmutoon",
       },
       {
         id: "sunna-9",
@@ -84,7 +105,8 @@ export const recommendedApps: AppCategory[] = [
         description: "مكتبة حديثية ضخمة تضم أمهات كتب الحديث النبوي الشريف.",
         icon: BookOpen,
         deepLink: "market://details?id=com.arabiait.sunna",
-        fallbackUrl: "https://play.google.com/store/apps/details?id=com.arabiait.sunna",
+        fallbackUrl:
+          "https://play.google.com/store/apps/details?id=com.arabiait.sunna",
       },
     ],
   },
@@ -93,28 +115,54 @@ export const recommendedApps: AppCategory[] = [
     title: "تنظيم الوقت والفوائد",
     apps: [
       {
-        id: "athan-qibla-quran",
-        name: "أذان، قبلة وقرآن",
-        description: "تطبيق شامل يجمع لك مواقيت الصلاة الدقيقة، التنبيه بالأذان، وتحديد القبلة مع تلاوة القرآن الكريم.",
-        icon: Compass, // يمكنك استخدام أيقونة Compass أو Mosque حسب مكتبة الأيقونات لديك
-        deepLink: "market://details?id=com.fyxtech.muslim",
-        fallbackUrl: "https://play.google.com/store/apps/details?id=com.fyxtech.muslim",
-      },
-      {
         id: "muslim-house",
         name: "أنا مسلم",
         description: "حقيبة المسلم اليومية من أذكار، مواقيت، وعبادات منظمـة.",
         icon: Clock,
         deepLink: "market://details?id=com.mfk4apps.muslimhouse",
-        fallbackUrl: "https://play.google.com/store/apps/details?id=com.mfk4apps.muslimhouse",
+        fallbackUrl:
+          "https://play.google.com/store/apps/details?id=com.mfk4apps.muslimhouse",
+      },
+      {
+        id: "yaqeen-athan-adhkar",
+        name: "يقين - أذكار ومواقيت الصلاة",
+        description:
+          "تطبيق إسلامي شامل يضم مواقيت الصلاة، الأذكار اليومية، السبحة الإلكترونية، وتحديد اتجاه القبلة بدقة.",
+        icon: MoonStar,
+        deepLink: "market://details?id=com.learrnsimply.yaqeen",
+        fallbackUrl:
+          "https://play.google.com/store/apps/details?id=com.learrnsimply.yaqeen",
+      },
+      {
+        id: "athan-qibla-quran",
+        name: "أذان، قبلة وقرآن",
+        description:
+          "تطبيق شامل يجمع لك مواقيت الصلاة الدقيقة، التنبيه بالأذان، وتحديد القبلة مع تلاوة القرآن الكريم.",
+        icon: Compass, // يمكنك استخدام أيقونة Compass أو Mosque حسب مكتبة الأيقونات لديك
+        deepLink: "market://details?id=com.fyxtech.muslim",
+        fallbackUrl:
+          "https://play.google.com/store/apps/details?id=com.fyxtech.muslim",
+      },
+      {
+        id: "athan-qibla-quran",
+        name: "أذان، قبلة وقرآن",
+        description:
+          "تطبيق شامل يجمع لك مواقيت الصلاة الدقيقة، التنبيه بالأذان، وتحديد القبلة مع تلاوة القرآن الكريم.",
+        icon: Compass, // يمكنك استخدام أيقونة Compass أو Mosque حسب مكتبة الأيقونات لديك
+        deepLink: "market://details?id=com.fyxtech.muslim",
+        fallbackUrl:
+          "https://play.google.com/store/apps/details?id=com.fyxtech.muslim",
       },
       {
         id: "colornote",
         name: "ColorNote",
-        description: "لن تفوتك فائدة بعد الآن؛ سجل ملاحظاتك ونظم دروسك العلمية.",
+        description:
+          "لن تفوتك فائدة بعد الآن؛ سجل ملاحظاتك ونظم دروسك العلمية.",
         icon: Smartphone,
-        deepLink: "market://details?id=com.socialnmobile.dictapps.notepad.color.note",
-        fallbackUrl: "https://play.google.com/store/apps/details?id=com.socialnmobile.dictapps.notepad.color.note",
+        deepLink:
+          "market://details?id=com.socialnmobile.dictapps.notepad.color.note",
+        fallbackUrl:
+          "https://play.google.com/store/apps/details?id=com.socialnmobile.dictapps.notepad.color.note",
       },
     ],
   },
@@ -164,22 +212,34 @@ export const recommendedBots: TelegramBot[] = [
   {
     id: "athrrrr-bot",
     name: "بوت الشامل",
-    description: "بوت شامل لكل ما يحتاجه المسلم من صوتيات، بودكاست، ومكتبة إسلامية.",
+    description:
+      "بوت شامل لكل ما يحتاجه المسلم من صوتيات، بودكاست، ومكتبة إسلامية.",
     deepLink: "tg://resolve?domain=athrrrrBot",
     fallbackUrl: "https://t.me/athrrrrBot",
   },
   {
     id: "riyadh-aljannah-channel",
     name: "رياض الجنة",
-    description: "قناة إسلامية تهتم بنشر الفوائد والتذكير بالسنن والأعمال الصالحة ومجالس العلم.",
+    description:
+      "قناة إسلامية تهتم بنشر الفوائد والتذكير بالسنن والأعمال الصالحة ومجالس العلم.",
     deepLink: "tg://join?invite=4ICL5WhCUfQ5MTQ0",
     fallbackUrl: "https://t.me/+4ICL5WhCUfQ5MTQ0",
   },
+];
+
+
+
+export const recommendedDriveFolders: DriveResource[] = [
   {
     id: "zad-books-drive",
-    name: "جوجل درايف",
+    name: "مكتبة المتون",
     description: "مجلد يحتوي على جميع الكتب والمتون الخاصة بمحتوى التطبيق.",
-    deepLink: "https://drive.google.com/drive/folders/1gc5O5FL3eKi6536QVmy-kxgYMu9CrMRa?usp=sharing",
-    fallbackUrl: "https://drive.google.com/drive/folders/1gc5O5FL3eKi6536QVmy-kxgYMu9CrMRa?usp=sharing",
-  }
+    url: "https://drive.google.com/drive/folders/1gc5O5FL3eKi6536QVmy-kxgYMu9CrMRa?usp=sharing",
+  },
+  {
+    id: "alaa-hamed-drive",
+    name: "علاء حامد",
+    description: "مجلد يحتوى على ملفات المهندس علاء حامد الخاصة بدوراته",
+    url: "https://drive.google.com/drive/folders/1D6NmPImuxQxVxS9eYfwFJffUsslCZgXh?usp=sharing",
+  },
 ];

@@ -87,11 +87,6 @@ export default function ClientPage() {
                   : "bg-amber-50 border-amber-200 text-amber-900"
               }`}
             >
-              <span className="flex items-center gap-2">
-                <BookOpen size={16} className="text-amber-500" /> صفحة{" "}
-                {startPage}
-              </span>
-              <span className="w-px h-4 bg-current opacity-20"></span>
               <span>الجزء {startJuz}</span>
               <span className="w-px h-4 bg-current opacity-20"></span>
               <span>

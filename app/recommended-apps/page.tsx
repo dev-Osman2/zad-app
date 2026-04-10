@@ -1,10 +1,12 @@
 "use client";
 
-import { Download, Youtube, Send, ExternalLink } from "lucide-react";
+// Added FolderOpen for the new section
+import { Download, Youtube, Send, ExternalLink, FolderOpen } from "lucide-react";
 import {
   recommendedApps,
   recommendedChannels,
   recommendedBots,
+  recommendedDriveFolders, // Import the new array
 } from "@/lib/constants/recommendedData";
 
 export default function RecommendedAppsPage() {
@@ -91,7 +93,10 @@ export default function RecommendedAppsPage() {
           ))}
         </div>
 
+        {/* Unified Bottom Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 pt-8 border-t-2 border-dashed border-slate-200 dark:border-slate-800">
+          
+          {/* Left Column: YouTube */}
           <section className="space-y-6">
             <div className="flex items-center gap-3 border-b border-red-200 dark:border-slate-800 pb-3">
               <Youtube className="text-red-600 dark:text-red-500" size={32} />
@@ -120,39 +125,79 @@ export default function RecommendedAppsPage() {
             </div>
           </section>
 
-          <section className="space-y-6">
-            <div className="flex items-center gap-3 border-b border-blue-200 dark:border-slate-800 pb-3">
-              <Send className="text-blue-500 dark:text-blue-400" size={30} />
-              <h2 className="text-2xl font-bold font-amiri text-slate-800 dark:text-slate-200">
-                بوتات تيليجرام خدمية
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 gap-4">
-              {recommendedBots.map((bot) => (
-                <a
-                  key={bot.id}
-                  href={bot.fallbackUrl}
-                  onClick={(e) =>
-                    handleLinkClick(e, bot.deepLink, bot.fallbackUrl)
-                  }
-                  className="group flex flex-col p-5 rounded-2xl bg-white dark:bg-slate-800/80 shadow-sm border border-slate-100 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-500/50 transition-all"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-bold text-lg text-slate-700 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                      {bot.name}
-                    </span>
-                    <ExternalLink
-                      size={18}
-                      className="text-slate-400 group-hover:text-blue-500 transition-colors"
-                    />
-                  </div>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                    {bot.description}
-                  </p>
-                </a>
-              ))}
-            </div>
-          </section>
+          {/* Right Column: Split into Bots and Drive */}
+          <div className="space-y-12">
+            
+            {/* Telegram Bots */}
+            <section className="space-y-6">
+              <div className="flex items-center gap-3 border-b border-blue-200 dark:border-slate-800 pb-3">
+                <Send className="text-blue-500 dark:text-blue-400" size={30} />
+                <h2 className="text-2xl font-bold font-amiri text-slate-800 dark:text-slate-200">
+                  بوتات تيليجرام خدمية
+                </h2>
+              </div>
+              <div className="grid grid-cols-1 gap-4">
+                {recommendedBots.map((bot) => (
+                  <a
+                    key={bot.id}
+                    href={bot.fallbackUrl}
+                    onClick={(e) =>
+                      handleLinkClick(e, bot.deepLink, bot.fallbackUrl)
+                    }
+                    className="group flex flex-col p-5 rounded-2xl bg-white dark:bg-slate-800/80 shadow-sm border border-slate-100 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-500/50 transition-all"
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-bold text-lg text-slate-700 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                        {bot.name}
+                      </span>
+                      <ExternalLink
+                        size={18}
+                        className="text-slate-400 group-hover:text-blue-500 transition-colors"
+                      />
+                    </div>
+                    <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                      {bot.description}
+                    </p>
+                  </a>
+                ))}
+              </div>
+            </section>
+
+            {/* Google Drive Resources */}
+            <section className="space-y-6">
+              <div className="flex items-center gap-3 border-b border-emerald-200 dark:border-slate-800 pb-3">
+                <FolderOpen className="text-emerald-500 dark:text-emerald-400" size={30} />
+                <h2 className="text-2xl font-bold font-amiri text-slate-800 dark:text-slate-200">
+                  جوجل درايف
+                </h2>
+              </div>
+              <div className="grid grid-cols-1 gap-4">
+                {recommendedDriveFolders.map((folder) => (
+                  <a
+                    key={folder.id}
+                    href={folder.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col p-5 rounded-2xl bg-white dark:bg-slate-800/80 shadow-sm border border-slate-100 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-500/50 transition-all"
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-bold text-lg text-slate-700 dark:text-slate-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                        {folder.name}
+                      </span>
+                      <ExternalLink
+                        size={18}
+                        className="text-slate-400 group-hover:text-emerald-500 transition-colors"
+                      />
+                    </div>
+                    <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                      {folder.description}
+                    </p>
+                  </a>
+                ))}
+              </div>
+            </section>
+
+          </div>
         </div>
       </div>
     </div>
