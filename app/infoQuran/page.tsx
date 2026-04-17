@@ -1,151 +1,24 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-export interface Chapter {
-  id: number;
-  revelation_place: string;
-  verses_count: number;
-  name_arabic: string;
-}
-
-export interface Verse {
-  verse_number: number;
-  text_uthmani: string;
-  page_number: number;
-  rub_el_hizb_number?: number;
-}
-
-export interface SurahDetail {
-  meta: Chapter;
-  verses: Verse[];
-}
+// استيراد البيانات مباشرة لجعل الصفحة Static وتعمل أوفلاين في تطبيق الأندرويد
+import surahsData from "../../public/data/quranInfo/surahs.json";
+import rubsData from "../../public/data/quranInfo/rubs.json";
 
 export default function QuranInfoPage() {
-  const [surahInfo, setSurahInfo] = useState<any[]>([]);
-  const [rubInfo, setRubInfo] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
-
   const [searchQuery, setSearchQuery] = useState("");
   const [isSurahTableOpen, setIsSurahTableOpen] = useState(true);
   const [isRubTableOpen, setIsRubTableOpen] = useState(true);
 
-  useEffect(() => {
-    let isMounted = true;
-
-    async function fetchQuranData() {
-      try {
-        const chaptersRes = await fetch("/data/quran/chapters.json");
-        if (!chaptersRes.ok) throw new Error("فشل في تحميل الفهرس الرئيسي");
-
-        const chaptersData = await chaptersRes.json();
-        const chapters: Chapter[] = Array.isArray(chaptersData)
-          ? chaptersData
-          : chaptersData.chapters || [];
-
-        const tempSurahInfo = [];
-        const tempRubInfo: React.SetStateAction<any[]> = [];
-        let currentRubId = 0;
-
-        for (const chapter of chapters) {
-          const res = await fetch(`/data/quran/${chapter.id}.json`);
-          if (!res.ok) continue;
-
-          const surahDetail = await res.json();
-          const verses: Verse[] =
-            surahDetail.verses ||
-            (Array.isArray(surahDetail) ? surahDetail : []);
-
-          if (!verses || verses.length === 0) continue;
-
-          tempSurahInfo.push({
-            id: chapter.id,
-            name: chapter.name_arabic,
-            page: verses[0]?.page_number || "غير متوفر",
-            count: chapter.verses_count,
-            type: chapter.revelation_place === "makkah" ? "مكية" : "مدنية",
-          });
-
-          verses.forEach((verse) => {
-            if (
-              verse.rub_el_hizb_number &&
-              verse.rub_el_hizb_number !== currentRubId
-            ) {
-              currentRubId = verse.rub_el_hizb_number;
-              const safeText = verse.text_uthmani || "";
-              const words = safeText.split(" ");
-              const preview =
-                words.slice(0, 10).join(" ") + (words.length > 10 ? "..." : "");
-
-              tempRubInfo.push({
-                number: currentRubId,
-                location: `${chapter.name_arabic} (${verse.verse_number})`,
-                text: preview,
-                surahName: chapter.name_arabic,
-              });
-            }
-          });
-        }
-
-        if (isMounted) {
-          setSurahInfo(tempSurahInfo);
-          setRubInfo(tempRubInfo);
-          setIsLoading(false);
-        }
-      } catch (error: any) {
-        console.error("Error loading Quran info:", error);
-        if (isMounted) {
-          setErrorMsg(error.message || "حدث خطأ غير معروف");
-          setIsLoading(false);
-        }
-      }
-    }
-
-    fetchQuranData();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-
-  const filteredSurahInfo = surahInfo.filter((s) =>
+  // الفلترة تتم مباشرة على البيانات المستوردة
+  const filteredSurahInfo = surahsData.filter((s: any) =>
     s.name.includes(searchQuery),
   );
 
-  const filteredRubInfo = rubInfo.filter((r) =>
+  const filteredRubInfo = rubsData.filter((r: any) =>
     r.surahName.includes(searchQuery),
   );
-
-  if (errorMsg) {
-    return (
-      <div
-        className="flex flex-col items-center justify-center min-h-[60vh] text-red-600 font-sans p-8 text-center"
-        dir="rtl"
-      >
-        <h2 className="text-2xl font-bold mb-4">
-          عذراً، حدث خطأ أثناء معالجة البيانات
-        </h2>
-        <p className="bg-red-50 p-4 rounded-lg border border-red-200 text-sm">
-          {errorMsg}
-        </p>
-      </div>
-    );
-  }
-
-  if (isLoading) {
-    return (
-      <div
-        className="flex flex-col items-center justify-center min-h-[60vh] text-amber-600 font-sans"
-        dir="rtl"
-      >
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-600 mb-4"></div>
-        <h2 className="text-xl font-semibold">
-          جاري معالجة بيانات القرآن الكريم...
-        </h2>
-      </div>
-    );
-  }
 
   return (
     <div className="p-4 md:p-8 max-w-5xl mx-auto font-sans" dir="rtl">
@@ -239,7 +112,7 @@ export default function QuranInfoPage() {
               </thead>
               <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                 {filteredSurahInfo.length > 0 ? (
-                  filteredSurahInfo.map((s) => (
+                  filteredSurahInfo.map((s: any) => (
                     <tr
                       key={s.id}
                       className="bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
@@ -316,7 +189,7 @@ export default function QuranInfoPage() {
               </thead>
               <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                 {filteredRubInfo.length > 0 ? (
-                  filteredRubInfo.map((r) => (
+                  filteredRubInfo.map((r: any) => (
                     <tr
                       key={r.number}
                       className="bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
