@@ -1,7 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 import { useState, useEffect } from "react";
-import { Capacitor } from "@capacitor/core"; 
+import { Capacitor } from "@capacitor/core";
 
 export default function InstallBanner() {
   const [showBanner, setShowBanner] = useState(false);
@@ -30,13 +29,13 @@ export default function InstallBanner() {
         <div className="flex items-center gap-3">
           <img src="/logo.svg" alt="زاد" className="w-8 h-8" />
           <p className="text-sm md:text-base font-bold font-amiri text-slate-800 dark:text-slate-200">
-            &quot;زاد&quot; بدون إنترنت، حمل التطبيق 
+            &quot;زاد&quot; بدون إنترنت، حمل التطبيق
           </p>
         </div>
 
         <div className="flex items-center gap-4">
           <a
-            href="https://download.zad-islam.app/zad.apk" 
+            href="https://download.zad-islam.app/zad.apk"
             download
             className="px-4 py-1.5 rounded-lg text-sm font-bold whitespace-nowrap transition-colors bg-amber-600 text-white hover:bg-amber-700 dark:bg-amber-500 dark:text-slate-900 dark:hover:bg-amber-400"
           >
@@ -46,8 +45,19 @@ export default function InstallBanner() {
             onClick={handleDismiss}
             className="text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100 transition-colors"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M18 6 6 18" /><path d="m6 6 12 12" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
             </svg>
           </button>
         </div>

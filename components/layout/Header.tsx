@@ -22,6 +22,7 @@ export default function Header() {
     isNotFound ||
     pathname === "/" ||
     pathname === "/feedback" ||
+    pathname === "/infoQuran" ||
     pathname === "/recommended-apps" ||
     pathname.includes("/exam/sahaba") ||
     pathname.includes("/exam/sahabiyat") ||

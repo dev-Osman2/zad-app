@@ -1,6 +1,5 @@
 import { BookOpen, ScrollText, Moon, Flame, Podcast } from "lucide-react";
 
-
 export type SectionData = {
   id: string;
   title: string;
@@ -26,13 +25,19 @@ export const sectionsData: SectionData[] = [
         link: "/quran",
       },
       {
+        id: 1,
+        title: "فهرس السور والأرباع",
+        author: "دليل شامل للتقسيم الإحصائي للمصحف",
+        link: "/infoQuran",
+      },
+      {
         id: 2,
         title: "أول مرة أتدبر القرآن",
         author: "الشيخ عادل محمد خليل",
         link: "/books/Meditate-Quran",
       },
       {
-        id: 7,
+        id: 3,
         title: "المراحل الثمان لطالب فهم القرآن",
         author: "الشيخ عصام بن صالح العويد",
         link: "/books/Quran-Stages",
@@ -61,7 +66,7 @@ export const sectionsData: SectionData[] = [
   {
     id: "sec3",
     title: "قصص الصحابة",
-    icon: <Flame   size={24} />,
+    icon: <Flame size={24} />,
     items: [
       {
         id: 1,
@@ -95,13 +100,13 @@ export const sectionsData: SectionData[] = [
     icon: <Moon size={24} />,
     items: [
       {
-        id: 5,
+        id: 1,
         title: "مجالس شهر رمضان",
         author: "الشيخ محمد بن صالح العثيمين",
         link: "/books/Ramadan-Councils",
       },
       {
-        id: 6,
+        id: 2,
         title: "حدث في رمضان",
         author: "الشيخ عبدالرحمن رأفت الباشا",
         link: "/books/Ramadan-Event",
@@ -120,25 +125,25 @@ export const sectionsData: SectionData[] = [
     icon: <Podcast size={24} />,
     items: [
       {
-        id: 8,
+        id: 1,
         title: "بودكاست فهمك للقرآن",
         author: "دكتور نايف بن نهار",
         link: "/podcast/drNaif",
       },
       {
-        id: 9,
+        id: 2,
         title: "بودكاست حياة الطالب",
         author: "دكتور عثمان الخميس",
         link: "/podcast/drOsman",
       },
       {
-        id: 10,
+        id: 3,
         title: "بودكاست وعي وبناء",
         author: "نخبة من العظماء",
         link: "/podcast/other",
       },
       {
-        id: 11,
+        id: 4,
         title: "بودكاست سهم",
         author: "أ. أيمن الشناوي",
         link: "/podcast/sahm",
