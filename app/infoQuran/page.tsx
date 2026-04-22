@@ -2,16 +2,16 @@
 
 import React, { useState } from "react";
 
-// استيراد البيانات مباشرة لجعل الصفحة Static وتعمل أوفلاين في تطبيق الأندرويد
+
 import surahsData from "../../public/data/quranInfo/surahs.json";
 import rubsData from "../../public/data/quranInfo/rubs.json";
 
 export default function QuranInfoPage() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [isSurahTableOpen, setIsSurahTableOpen] = useState(true);
+  const [isSurahTableOpen, setIsSurahTableOpen] = useState(false);
   const [isRubTableOpen, setIsRubTableOpen] = useState(true);
 
-  // الفلترة تتم مباشرة على البيانات المستوردة
+  
   const filteredSurahInfo = surahsData.filter((s: any) =>
     s.name.includes(searchQuery),
   );
@@ -101,13 +101,16 @@ export default function QuranInfoPage() {
 
         {isSurahTableOpen && (
           <div className="overflow-x-auto shadow-md rounded-lg border border-gray-200 dark:border-gray-700 transition-all">
-            <table className="w-full text-sm text-right text-gray-500 dark:text-gray-400 min-w-[600px]">
-              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-300">
-                <tr>
-                  <th className="px-6 py-3">إسم السورة</th>
-                  <th className="px-6 py-3">رقم الصفحة</th>
-                  <th className="px-6 py-3">عدد الآيات</th>
-                  <th className="px-6 py-3">مكية أو مدنية</th>
+            
+            <table className="w-full text-sm sm:text-base text-right text-gray-500 dark:text-gray-400 sm:min-w-[600px]">
+              
+              <thead className="text-xs sm:text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-300">
+                <tr className="border-2 border-white dark:border-gray-800">
+                  
+                  <th className="px-1 sm:px-3 py-2 sm:py-3">إسم السورة</th>
+                  <th className="px-1 sm:px-3 py-2 sm:py-3">الصفحة</th>
+                  <th className="px-1 sm:px-3 py-2 sm:py-3">الآيات</th>
+                  <th className="px-1 sm:px-3 py-2 sm:py-3">مكية/مدنية</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -117,14 +120,16 @@ export default function QuranInfoPage() {
                       key={s.id}
                       className="bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                     >
-                      <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">
+                      
+                      <td className="px-1 sm:px-3 py-3 sm:py-4 font-medium text-gray-900 dark:text-white">
                         {s.name}
                       </td>
-                      <td className="px-6 py-4">{s.page}</td>
-                      <td className="px-6 py-4">{s.count}</td>
-                      <td className="px-6 py-4">
+                      <td className="px-1 sm:px-3 py-3 sm:py-4">{s.page}</td>
+                      <td className="px-1 sm:px-3 py-3 sm:py-4">{s.count}</td>
+                      
+                      <td className="px-1 sm:px-3 py-3 sm:py-4 text-center">
                         <span
-                          className={`px-2 py-1 rounded-full text-xs ${
+                          className={`px-2 py-1 rounded-full text-xs sm:text-sm whitespace-nowrap ${
                             s.type === "مكية"
                               ? "bg-green-100 text-green-800"
                               : "bg-blue-100 text-blue-800"
@@ -139,7 +144,7 @@ export default function QuranInfoPage() {
                   <tr>
                     <td
                       colSpan={4}
-                      className="px-6 py-8 text-center text-gray-500"
+                      className="px-3 py-8 text-center text-gray-500"
                     >
                       لا توجد نتائج مطابقة للبحث
                     </td>
