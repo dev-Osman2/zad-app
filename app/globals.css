@@ -51,10 +51,6 @@ body {
     color 0.3s;
 }
 
-.boundries {
-  @apply border-white border-2;
-}
-
 .container-padded {
   @apply container mx-auto px-4;
 }

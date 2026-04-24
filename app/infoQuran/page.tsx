@@ -102,15 +102,15 @@ export default function QuranInfoPage() {
         {isSurahTableOpen && (
           <div className="overflow-x-auto shadow-md rounded-lg border border-gray-200 dark:border-gray-700 transition-all">
             
-            <table className="w-full text-sm sm:text-base text-right text-gray-500 dark:text-gray-400 sm:min-w-[600px]">
+            <table className="w-full text-sm sm:text-base text-right text-gray-500 dark:text-gray-400 sm:min-w-150">
               
               <thead className="text-xs sm:text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-300">
-                <tr className="border-2 border-white dark:border-gray-800">
+                <tr className=" dark:border-gray-800">
                   
                   <th className="px-1 sm:px-3 py-2 sm:py-3">إسم السورة</th>
                   <th className="px-1 sm:px-3 py-2 sm:py-3">الصفحة</th>
                   <th className="px-1 sm:px-3 py-2 sm:py-3">الآيات</th>
-                  <th className="px-1 sm:px-3 py-2 sm:py-3">مكية/مدنية</th>
+                  <th className="px-1 sm:px-3 py-2 sm:py-3 text-center">مكية/مدنية</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -184,11 +184,11 @@ export default function QuranInfoPage() {
 
         {isRubTableOpen && (
           <div className="overflow-x-auto shadow-md rounded-lg border border-gray-200 dark:border-gray-700 transition-all">
-            <table className="w-full text-sm text-right text-gray-500 dark:text-gray-400 min-w-[600px]">
+            <table className="w-full text-sm text-right text-gray-500 dark:text-gray-400 min-w-150">
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-300">
                 <tr>
-                  <th className="px-6 py-3">رقم الربع</th>
-                  <th className="px-6 py-3">سورة (رقم الآية)</th>
+                  <th className="px-6 py-3">الربع</th>
+                  <th className="px-6 py-3">سورة (الآية)</th>
                   <th className="px-6 py-3">بداية الربع</th>
                 </tr>
               </thead>

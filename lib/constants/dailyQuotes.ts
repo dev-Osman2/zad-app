@@ -3,10 +3,7 @@ export function getPeriodicQuote(quotesArray: string[]): string {
 
   const totalHours = Math.floor(Date.now() / (1000 * 60 * 60));
 
-  const periodIndex = Math.floor(totalHours / 4);
-
-  const cycleLimit = 90 * 6;
-  const index = (periodIndex % cycleLimit) % quotesArray.length;
+  const index = totalHours % quotesArray.length;
 
   return quotesArray[index];
 }
