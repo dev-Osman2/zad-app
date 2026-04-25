@@ -54,14 +54,3 @@ jobs:
           tag_name: latest
           name: "أحدث نسخة من تطبيق زاد"
           files: android/app/build/outputs/apk/debug/zad.apk
-
-      # 👇 الخطوة الجديدة: الرفع المباشر إلى Cloudflare R2
-      - name: Upload APK to Cloudflare R2
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: auto # Cloudflare R2 يستخدم auto كمنطقة افتراضية
-        run: |
-          aws s3 cp android/app/build/outputs/apk/debug/zad.apk s3://${{ secrets.R2_BUCKET_NAME }}/zad.apk \
-            --endpoint-url ${{ secrets.R2_ENDPOINT_URL }} \
-            --no-progress
