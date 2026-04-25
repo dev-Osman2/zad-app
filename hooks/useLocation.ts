@@ -1,4 +1,3 @@
-// hooks/useLocation.ts
 import { useState, useEffect } from 'react';
 
 export const useLocation = () => {

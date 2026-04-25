@@ -12,6 +12,7 @@
     "@capacitor/android": "^8.2.0",
     "@capacitor/app": "^8.0.1",
     "@capacitor/core": "^8.3.0",
+    "@capacitor/geolocation": "^8.2.0",
     "@capacitor/status-bar": "^8.0.1",
     "@emailjs/browser": "^4.4.1",
     "lucide-react": "^0.563.0",

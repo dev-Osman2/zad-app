@@ -26,7 +26,7 @@ export interface AppCategory {
 export interface YouTubeChannel {
   id: string;
   name: string;
-  url: string; // تم التعديل لرابط ويب عادي
+  url: string; 
 }
 
 export interface TelegramBot {

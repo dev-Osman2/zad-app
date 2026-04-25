@@ -1,4 +1,3 @@
-// components/ui/CityModal.tsx
 "use client";
 
 import { useState } from "react";
@@ -17,7 +16,6 @@ interface CityModalProps {
   darkMode: boolean;
 }
 
-// قائمة مبدئية للمدن (يمكنك لاحقاً ربطها بـ API للبحث)
 const POPULAR_CITIES: City[] = [
   { name: "القاهرة، مصر", lat: 30.0444, lng: 31.2357 },
   { name: "مكة المكرمة، السعودية", lat: 21.3891, lng: 39.8579 },
@@ -26,14 +24,18 @@ const POPULAR_CITIES: City[] = [
   { name: "دبي، الإمارات", lat: 25.2048, lng: 55.2708 },
 ];
 
-export default function CityModal({ isOpen, onClose, onSelectCity, darkMode }: CityModalProps) {
+export default function CityModal({
+  isOpen,
+  onClose,
+  onSelectCity,
+  darkMode,
+}: CityModalProps) {
   const [searchQuery, setSearchQuery] = useState("");
 
   if (!isOpen) return null;
 
-  // تصفية المدن بناءً على البحث
   const filteredCities = POPULAR_CITIES.filter((city) =>
-    city.name.includes(searchQuery)
+    city.name.includes(searchQuery),
   );
 
   return (
@@ -43,22 +45,26 @@ export default function CityModal({ isOpen, onClose, onSelectCity, darkMode }: C
           darkMode ? "bg-slate-900 border border-slate-800" : "bg-white"
         }`}
       >
-        {/* رأس النافذة */}
         <div className="flex justify-between items-center mb-6">
-          <h2 className={`text-xl font-bold font-amiri ${darkMode ? "text-amber-400" : "text-amber-700"}`}>
+          <h2
+            className={`text-xl font-bold font-amiri ${
+              darkMode ? "text-amber-400" : "text-amber-700"
+            }`}
+          >
             تحديد المدينة
           </h2>
           <button
             onClick={onClose}
             className={`p-2 rounded-full transition-colors ${
-              darkMode ? "hover:bg-slate-800 text-slate-400" : "hover:bg-slate-100 text-slate-500"
+              darkMode
+                ? "hover:bg-slate-800 text-slate-400"
+                : "hover:bg-slate-100 text-slate-500"
             }`}
           >
             <X size={20} />
           </button>
         </div>
 
-        {/* حقل البحث */}
         <div className="relative mb-6">
           <input
             type="text"
@@ -79,7 +85,6 @@ export default function CityModal({ isOpen, onClose, onSelectCity, darkMode }: C
           />
         </div>
 
-        {/* قائمة المدن */}
         <div className="space-y-2 max-h-60 overflow-y-auto pr-1 custom-scrollbar">
           {filteredCities.length > 0 ? (
             filteredCities.map((city) => (
@@ -95,12 +100,19 @@ export default function CityModal({ isOpen, onClose, onSelectCity, darkMode }: C
                     : "hover:bg-amber-50 text-slate-700"
                 }`}
               >
-                <MapPin size={16} className={darkMode ? "text-amber-500" : "text-amber-600"} />
+                <MapPin
+                  size={16}
+                  className={darkMode ? "text-amber-500" : "text-amber-600"}
+                />
                 <span className="font-amiri text-lg">{city.name}</span>
               </button>
             ))
           ) : (
-            <p className={`text-center py-4 font-amiri ${darkMode ? "text-slate-500" : "text-slate-400"}`}>
+            <p
+              className={`text-center py-4 font-amiri ${
+                darkMode ? "text-slate-500" : "text-slate-400"
+              }`}
+            >
               لا توجد نتائج مطابقة
             </p>
           )}
