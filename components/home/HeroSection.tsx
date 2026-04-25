@@ -1,8 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { BookOpen, Calendar, Lightbulb } from "lucide-react";
 import SadqaBadge from "@/components/ui/SadqaBadge";
@@ -10,36 +9,39 @@ import { useTheme } from "@/providers/ThemeProvider";
 
 import { Quotes, getPeriodicQuote } from "@/lib/constants/dailyQuotes";
 
-const darkImg = "/landingDark.avif";
-const lightImg = "/landing.avif";
+// استيراد المكون الجديد الذي قمنا بإنشائه
+import PrayerDashboard from "./PrayerDashboard"; 
 
 const dailyQuotes = Quotes;
 
 export default function HeroSection() {
   const { darkMode } = useTheme();
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  
+  // استخدام الحالة المبدئية فارغة لتجنب مشاكل الخادم/المتصفح (Hydration Error)
+  const [data, setData] = useState({ hijriDate: "", quote: "" });
 
-  const [data] = useState(() => {
+  // حساب التاريخ والاقتباس بعد تحميل المكون في المتصفح
+  useEffect(() => {
     const date = new Date();
+    // يبدو أنك تقوم بإنقاص يوم لضبط التاريخ الهجري
     date.setDate(date.getDate() - 1);
 
-    const fullFormatter = new Intl.DateTimeFormat(
-      "ar-SA-u-ca-islamic-umalqura",
-      {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      },
-    );
+    const fullFormatter = new Intl.DateTimeFormat("ar-SA-u-ca-islamic-umalqura", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
 
-    return {
+    setData({
       hijriDate: fullFormatter.format(date),
       quote: getPeriodicQuote(dailyQuotes),
-    };
-  });
+    });
+  }, []);
 
   return (
     <section className="relative flex flex-col xl:flex-row items-center justify-center px-4 md:px-6 lg:px-20 py-8 md:py-12 gap-10 lg:gap-12 grow min-h-[calc(100vh-160px)]">
+      
+      {/* القسم الأول: النصوص والأزرار */}
       <div className="flex-1 text-center xl:text-right z-10 space-y-6 md:space-y-8 animate-fade-in-up w-full max-w-2xl mx-auto xl:mx-0">
         <SadqaBadge name="وَتَزَوَّدُوا فَإِنَّ خَيْرَ الزَّادِ التَّقْوَىٰ ۚ " />
 
@@ -93,45 +95,11 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="flex-1 w-full max-w-sm md:max-w-md lg:max-w-xl z-10 mt-8 xl:mt-0">
-        <div
-          className={`relative rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-2xl transform xl:rotate-[-2deg] hover:rotate-0 transition-transform duration-500 border-4 md:border-8 aspect-[4/3] md:aspect-auto md:h-100 lg:h-125 ${
-            darkMode
-              ? "border-slate-800 shadow-slate-900/50 bg-slate-800"
-              : "border-white shadow-amber-900/10 ring-1 ring-slate-900/5 bg-amber-50"
-          }`}
-        >
-          <div
-            className={`absolute inset-0 flex items-center justify-center z-20 transition-opacity duration-1000 ${
-              isImageLoaded
-                ? "opacity-0 pointer-events-none"
-                : "opacity-100 animate-pulse"
-            }`}
-          >
-            <span
-              className={`text-2xl md:text-4xl lg:text-5xl font-bold font-amiri text-center leading-loose md:leading-relaxed px-4 ${
-                darkMode ? "text-amber-500/40" : "text-amber-700/40"
-              }`}
-            >
-              لا إله إلا الله <br /> محمد رسول الله
-            </span>
-          </div>
-
-          <Image
-            src={darkMode ? darkImg : lightImg}
-            alt="صورة منصة زاد"
-            width={600}
-            height={500}
-            className={`w-full h-full object-cover transition-opacity duration-1000 ${
-              isImageLoaded ? "opacity-100" : "opacity-0"
-            }`}
-            priority
-            onLoad={() => setIsImageLoaded(true)}
-          />
-
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex items-end p-4 md:p-8 z-10 pointer-events-none"></div>
-        </div>
+      {/* القسم الثاني: لوحة مواقيت الصلاة (بدلاً من الصورة) */}
+      <div className="flex-1 w-full max-w-sm md:max-w-md lg:max-w-xl z-10 mt-8 xl:mt-0 animate-fade-in-up">
+        <PrayerDashboard darkMode={darkMode} />
       </div>
+
     </section>
   );
 }
